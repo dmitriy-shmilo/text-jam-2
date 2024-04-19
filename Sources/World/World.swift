@@ -3,8 +3,11 @@
 import Foundation
 
 class World {
+	var shouldQuit = false
 	var areas = [Int: AreaDefinition]()
 	var rooms = [RoomRef: Room]()
+	var currentTime = Time(hours: 7, minutes: 0)
+
 	let player: Player
 
 	init(player: Player) {

@@ -41,12 +41,15 @@ let items = Loader<ItemDefinitions>()
 
 player.currentRoom = world.areas[1]?.defaultRoom ?? .invalid
 roomRender.render(room: world.rooms[player.currentRoom], limitItems: true)
-player.inventory.add(item: .init(definition: items[0]))
+_ = player.inventory.add(item: .init(definition: items[0]))
 var stack = Item(definition: items[1])
 stack.quantity = 3
-player.inventory.add(item: stack)
+_ = player.inventory.add(item: stack)
+player.money += 123
 
+let prompt = PromptRender()
 while true {
+	prompt.render(for: player, in: world)
 	guard let input = readLine()?.trimmingCharacters(in: .whitespacesAndNewlines) else {
 		continue
 	}

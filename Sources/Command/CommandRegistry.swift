@@ -14,7 +14,9 @@ class CommandRegistry {
 		HelpCommand(name: "help", articles: help),
 		InventoryCommand(name: "inventory"),
 		DropCommand(name: "drop"),
-		TakeCommand(name: "take")
+		TakeCommand(name: "take"),
+		
+		QuitCommand(name: "quit")
 	]
 
 	func command(for input: String) -> Command {

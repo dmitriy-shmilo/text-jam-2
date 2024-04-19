@@ -3,24 +3,24 @@
 import Foundation
 
 enum ANSIColors: String {
-	case black = "\u{001B}[0;30m"
-	case red = "\u{001B}[0;31m"
-	case green = "\u{001B}[0;32m"
-	case yellow = "\u{001B}[0;33m"
-	case blue = "\u{001B}[0;34m"
-	case magenta = "\u{001B}[0;35m"
-	case cyan = "\u{001B}[0;36m"
-	case white = "\u{001B}[0;37m"
+	case black = "\u{001B}[0;90m"
+	case red = "\u{001B}[0;91m"
+	case green = "\u{001B}[0;92m"
+	case yellow = "\u{001B}[0;93m"
+	case blue = "\u{001B}[0;94m"
+	case magenta = "\u{001B}[0;95m"
+	case cyan = "\u{001B}[0;96m"
+	case white = "\u{001B}[0;97m"
 	case `default` = "\u{001B}[0;0m"
 
-	case darkBlack = "\u{001B}[2;30m"
-	case darkRed = "\u{001B}[2;31m"
-	case darkGreen = "\u{001B}[2;32m"
-	case darkYellow = "\u{001B}[2;33m"
-	case darkBlue = "\u{001B}[2;34m"
-	case darkMagenta = "\u{001B}[2;35m"
-	case darkCyan = "\u{001B}[2;36m"
-	case darkWhite = "\u{001B}[2;37m"
+	case darkBlack = "\u{001B}[0;30m"
+	case darkRed = "\u{001B}[0;31m"
+	case darkGreen = "\u{001B}[0;32m"
+	case darkYellow = "\u{001B}[0;33m"
+	case darkBlue = "\u{001B}[0;34m"
+	case darkMagenta = "\u{001B}[0;35m"
+	case darkCyan = "\u{001B}[0;36m"
+	case darkWhite = "\u{001B}[0;37m"
 }
 
 extension ANSIColors {
@@ -94,8 +94,8 @@ extension ANSIColors {
 	}
 }
 
-func colorPrint(_ string: String) {
-	print(ANSIColors.replacingColorTokens(in: string) + ANSIColors.default.rawValue)
+func colorPrint(_ string: String, breakLine: Bool = true) {
+	print(ANSIColors.replacingColorTokens(in: string) + ANSIColors.default.rawValue, terminator: breakLine ? "\n" : "")
 }
 
 func colorPrint(_ string: String, filling color: ANSIColors) {
