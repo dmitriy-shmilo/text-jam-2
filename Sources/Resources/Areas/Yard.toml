@@ -6,6 +6,7 @@ defaultRoom = { areaId = 2, id = 1 }
 id = 1
 name = "In front of the house"
 description = "You're in front of your house."
+staticObjects = [5]
 
 [rooms.exits]
 north = { areaId = 1, id = 1 }

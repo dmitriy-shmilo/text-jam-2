@@ -8,6 +8,7 @@ struct ItemFlags: OptionSet, Codable {
 	static let none = ItemFlags([])
 	static let noPickup = ItemFlags(rawValue: 1)
 	static let noList = ItemFlags(rawValue: 1 << 1)
+	static let alwaysList = ItemFlags(rawValue: 1 << 2)
 }
 
 struct ItemDefinitions: Codable {
@@ -17,6 +18,8 @@ struct ItemDefinitions: Codable {
 struct ItemDefinition: Codable {
 	let id: Int
 	let name: String
+	private(set) var roomDescription: String
+	private(set) var description: String
 	private(set) var tags: [String]
 	private(set) var flags: ItemFlags
 
@@ -24,19 +27,19 @@ struct ItemDefinition: Codable {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		self.id = try container.decode(Int.self, forKey: .id)
 		self.name = try container.decode(String.self, forKey: .name)
-		if container.contains(.tags) {
-			self.tags = try container.decode([String].self, forKey: .tags)
-		} else {
-			self.tags = []
-		}
+		self.roomDescription = try container.decodeIfPresent(String.self, forKey: .roomDescription) ?? ""
+		self.description = try container.decodeIfPresent(String.self, forKey: .description) ?? ""
+		self.tags = try container.decodeIfPresent([String].self, forKey: .tags) ?? []
 		if container.contains(.flags) {
 			let flags = try container.decode([String].self, forKey: .flags)
 				.compactMap {
 					switch $0 {
 					case "nopickup":
-						return ItemFlags.noPickup
+						return .noPickup
 					case "nolist":
-						return ItemFlags.noList
+						return .noList
+					case "alwaysList":
+						return .alwaysList
 					default:
 						return nil
 					}

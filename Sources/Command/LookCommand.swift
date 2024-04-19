@@ -8,13 +8,26 @@ class LookCommand: Command {
 			return
 		}
 
-		let parts = input.split(separator: " ").filter { !$0.isEmpty }
+		let parts = tokens(from: input)
 		if parts.count == 1 {
-			print(commandFeedback: "You look around and see...")
+			print(commandFeedback: "You look around and see.")
 			RoomRender().render(room: currentRoom, limitItems: false)
 			return
 		}
 
-		// TODO: look up entity
+		let term = parts[1]
+		if let item = currentRoom.inventory.findFirst(term: term) {
+			print(commandFeedback: "You look at \(item.definition.name).")
+			ItemRender.detailsRender.render(item: item)
+			return
+		}
+
+		if let item = player.inventory.findFirst(term: term) {
+			print(commandFeedback: "You look at \(item.definition.name).")
+			ItemRender.detailsRender.render(item: item)
+			return
+		}
+
+		print(commandFeedback: "You don't see '\(term)' here.")
 	}
 }

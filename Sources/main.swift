@@ -21,12 +21,6 @@ let player = Player()
 let world = World(player: player)
 let roomRender = RoomRender()
 
-Loader<AreaDefinition>()
-	.load(from: "Resources/Areas")
-	.forEach {
-		world.load(area: $0)
-	}
-
 let help = Loader<HelpArticles>()
 	.load(from: "Resources/Help")
 	.flatMap {
@@ -39,6 +33,19 @@ let items = Loader<ItemDefinitions>()
 		$0.items
 	}
 
+let itemDatabase = items
+	.reduce(into: [Int: ItemDefinition]()) { map, item in
+		map[item.id] = item
+	}
+
+Loader<AreaDefinition>()
+	.load(from: "Resources/Areas")
+	.forEach {
+		world.load(area: $0)
+	}
+
+
+
 player.currentRoom = world.areas[1]?.defaultRoom ?? .invalid
 roomRender.render(room: world.rooms[player.currentRoom], limitItems: true)
 _ = player.inventory.add(item: .init(definition: items[0]))
@@ -47,8 +54,6 @@ stack.quantity = 3
 _ = player.inventory.add(item: stack)
 player.money += 123
 
-let homeRoom = world.rooms[.init(id: 1, areaId: 1)]
-homeRoom?.inventory.add(item: .init(definition: items[2]))
 
 let prompt = PromptRender()
 while true {

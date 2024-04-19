@@ -29,6 +29,12 @@ struct RoomRender {
 		print()
 
 		let items = room.inventory.visibleItems
+			.sorted {
+				let leftPriority = $0.definition.flags.contains(.alwaysList) ? 0 : 1
+				let rightPriority = $1.definition.flags.contains(.alwaysList) ? 0 : 1
+
+				return (leftPriority, $0.definition.name) < (rightPriority, $1.definition.name)
+			}
 
 		if items.count > Self.shortItemCount && limitItems {
 			for item in items.prefix(upTo: Self.shortItemCount) {

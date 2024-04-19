@@ -12,3 +12,16 @@ tags = ["fruit", "produce", "food"]
 id = 3
 name = "$gFlowerpot"
 flags = ["nopickup", "nolist"]
+
+[[items]]
+id = 4
+name = "Bed"
+roomDescription = "$YA cozy bed covered with soft sheets is here."
+flags = ["nopickup", "alwaysList"]
+
+[[items]]
+id = 5
+name = "$BPond"
+roomDescription = "$YThere's a small $Bpond $Yof fresh water."
+description = "A small pond with fresh water. You can $Yfill $*something with water here. Or just relax."
+flags = ["nopickup", "awlaysList"]

@@ -6,6 +6,7 @@ defaultRoom = { areaId = 1, id = 1 }
 id = 1
 name = "Entrance"
 description = "Your home entrance. A $gflower pot$* is standing on the windowsill."
+staticObjects = [3]
 
 [rooms.exits]
 north = { areaId = 1, id = 2 }
@@ -15,6 +16,7 @@ south = { areaId = 2, id = 1 }
 id = 2
 name = "Bedroom"
 description = "Your bedroom."
+staticObjects = [4]
 
 [rooms.exits]
 south = { areaId = 1, id = 1 }

@@ -16,8 +16,15 @@ class World {
 
 	func load(area: AreaDefinition) {
 		areas[area.id] = area
-		for room in area.rooms {
-			rooms[.init(id: room.id, areaId: area.id)] = .init(definition: room)
+		for roomDef in area.rooms {
+			let room = Room(definition: roomDef)
+			roomDef.staticObjects
+				.compactMap { itemDatabase[$0] }
+				.map { Item(definition: $0) }
+				.forEach { item in
+					_ = room.inventory.add(item: item)
+				}
+			rooms[.init(id: roomDef.id, areaId: area.id)] = room
 		}
 	}
 
