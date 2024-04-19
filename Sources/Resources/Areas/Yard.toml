@@ -1,0 +1,11 @@
+id = 2
+name = "Yard"
+defaultRoom = { areaId = 2, id = 1 }
+
+[[rooms]]
+id = 1
+name = "In front of the house"
+description = "You're in front of your house."
+
+[rooms.exits]
+north = { areaId = 1, id = 1 }

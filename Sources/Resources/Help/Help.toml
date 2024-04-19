@@ -1,0 +1,13 @@
+
+[[articles]]
+name = "Common Commands"
+terms = ["", "help"]
+description = """
+Type $Yhelp [command]$* for more details about each command.
+
+Looking around: $Ylook, scan, inventory$*.
+Movement commands: $Ynorth, east, south, west$*.
+Item interaction: $Ytake, drop, put$*.
+NPC interaction: $Ygive, buy, sell$*.
+Other: $Ysleep, quit$*.""""
+references = []
