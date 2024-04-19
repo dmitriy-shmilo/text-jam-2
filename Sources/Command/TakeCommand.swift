@@ -21,6 +21,12 @@ class TakeCommand: Command {
 			return
 		}
 
+		guard !item.definition.flags.contains(.noPickup) else {
+			print(commandFeedback: "You can't take \(item.definition.name).")
+			print()
+			return
+		}
+
 		if player.inventory.add(item: item) && currentRoom.inventory.remove(item: item) {
 			print(commandFeedback: "You take \(item.definition.name).")
 			print()

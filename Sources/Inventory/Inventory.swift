@@ -4,6 +4,9 @@ import Foundation
 
 class Inventory {
 	private (set) var items = [Item]()
+	var visibleItems: [Item] {
+		items.filter { !$0.definition.flags.contains(.noList) }
+	}
 
 	func add(item: Item) -> Bool {
 		guard !items.contains(where: { $0 === item }) else {

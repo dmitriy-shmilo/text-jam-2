@@ -28,17 +28,19 @@ struct RoomRender {
 		colorPrint(exitsLabel, filling: .cyan)
 		print()
 
-		if room.inventory.items.count > Self.shortItemCount && limitItems {
-			for item in room.inventory.items.prefix(upTo: Self.shortItemCount) {
+		let items = room.inventory.visibleItems
+
+		if items.count > Self.shortItemCount && limitItems {
+			for item in items.prefix(upTo: Self.shortItemCount) {
 				ItemRender.roomLineRender.render(item: item)
 			}
-			colorPrint("and \(room.inventory.items.count - Self.shortItemCount) more...", filling: .darkWhite)
+			colorPrint("and \(items.count - Self.shortItemCount) more...", filling: .darkWhite)
 			print()
 			return
 		}
 
-		if !room.inventory.items.isEmpty {
-			for item in room.inventory.items {
+		if !items.isEmpty {
+			for item in items {
 				ItemRender.roomLineRender.render(item: item)
 			}
 			print()

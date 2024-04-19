@@ -14,7 +14,7 @@ struct Loader<T> where T: Codable {
 				guard let toml = try? String(contentsOf: url) else {
 					return nil
 				}
-				return try? TOMLDecoder().decode(T.self, from: toml)
+				return try! TOMLDecoder(strictDecoding: false).decode(T.self, from: toml)
 			}
 	}
 }

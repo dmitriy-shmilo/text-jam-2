@@ -47,6 +47,9 @@ stack.quantity = 3
 _ = player.inventory.add(item: stack)
 player.money += 123
 
+let homeRoom = world.rooms[.init(id: 1, areaId: 1)]
+homeRoom?.inventory.add(item: .init(definition: items[2]))
+
 let prompt = PromptRender()
 while true {
 	prompt.render(for: player, in: world)

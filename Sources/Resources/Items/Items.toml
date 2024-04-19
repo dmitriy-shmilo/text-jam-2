@@ -6,3 +6,8 @@ name = "Pebble"
 [[items]]
 id = 2
 name = "Apple"
+
+[[items]]
+id = 3
+name = "$gFlowerpot"
+flags = ["nopickup", "nolist"]

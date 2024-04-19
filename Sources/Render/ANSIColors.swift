@@ -103,5 +103,5 @@ func colorPrint(_ string: String, filling color: ANSIColors) {
 }
 
 func print(commandFeedback: String) {
-	print(ANSIColors.darkWhite.rawValue + commandFeedback + ANSIColors.default.rawValue)
+	print(ANSIColors.darkWhite.rawValue + ANSIColors.replacingColorTokens(in: commandFeedback) + ANSIColors.default.rawValue)
 }
