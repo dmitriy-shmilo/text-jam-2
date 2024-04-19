@@ -39,8 +39,18 @@ class Inventory {
 	}
 
 	private static func item(_ item: Item, matches term: String) -> Bool {
-		return item.definition.name
+		let term = term.lowercased()
+		if item.definition.name
 			.lowercased()
-			.contains(term.lowercased())
+			.contains(term) {
+			return true
+		}
+
+		if item.definition.tags
+			.contains(where: { $0.lowercased().contains(term) }) {
+			return true
+		}
+		
+		return false
 	}
 }

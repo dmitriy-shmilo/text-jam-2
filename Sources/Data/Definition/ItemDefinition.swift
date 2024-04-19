@@ -17,12 +17,18 @@ struct ItemDefinitions: Codable {
 struct ItemDefinition: Codable {
 	let id: Int
 	let name: String
+	private(set) var tags: [String]
 	private(set) var flags: ItemFlags
 
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		self.id = try container.decode(Int.self, forKey: .id)
 		self.name = try container.decode(String.self, forKey: .name)
+		if container.contains(.tags) {
+			self.tags = try container.decode([String].self, forKey: .tags)
+		} else {
+			self.tags = []
+		}
 		if container.contains(.flags) {
 			let flags = try container.decode([String].self, forKey: .flags)
 				.compactMap {
