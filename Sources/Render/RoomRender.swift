@@ -3,7 +3,9 @@
 import Foundation
 
 struct RoomRender {
-	func render(room: Room) {
+	static let shortItemCount = 5
+
+	func render(room: Room, limitItems: Bool) {
 		print()
 		colorPrint(room.definition.name, filling: .cyan)
 		colorPrint(room.definition.description)
@@ -24,14 +26,32 @@ struct RoomRender {
 		exitsLabel.removeLast(2)
 		exitsLabel += "]"
 		colorPrint(exitsLabel, filling: .cyan)
+		print()
+
+		if room.inventory.items.count > Self.shortItemCount && limitItems {
+			for item in room.inventory.items.prefix(upTo: Self.shortItemCount) {
+				ItemRender.roomLineRender.render(item: item)
+			}
+			colorPrint("and \(room.inventory.items.count - Self.shortItemCount) more...", filling: .darkWhite)
+			print()
+			return
+		}
+
+		if !room.inventory.items.isEmpty {
+			for item in room.inventory.items {
+				ItemRender.roomLineRender.render(item: item)
+			}
+			print()
+			return
+		}
 	}
 }
 
 extension RoomRender {
-	func render(room: Room?) {
+	func render(room: Room?, limitItems: Bool) {
 		guard let room = room else {
 			return
 		}
-		render(room: room)
+		render(room: room, limitItems: limitItems)
 	}
 }

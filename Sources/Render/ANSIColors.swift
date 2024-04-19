@@ -95,9 +95,13 @@ extension ANSIColors {
 }
 
 func colorPrint(_ string: String) {
-	print(ANSIColors.replacingColorTokens(in: string))
+	print(ANSIColors.replacingColorTokens(in: string) + ANSIColors.default.rawValue)
 }
 
 func colorPrint(_ string: String, filling color: ANSIColors) {
 	print(color.rawValue + ANSIColors.removingColorTokens(in: string) + ANSIColors.default.rawValue)
+}
+
+func print(commandFeedback: String) {
+	print(ANSIColors.darkWhite.rawValue + commandFeedback + ANSIColors.default.rawValue)
 }

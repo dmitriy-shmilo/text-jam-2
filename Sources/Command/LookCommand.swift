@@ -10,8 +10,8 @@ class LookCommand: Command {
 
 		let parts = input.split(separator: " ").filter { !$0.isEmpty }
 		if parts.count == 1 {
-			colorPrint("You look around and see...", filling: .darkWhite)
-			RoomRender().render(room: currentRoom)
+			print(commandFeedback: "You look around and see...")
+			RoomRender().render(room: currentRoom, limitItems: false)
 			return
 		}
 

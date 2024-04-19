@@ -33,11 +33,18 @@ let help = Loader<HelpArticles>()
 		$0.articles
 	}
 
+let items = Loader<ItemDefinitions>()
+	.load(from: "Resources/Items")
+	.flatMap {
+		$0.items
+	}
 
 player.currentRoom = world.areas[1]?.defaultRoom ?? .invalid
-roomRender.render(room: world.rooms[player.currentRoom])
-
-
+roomRender.render(room: world.rooms[player.currentRoom], limitItems: true)
+player.inventory.add(item: .init(definition: items[0]))
+var stack = Item(definition: items[1])
+stack.quantity = 3
+player.inventory.add(item: stack)
 
 while true {
 	guard let input = readLine()?.trimmingCharacters(in: .whitespacesAndNewlines) else {

@@ -12,7 +12,9 @@ class CommandRegistry {
 		MoveCommand(name: "west", direction: .west),
 		LookCommand(name: "look"),
 		HelpCommand(name: "help", articles: help),
-		InventoryCommand(name: "inventory")
+		InventoryCommand(name: "inventory"),
+		DropCommand(name: "drop"),
+		TakeCommand(name: "take")
 	]
 
 	func command(for input: String) -> Command {

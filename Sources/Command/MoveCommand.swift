@@ -26,6 +26,6 @@ class MoveCommand: Command {
 
 		player.currentRoom = targetRef
 		let render = RoomRender()
-		render.render(room: targetRoom)
+		render.render(room: targetRoom, limitItems: true)
 	}
 }
