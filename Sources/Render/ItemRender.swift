@@ -9,18 +9,37 @@ struct ItemRender {
 	let suffix: String
 
 	func render(item: Item) {
-		if !oneLine && !item.definition.description.isEmpty {
-			colorPrint(item.definition.description)
-			print()
+		if !oneLine {
+			renderFullDescription(item: item)
 			return
 		}
 
+		renderRoomLine(item: item)
+	}
+
+	private func renderFullDescription(item: Item) {
+		if !item.definition.description.isEmpty {
+			colorPrint(item.definition.description)
+		} else {
+			renderRoomLine(item: item)
+		}
+		print()
+
+		if let inventory = item.inventory {
+			colorPrint("Contents:", filling: .darkWhite)
+			InventoryRender().render(inventory: inventory)
+		}
+	}
+
+	private func renderRoomLine(item: Item) {
 		if preferRoomDescription && !item.definition.roomDescription.isEmpty {
 			colorPrint(item.definition.roomDescription)
-			return
+		} else {
+			renderOneLine(item: item)
 		}
+	}
 
-
+	private func renderOneLine(item: Item) {
 		if item.quantity == 1 {
 			colorPrint("\(prefix)\(item.definition.name)\(suffix)")
 		}

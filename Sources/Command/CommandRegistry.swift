@@ -15,7 +15,8 @@ class CommandRegistry {
 		InventoryCommand(name: "inventory"),
 		DropCommand(name: "drop"),
 		TakeCommand(name: "take"),
-		
+		PutCommand(name: "put"),
+
 		QuitCommand(name: "quit")
 	]
 

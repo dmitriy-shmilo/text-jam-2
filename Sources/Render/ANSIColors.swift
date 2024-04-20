@@ -94,6 +94,13 @@ extension ANSIColors {
 	}
 }
 
+enum PrintPadding {
+	case none
+	case top
+	case bottom
+	case both
+}
+
 func colorPrint(_ string: String, breakLine: Bool = true) {
 	print(ANSIColors.replacingColorTokens(in: string) + ANSIColors.default.rawValue, terminator: breakLine ? "\n" : "")
 }
@@ -102,6 +109,18 @@ func colorPrint(_ string: String, filling color: ANSIColors) {
 	print(color.rawValue + ANSIColors.removingColorTokens(in: string) + ANSIColors.default.rawValue)
 }
 
-func print(commandFeedback: String) {
+func print(commandFeedback: String, padding: PrintPadding = .none) {
+	switch padding {
+	case .both, .top:
+		print()
+	default:
+		break
+	}
 	print(ANSIColors.darkWhite.rawValue + ANSIColors.replacingColorTokens(in: commandFeedback) + ANSIColors.default.rawValue)
+	switch padding {
+	case .both, .bottom:
+		print()
+	default:
+		break
+	}
 }

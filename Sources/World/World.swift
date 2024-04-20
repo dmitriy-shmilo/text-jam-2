@@ -18,11 +18,37 @@ class World {
 		areas[area.id] = area
 		for roomDef in area.rooms {
 			let room = Room(definition: roomDef)
-			roomDef.staticObjects
-				.compactMap { itemDatabase[$0] }
+			roomDef.placedItems
+				.filter { $0.containerId == nil }
+				.compactMap { itemDatabase[$0.id] }
 				.map { Item(definition: $0) }
 				.forEach { item in
 					_ = room.inventory.add(item: item)
+				}
+
+			roomDef.placedItems
+				.compactMap { placedItem -> (ItemDefinition, Int)? in
+					guard let container = placedItem.containerId,
+						  let item = itemDatabase[placedItem.id] else {
+						return nil
+					}
+					return (item, container)
+				}
+				.forEach { placedItem in
+					guard let container = room.inventory.items.first(where: { $0.definition.id == placedItem.1 }) else {
+						print("No container \(placedItem.1) in room \(room.definition.id)")
+						return
+					}
+
+					guard let inventory = container.inventory else {
+						print("Item \(placedItem.1) in room \(room.definition.id) doesn't have an inventory")
+						return
+					}
+
+					guard inventory.add(item: Item(definition: placedItem.0)) else {
+						print("Failed to add item \(placedItem.0) to a container \(placedItem.1) in room \(room.definition.id)")
+						return
+					}
 				}
 			rooms[.init(id: roomDef.id, areaId: area.id)] = room
 		}
