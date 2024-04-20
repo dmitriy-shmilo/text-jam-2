@@ -10,6 +10,7 @@ struct ItemFlags: OptionSet {
 	static let noList = ItemFlags(rawValue: 1 << 1)
 	static let alwaysList = ItemFlags(rawValue: 1 << 2)
 	static let container = ItemFlags(rawValue: 1 << 3)
+	static let noStack = ItemFlags(rawValue: 1 << 4)
 }
 
 // MARK: - Codable
@@ -29,6 +30,8 @@ extension ItemFlags: Codable {
 				result.formUnion(.alwaysList)
 			case "container":
 				result.formUnion(.container)
+			case "noStack":
+				result.formUnion(.noStack)
 			default:
 				print("Unknown item flag: \(string)")
 			}

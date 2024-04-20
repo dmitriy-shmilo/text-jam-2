@@ -22,10 +22,21 @@ class TakeCommand: Command {
 		take(tokens[1], from: currentRoom, by: player)
 	}
 
-	private func take(_ itemName: String, from containerName: String, in room: Room, by player: Player) {
-		guard let container = room.inventory.findFirst(term: containerName)
-		?? player.inventory.findFirst(term: containerName) else {
-			print(commandFeedback: "There's no '\(containerName)' around.", padding: .bottom)
+	// MARK: - Private Methods
+	private func take(
+		_ itemToken: CommandToken,
+		from containerToken: CommandToken,
+		in room: Room,
+		by player: Player
+	) {
+		guard let container = room.inventory
+			.find(
+				term: containerToken.term,
+				order: containerToken.order) ?? player.inventory
+			.find(term: containerToken.term, order: containerToken.order) else {
+			print(
+				commandFeedback: "There's no '\(containerToken.term)' around.",
+				padding: .bottom)
 			return
 		}
 
@@ -36,24 +47,39 @@ class TakeCommand: Command {
 			return
 		}
 
-		guard let item = inventory.findFirst(term: itemName) else {
+		guard let item = inventory
+			.find(
+				term: itemToken.term,
+				order: itemToken.order) else {
 			print(
-				commandFeedback: "\(container.definition.name) doesn't have \(itemName)",
+				commandFeedback: "\(container.definition.name) doesn't have \(itemToken.term)",
 				padding: .bottom)
 			return
 		}
 
-		if player.inventory.add(item: item) && inventory.remove(item: item) {
+		let moved = inventory.move(
+			item: item,
+			quantity: itemToken.quantity,
+			to: player.inventory)
+
+		if moved > 0 {
 			print(
-				commandFeedback: "You take \(item.definition.name) from \(container.definition.name).",
+				commandFeedback: "You take \(moved) x \(item.definition.name) from \(container.definition.name).",
 				padding: .bottom)
 		}
 	}
 
-	private func take(_ itemName: String, from room: Room, by player: Player) {
-		guard let item = room.inventory.findFirst(term: itemName) else {
+	private func take(
+		_ itemToken: CommandToken,
+		from room: Room,
+		by player: Player
+	) {
+		guard let item = room.inventory
+			.find(
+				term: itemToken.term,
+				order: itemToken.order) else {
 			print(
-				commandFeedback: "There's no '\(itemName)' around.",
+				commandFeedback: "There's no '\(itemToken.term)' around.",
 				padding: .bottom)
 			return
 		}
@@ -65,9 +91,13 @@ class TakeCommand: Command {
 			return
 		}
 
-		if player.inventory.add(item: item) && room.inventory.remove(item: item) {
+		let moved = room.inventory.move(
+			item: item,
+			quantity: itemToken.quantity,
+			to: player.inventory)
+		if moved > 0 {
 			print(
-				commandFeedback: "You pick up \(item.definition.name).",
+				commandFeedback: "You pick up \(moved) x \(item.definition.name).",
 				padding: .bottom)
 		}
 	}

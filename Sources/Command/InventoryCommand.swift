@@ -8,7 +8,7 @@ class InventoryCommand: Command {
 		let tokens = tokens(from: input)
 		print(commandFeedback: "You check your backpack:")
 		if tokens.count > 1 {
-			playerInventoryRender.render(items: player.inventory.find(term: tokens[1]))
+			playerInventoryRender.render(items: player.inventory.find(term: tokens[1].term))
 			return
 		}
 

@@ -14,8 +14,9 @@ class PutCommand: Command {
 			return
 		}
 
-		guard let item = player.inventory.findFirst(term: tokens[1]) else {
-			print(commandFeedback: "You don't have '\(tokens[1])'.", padding: .bottom)
+		let itemToken = tokens[1]
+		guard let item = player.inventory.find(term: itemToken.term, order: itemToken.order) else {
+			print(commandFeedback: "You don't have '\(itemToken.term)'.", padding: .bottom)
 			return
 		}
 
@@ -26,9 +27,10 @@ class PutCommand: Command {
 			return
 		}
 
-		guard let container = currentRoom.inventory.findFirst(term: tokens[2]) else {
+		let containerToken = tokens[2]
+		guard let container = currentRoom.inventory.find(term: containerToken.term, order: containerToken.order) else {
 			print(
-				commandFeedback: "There's no '\(tokens[2])' around.",
+				commandFeedback: "There's no '\(containerToken.term)' around.",
 				padding: .bottom)
 			return
 		}
@@ -40,9 +42,13 @@ class PutCommand: Command {
 			return
 		}
 
-		if inventory.add(item: item) && player.inventory.remove(item: item) {
+		let moved = player.inventory.move(
+			item: item,
+			quantity: itemToken.quantity,
+			to: inventory)
+		if moved > 0 {
 			print(
-				commandFeedback: "You put \(item.definition.name) in \(container.definition.name)",
+				commandFeedback: "You put \(moved) x \(item.definition.name) in \(container.definition.name)",
 				padding: .bottom)
 		}
 	}

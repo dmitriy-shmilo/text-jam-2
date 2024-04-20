@@ -13,7 +13,7 @@ class HelpCommand: Command {
 
 	override func execute(input: String, in world: World, by player: Player) {
 		let tokens = tokens(from: input)
-		let term = tokens.count > 1 ? tokens[1] : ""
+		let term = tokens.count > 1 ? tokens[1].term : ""
 		guard let article = articles
 			.first(where: {
 				$0.terms.contains(where: { $0.hasPrefix(term) })

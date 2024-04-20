@@ -15,4 +15,10 @@ class Item {
 			inventory = nil
 		}
 	}
+
+	func copy() -> Item {
+		let item = Item(definition: definition)
+		item.quantity = quantity
+		return item
+	}
 }
