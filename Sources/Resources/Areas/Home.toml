@@ -6,7 +6,6 @@ defaultRoom = { areaId = 1, id = 1 }
 id = 1
 name = "Entrance"
 description = "Your home entrance. A $gflower pot$* is standing on the windowsill."
-staticObjects = [3, 6]
 
 [rooms.exits]
 north = { areaId = 1, id = 2 }
@@ -16,17 +15,23 @@ south = { areaId = 2, id = 1 }
 id = 3
 
 [[rooms.placedItems]]
-id = 6
+id = 1003
 
 [[rooms.placedItems]]
 id = 1
-containerId = 6
+count = 10
+containerId = 1003
 
 [[rooms]]
 id = 2
 name = "Bedroom"
 description = "Your bedroom."
-staticObjects = [4]
+
+[[rooms.placedItems]]
+id = 1001
+
+[[rooms.placedItems]]
+id = 1002
 
 [rooms.exits]
 south = { areaId = 1, id = 1 }

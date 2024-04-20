@@ -14,21 +14,8 @@ name = "$gFlowerpot"
 flags = ["nopickup", "nolist"]
 
 [[items]]
-id = 4
-name = "Bed"
-roomDescription = "$YA cozy bed covered with soft sheets is here."
-flags = ["nopickup", "alwaysList"]
-
-[[items]]
 id = 5
 name = "$BPond"
 roomDescription = "$YThere's a small $Bpond $Yof fresh water."
 description = "A small pond with fresh water. You can $Yfill $*something with water here. Or just relax."
-flags = ["nopickup", "alwaysList"]
-
-[[items]]
-id = 6
-name = "Box"
-roomDescription = "$YA big box, capable of holding items."
-description = "A big wooden box with a lid. You can $Yput$* something in it, if you need to free up your hands. You can always $Ytake$* your items back later."
-flags = ["nopickup", "alwaysList", "container"]
+flags = ["nopickup", "nohide"]

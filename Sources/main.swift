@@ -48,10 +48,6 @@ Loader<AreaDefinition>()
 
 player.currentRoom = world.areas[1]?.defaultRoom ?? .invalid
 roomRender.render(room: world.rooms[player.currentRoom], limitItems: true)
-_ = player.inventory.add(item: .init(definition: items[0]))
-var stack = Item(definition: items[1])
-stack.quantity = 3
-_ = player.inventory.add(item: stack)
 player.money += 123
 
 

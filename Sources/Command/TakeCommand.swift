@@ -40,9 +40,10 @@ class TakeCommand: Command {
 			return
 		}
 
-		guard let inventory = container.inventory else {
+		guard let inventory = container.inventory,
+			  !container.definition.flags.contains(.noInteract) else {
 			print(
-				commandFeedback: "\(container.definition.name) is not a container.",
+				commandFeedback: "You can't take anything from \(container.definition.name).",
 				padding: .bottom)
 			return
 		}

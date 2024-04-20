@@ -28,10 +28,12 @@ struct RoomRender {
 		colorPrint(exitsLabel, filling: .cyan)
 		print()
 
+		// TODO: sorting items makes order token confusing
+		// show all items in the original order instead
 		let items = room.inventory.visibleItems
 			.sorted {
-				let leftPriority = $0.definition.flags.contains(.alwaysList) ? 0 : 1
-				let rightPriority = $1.definition.flags.contains(.alwaysList) ? 0 : 1
+				let leftPriority = $0.definition.flags.contains(.noHide) ? 0 : 1
+				let rightPriority = $1.definition.flags.contains(.noHide) ? 0 : 1
 
 				return (leftPriority, $0.definition.name) < (rightPriority, $1.definition.name)
 			}

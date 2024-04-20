@@ -58,6 +58,13 @@ class Inventory {
 		return removed
 	}
 
+	func copy(to inventory: Inventory) -> Int {
+		return items
+			.reduce(into: 0) { count, item in
+				count += inventory.add(item: item, quantity: item.quantity)
+			}
+	}
+
 	// MARK: - Finding Items
 	func find(term: String) -> [Item] {
 		return items
@@ -97,5 +104,11 @@ class Inventory {
 		}
 		
 		return false
+	}
+}
+
+extension Inventory {
+	func find(token: CommandToken) -> Item? {
+		return find(term: token.term, order: token.order)
 	}
 }

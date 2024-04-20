@@ -27,26 +27,30 @@ class World {
 				}
 
 			roomDef.placedItems
-				.compactMap { placedItem -> (ItemDefinition, Int)? in
-					guard let container = placedItem.containerId,
-						  let item = itemDatabase[placedItem.id] else {
-						return nil
-					}
-					return (item, container)
-				}
 				.forEach { placedItem in
-					guard let container = room.inventory.items.first(where: { $0.definition.id == placedItem.1 }) else {
-						print("No container \(placedItem.1) in room \(room.definition.id)")
+					guard let containerId = placedItem.containerId else {
+						// placed on the first pass
+						return
+					}
+
+					guard let itemDef = itemDatabase[placedItem.id] else {
+						print("No item \(placedItem.id) in the database.")
+						return
+					}
+					
+					// TODO: support container order
+					guard let container = room.inventory.items.first(where: { $0.definition.id == containerId }) else {
+						print("No container \(containerId) in room \(room.definition.id)")
 						return
 					}
 
 					guard let inventory = container.inventory else {
-						print("Item \(placedItem.1) in room \(room.definition.id) doesn't have an inventory")
+						print("Item \(container.definition.id) in room \(room.definition.id) doesn't have an inventory")
 						return
 					}
 
-					guard inventory.add(item: Item(definition: placedItem.0)) else {
-						print("Failed to add item \(placedItem.0) to a container \(placedItem.1) in room \(room.definition.id)")
+					guard inventory.add(item: Item(definition: itemDef, quantity: placedItem.count ?? 1)) else {
+						print("Failed to add item \(placedItem.id) to a container \(container.definition.id) in room \(room.definition.id)")
 						return
 					}
 				}

@@ -16,6 +16,11 @@ class Item {
 		}
 	}
 
+	convenience init(definition: ItemDefinition, quantity: Int) {
+		self.init(definition: definition)
+		self.quantity = quantity
+	}
+
 	func copy() -> Item {
 		let item = Item(definition: definition)
 		item.quantity = quantity

@@ -9,5 +9,5 @@ Looking around: $Ylook, scan, inventory$*.
 Movement commands: $Ynorth, east, south, west$*.
 Item interaction: $Ytake, drop, put$*.
 NPC interaction: $Ygive, buy, sell$*.
-Other: $Ysleep, quit$*.""""
+Other: $Ysleep, quit$*."""
 references = []

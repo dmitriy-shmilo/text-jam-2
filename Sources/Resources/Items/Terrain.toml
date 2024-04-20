@@ -1,0 +1,38 @@
+[[items]]
+id = 2001
+name = "Dry soil"
+roomDescription = "$YDry soil"
+flags = ["nopickup", "nohide"]
+tags = ["terrain"]
+
+[[items.transformations]]
+targetId = 2003
+action = "till"
+
+
+[[items]]
+id = 2002
+name = "Wet soil"
+roomDescription = "$YWet soil"
+flags = ["nopickup", "nohide"]
+tags = ["terrain"]
+
+[[items.transformations]]
+targetId = 2004
+action = "till"
+
+
+[[items]]
+id = 2003
+name = "Dry tilled soil"
+roomDescription = "$YDry tilled soil"
+flags = ["nopickup", "nohide", "container", "nointeract"]
+tags = ["terrain"]
+
+
+[[items]]
+id = 2004
+name = "Wet tilled soil"
+roomDescription = "$YWet tilled soil"
+flags = ["nopickup", "nohide", "container", "nointeract"]
+tags = ["terrain"]

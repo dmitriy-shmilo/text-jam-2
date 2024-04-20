@@ -6,17 +6,21 @@ class CommandRegistry {
 	static let shared = CommandRegistry()
 
 	private let commands = [
+		HelpCommand(name: "help", articles: help),
+
 		MoveCommand(name: "north", direction: .north),
 		MoveCommand(name: "east", direction: .east),
 		MoveCommand(name: "south", direction: .south),
 		MoveCommand(name: "west", direction: .west),
 		LookCommand(name: "look"),
-		HelpCommand(name: "help", articles: help),
+
 		InventoryCommand(name: "inventory"),
 		DropCommand(name: "drop"),
 		TakeCommand(name: "take"),
 		PutCommand(name: "put"),
 
+		TillCommand(name: "till"),
+		
 		QuitCommand(name: "quit")
 	]
 
