@@ -15,6 +15,7 @@ struct ItemDefinition: Codable {
 	private(set) var tags: [String]
 	private(set) var flags: ItemFlags
 	private(set) var transformations: [ItemTransformation]
+	private(set) var capacity: Int
 
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -27,6 +28,6 @@ struct ItemDefinition: Codable {
 		self.transformations = try container.decodeIfPresent(
 			[ItemTransformation].self,
 			forKey: .transformations) ?? []
-
+		self.capacity = try container.decodeIfPresent(Int.self, forKey: .capacity) ?? 1
 	}
 }

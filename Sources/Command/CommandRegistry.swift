@@ -20,6 +20,10 @@ class CommandRegistry {
 		PutCommand(name: "put"),
 
 		TillCommand(name: "till"),
+
+		FillCommand(name: "fill"),
+		PourCommand(name: "pour"),
+		WaterCommand(name: "water"),
 		
 		QuitCommand(name: "quit")
 	]

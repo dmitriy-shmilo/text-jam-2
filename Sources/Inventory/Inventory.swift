@@ -7,6 +7,9 @@ class Inventory {
 	var visibleItems: [Item] {
 		items.filter { !$0.definition.flags.contains(.noList) }
 	}
+	var isEmpty: Bool {
+		return items.isEmpty
+	}
 
 	// MARK: - Moving Items
 	func add(item: Item) -> Bool {
@@ -49,6 +52,15 @@ class Inventory {
 		return count
 	}
 
+	func removeAll() -> Int {
+		let removed = items
+			.reduce(into: 0, { res, item in
+				res += item.quantity
+			})
+		items.removeAll()
+		return removed
+	}
+
 	func move(item: Item, quantity: Int, to inventory: Inventory) -> Int {
 		let removed = remove(item: item, quantity: quantity)
 		let added = inventory.add(item: item, quantity: removed)
@@ -63,6 +75,22 @@ class Inventory {
 			.reduce(into: 0) { count, item in
 				count += inventory.add(item: item, quantity: item.quantity)
 			}
+	}
+
+	func transform(item: Item, into targetDef: ItemDefinition, count: Int) {
+		let targetItem = Item(definition: targetDef)
+		
+		_ = add(item: targetItem)
+		_ = remove(item: item, quantity: count)
+
+		if let sourceInventory = item.inventory {
+			if let targetInventory = targetItem.inventory {
+				_ = sourceInventory.copy(to: targetInventory)
+			} else {
+				_ = sourceInventory.copy(to: self)
+				// TODO: report
+			}
+		}
 	}
 
 	// MARK: - Finding Items

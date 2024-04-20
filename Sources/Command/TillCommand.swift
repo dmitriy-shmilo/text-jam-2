@@ -25,29 +25,13 @@ class TillCommand: Command {
 			return
 		}
 
-		guard let transformation = item.definition.transformations.first(where: { $0.action == Self.transformationAction }) else {
+		guard let transformation = item.definition.transformations.first(where: { $0.action == Self.transformationAction }),
+			  let targetItemDef = itemDatabase[transformation.targetId] else {
 			print(commandFeedback: "You can't till \(item.definition.name).")
 			return
 		}
 
-		guard let targetItemDef = itemDatabase[transformation.targetId] else {
-			print("Incorrect transformation. No such item \(transformation.targetId)")
-			return
-		}
-
-		let targetItem = Item(definition: targetItemDef)
-		print(commandFeedback: "You till \(item.definition.name).")
-		_ = currentRoom.inventory.add(item: targetItem)
-		_ = currentRoom.inventory.remove(item: item, quantity: 1)
-
-		if let sourceInventory = item.inventory {
-			if let targetInventory = targetItem.inventory {
-				_ = sourceInventory.copy(to: targetInventory)
-			} else {
-				let dropped = sourceInventory.copy(to: currentRoom.inventory)
-				print(commandFeedback: "\(dropped) item(s) have dropped on the ground.")
-			}
-		}
-		print()
+		currentRoom.inventory.transform(item: item, into: targetItemDef, count: 1)
+		print(commandFeedback: "You till \(item.definition.name).", padding: .bottom)
 	}
 }

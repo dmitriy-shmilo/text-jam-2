@@ -22,6 +22,13 @@ id = 1
 count = 10
 containerId = 1003
 
+[[rooms.placedItems]]
+id = 3001
+
+[[rooms.placedItems]]
+id = 3002
+
+
 [[rooms]]
 id = 2
 name = "Bedroom"

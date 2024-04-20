@@ -1,0 +1,13 @@
+[[items]]
+id = 3001
+name = "Hoe"
+description = "A tool used for $Ytill$*ing soil."
+tags = ["tool"]
+flags = ["nostack"]
+
+[[items]]
+id = 3002
+name = "Watering can"
+capacity = 5
+tags = ["tool"]
+flags = ["nostack", "container", "nointeract", "vessel"]

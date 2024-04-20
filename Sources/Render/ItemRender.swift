@@ -42,11 +42,15 @@ struct ItemRender {
 	private func renderOneLine(item: Item) {
 		if item.quantity == 1 {
 			colorPrint("\(prefix)\(item.definition.name)\(suffix)")
+			return
 		}
 
 		if item.quantity > 1 {
 			colorPrint("\(prefix)\(item.definition.name)\(suffix) $w(\(item.quantity))")
+			return
 		}
+
+		colorPrint("\(prefix)\(item.definition.name)\(suffix) $R(\(item.quantity))")
 	}
 }
 

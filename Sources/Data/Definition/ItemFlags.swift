@@ -12,6 +12,9 @@ struct ItemFlags: OptionSet {
 	static let container = ItemFlags(rawValue: 1 << 3)
 	static let noStack = ItemFlags(rawValue: 1 << 4)
 	static let noInteract = ItemFlags(rawValue: 1 << 5)
+	static let vessel = ItemFlags(rawValue: 1 << 6)
+	static let source = ItemFlags(rawValue: 1 << 7)
+	static let liquid = ItemFlags(rawValue: 1 << 8)
 }
 
 // MARK: - Codable
@@ -35,6 +38,12 @@ extension ItemFlags: Codable {
 				result.formUnion(.noStack)
 			case "nointeract":
 				result.formUnion(.noInteract)
+			case "vessel":
+				result.formUnion(.vessel)
+			case "source":
+				result.formUnion(.source)
+			case "liquid":
+				result.formUnion(.liquid)
 			default:
 				print("Unknown item flag: \(string)")
 			}

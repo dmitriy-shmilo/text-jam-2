@@ -14,8 +14,6 @@ name = "$gFlowerpot"
 flags = ["nopickup", "nolist"]
 
 [[items]]
-id = 5
-name = "$BPond"
-roomDescription = "$YThere's a small $Bpond $Yof fresh water."
-description = "A small pond with fresh water. You can $Yfill $*something with water here. Or just relax."
-flags = ["nopickup", "nohide"]
+id = 6
+name = "Water"
+flags = ["nopickup", "liquid"]

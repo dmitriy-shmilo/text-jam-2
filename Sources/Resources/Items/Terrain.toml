@@ -9,6 +9,10 @@ tags = ["terrain"]
 targetId = 2003
 action = "till"
 
+[[items.transformations]]
+targetId = 2002
+action = "water"
+
 
 [[items]]
 id = 2002
@@ -29,6 +33,10 @@ roomDescription = "$YDry tilled soil"
 flags = ["nopickup", "nohide", "container", "nointeract"]
 tags = ["terrain"]
 
+[[items.transformations]]
+targetId = 2006
+action = "water"
+
 
 [[items]]
 id = 2004
@@ -36,3 +44,11 @@ name = "Wet tilled soil"
 roomDescription = "$YWet tilled soil"
 flags = ["nopickup", "nohide", "container", "nointeract"]
 tags = ["terrain"]
+
+
+[[items]]
+id = 2005
+name = "$BPond"
+roomDescription = "$YThere's a small $Bpond $Yof fresh water."
+description = "A small pond with fresh water. You can $Yfill $*something with water here."
+flags = ["nopickup", "nohide", "nointeract", "source", "container"]
