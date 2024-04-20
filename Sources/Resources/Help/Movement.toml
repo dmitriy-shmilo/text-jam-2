@@ -11,4 +11,4 @@ Succesfully moving in one of the directions will change your position,
 and will display the description of the room, which you just moved into.
 If you attempt to move in a direction, which has no exit, nothing 
 will happen, and your character will stay in the current room."""
-references = ["look"]
+references = ["look", "scan", "where"]

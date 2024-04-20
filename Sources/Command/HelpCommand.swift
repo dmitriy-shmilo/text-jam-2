@@ -16,6 +16,9 @@ class HelpCommand: Command {
 		let term = tokens.count > 1 ? tokens[1].term : ""
 		guard let article = articles
 			.first(where: {
+				$0.terms.contains(where: { $0 == term })
+			}) ?? articles
+			.first(where: {
 				$0.terms.contains(where: { $0.hasPrefix(term) })
 			}) else {
 			colorPrint("There's no help article about '$y\(term)$*'.")

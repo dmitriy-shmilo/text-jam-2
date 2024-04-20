@@ -8,6 +8,8 @@ struct HelpArticles: Codable {
 
 struct HelpArticle: Codable {
 	let name: String
+	let format: String?
+	let example: String?
 	let terms: [String]
 	let description: String
 	let references: [String]

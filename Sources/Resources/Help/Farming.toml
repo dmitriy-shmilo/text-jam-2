@@ -1,0 +1,58 @@
+[[articles]]
+name = "Farming"
+terms = ["farming", "soil"]
+description = """
+As a proud owner of a half-dilapidated farm, you have an option \
+of produce growing and selling. This will be one of your best sources \
+of income.
+
+Look out for fertile soil patches, which can be $Ytill$*ed and $Ywater$*ed. \
+Once the soil is tilled, a seed can be $Yplant$*ed, which will begin the plant \
+lifecycle. Keep your plant watered regularly, and after some time it will mature. \
+Mature plants can then be $Yharvest$*ed, and the produce sold to a vendor."""
+references = ["till", "watering", "plant", "uproot", "harvest", "trading"]
+
+
+[[articles]]
+name = "Till"
+terms = ["till"]
+format = """
+till <target>"""
+example="""
+till soil
+till 3.wet"""
+description = """
+Any untilled soil patch can be tilled if you have a hoe. Seeds can be planted only in \
+tilled soil. If not occupied by a plant, tilled soil will revert to its \
+previous state over time.
+
+Tilling is an exhausting task, and will take a good chunk of energy when \
+performed. Tilling also requires a considerable amount of time. \
+Increase your skill, use higher quality tools and keep your tools in good shape \
+in order to reduce both the energy consumption and tilling time.
+
+Like many other tools, hoes will lose durability with use, and need to be eventually \
+repaired or replaced. Higher skill will reduce wear and tear."""
+references = ["farming", "water", "plant"]
+
+
+[[articles]]
+name = "Watering"
+terms = ["watering"]
+format = """
+$Ywater <target> <source>$*"""
+example = """
+water soil rusty
+water 2.tilled 2.can"""
+description = """
+Any dry soil patch can be watered if you have a container with fresh water, for example \
+a watering can. Plants will only grow if watered regularly. The soil will dry up the next \
+day after it was watered.
+
+Watering will require some amount of liquid to be present in the container. \
+Refill the container at a nearby source of water when needed. Higher quality containers \
+can hold more water and might improve watering efficiency.
+
+Watering will take some time and energy. Increase your skill to reduce the energy consumption \
+and watering time."""
+references = ["till", "fill"]
