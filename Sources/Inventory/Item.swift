@@ -2,14 +2,6 @@
 
 import Foundation
 
-struct TransformationProgress {
-	let progress: Float
-
-	func progress(byAddingStep step: Float) -> TransformationProgress {
-		return .init(progress: progress + step)
-	}
-}
-
 class Item {
 	weak var parent: Inventory?
 	let inventory: Inventory?
