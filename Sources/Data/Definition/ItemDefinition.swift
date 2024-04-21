@@ -31,3 +31,10 @@ struct ItemDefinition: Codable {
 		self.capacity = try container.decodeIfPresent(Int.self, forKey: .capacity) ?? 1
 	}
 }
+
+// MARK: - CustomDebugStringConvertible
+extension ItemDefinition: CustomDebugStringConvertible {
+	var debugDescription: String {
+		return "\(name)(def \(id))"
+	}
+}

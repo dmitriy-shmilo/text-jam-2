@@ -2,6 +2,6 @@
 
 import Foundation
 
-protocol ContainerEntity: AnyObject {
+protocol ContainerEntity: AnyObject, CustomDebugStringConvertible {
 	
 }

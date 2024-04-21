@@ -18,6 +18,7 @@ class World {
 	}
 
 	func load(area: AreaDefinition) {
+		log(.info, "load \(area)")
 		areas[area.id] = area
 		for roomDef in area.rooms {
 			let room = Room(definition: roomDef)
@@ -36,18 +37,18 @@ class World {
 					}
 
 					guard let itemDef = itemDatabase[placedItem.id] else {
-						print("No item \(placedItem.id) in the database.")
+						log(.error, "No item \(placedItem.id) in the database.")
 						return
 					}
 					
 					// TODO: support container order
 					guard let container = room.inventory.items.first(where: { $0.definition.id == containerId }) else {
-						print("No container \(containerId) in room \(room.definition.id)")
+						log(.error, "No container \(containerId) in room \(room.definition.id)")
 						return
 					}
 
 					guard let inventory = container.inventory else {
-						print("Item \(container.definition.id) in room \(room.definition.id) doesn't have an inventory")
+						log(.error, "Item \(container.definition.id) in room \(room.definition.id) doesn't have an inventory")
 						return
 					}
 
@@ -69,6 +70,7 @@ class World {
 
 	// MARK: - Time Passing
 	func dayPass() {
+		log(.debug, "dayPass")
 		purgeItems()
 		// TODO: unload or refresh areas
 		for item in timeBasedTranformers {
@@ -121,7 +123,7 @@ class World {
 			timeBasedTranformers.append(.init(item))
 		}
 		_ = inventory.add(item: item)
-		print("Spawned \(item)")
+		log(.debug, "Spawned \(item)", stripColorMarkers: true)
 		return item
 	}
 
@@ -130,16 +132,21 @@ class World {
 		if def.transformations.contains(where: { Self.dayPassActions.contains($0.action) }) {
 			timeBasedTranformers.append(.init(item))
 		}
-		print("Spawned \(item)")
+		log(.debug, "Spawned \(item)", stripColorMarkers: true)
 		return item
 	}
 
 	// MARK: - Private Methods
 	private func purgeItems() {
+		log(.debug, "purgeItems")
 		timeBasedTranformers = timeBasedTranformers
 			.compactMap {
-				guard $0.value != nil,
-					  $0.value?.parent != nil else {
+				guard let item = $0.value else {
+					return nil
+				}
+
+				guard item.parent != nil else {
+					log(.warn, "purging orphan item: \(item)")
 					return nil
 				}
 

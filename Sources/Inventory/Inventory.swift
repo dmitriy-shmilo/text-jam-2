@@ -90,6 +90,7 @@ class Inventory {
 		in world: World,
 		movingTo receiverInventory: Inventory? = nil
 	) {
+		log(.debug, "transform \(item) to \(targetDef)", context: "\(self)")
 		let targetItem = world.spawn(
 			item: targetDef,
 			in: receiverInventory ?? self,
@@ -155,5 +156,12 @@ class Inventory {
 extension Inventory {
 	func find(token: CommandToken) -> Item? {
 		return find(term: token.term, order: token.order)
+	}
+}
+
+// MARK: - CustomDebugStringConvertible
+extension Inventory: CustomDebugStringConvertible {
+	var debugDescription: String {
+		return "\(parent?.debugDescription ?? "") inventory"
 	}
 }

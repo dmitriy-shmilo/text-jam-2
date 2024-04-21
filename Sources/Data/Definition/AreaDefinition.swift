@@ -8,3 +8,10 @@ struct AreaDefinition: Codable {
 	let rooms: [RoomDefinition]
 	let defaultRoom: RoomRef
 }
+
+// MARK: - CustomDebugStringConvertible
+extension AreaDefinition: CustomDebugStringConvertible {
+	var debugDescription: String {
+		return "\(name)(\(id))"
+	}
+}
