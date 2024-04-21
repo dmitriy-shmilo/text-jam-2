@@ -3,6 +3,10 @@ id = 4000
 name = "$yDe$gad $rpl$yan$gt$*"
 tags = ["plant", "junk"]
 
+[[items.transformations]]
+targetId = 4000
+action = "uproot"
+
 
 [[items]]
 id = 4001
@@ -20,6 +24,10 @@ targetId = 4000
 containerId = 2003
 action = "wilt"
 step = 0.25
+
+[[items.transformations]]
+targetId = 4001
+action = "uproot"
 
 
 [[items]]
@@ -39,6 +47,10 @@ containerId = 2003
 action = "wilt"
 step = 0.25
 
+[[items.transformations]]
+targetId = 4000
+action = "uproot"
+
 
 [[items]]
 id = 4003
@@ -47,7 +59,6 @@ tags = ["potato", "plant"]
 
 [[items.transformations]]
 targetId = 4004
-containerId = 2004
 action = "harvest"
 
 [[items.transformations]]
@@ -60,4 +71,4 @@ step = 0.2
 [[items]]
 id = 4004
 name = "Potato"
-tags = ["potato", "fruit", "produce"]
+tags = ["potato", "fruit", "produce", "food"]

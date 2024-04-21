@@ -19,7 +19,7 @@ id = 6
 containerId = 2005
 
 [[rooms.placedItems]]
-id = 4001
+id = 4003
 containerId = 2003
 
 [rooms.exits]

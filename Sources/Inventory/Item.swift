@@ -41,7 +41,7 @@ class Item {
 
 	// MARK: - Transform
 	func can(transform: ItemTransformation, inside container: Item?) -> Bool {
-		guard container?.definition.id == transform.containerId else {
+		guard container?.definition.id == transform.containerId || transform.containerId == nil else {
 			return false
 		}
 

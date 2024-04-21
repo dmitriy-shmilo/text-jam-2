@@ -87,9 +87,13 @@ class Inventory {
 	func transform(
 		item: Item,
 		into targetDef: ItemDefinition,
-		in world: World
+		in world: World,
+		movingTo receiverInventory: Inventory? = nil
 	) {
-		let targetItem = world.spawn(item: targetDef, in: self, count: 1)
+		let targetItem = world.spawn(
+			item: targetDef,
+			in: receiverInventory ?? self,
+			count: 1)
 		_ = remove(item: item, quantity: 1)
 
 		if let sourceInventory = item.inventory {
@@ -100,7 +104,7 @@ class Inventory {
 			} else {
 				sourceInventory.forceMove(
 					items: sourceInventory.items,
-					to: self)
+					to: receiverInventory ?? self)
 				// TODO: report
 			}
 		}
