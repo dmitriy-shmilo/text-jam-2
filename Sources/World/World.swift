@@ -3,12 +3,15 @@
 import Foundation
 
 class World {
+	private static let dayPassActions = ["overnight", "grow", "wilt"]
 	var shouldQuit = false
 	var areas = [Int: AreaDefinition]()
 	var rooms = [RoomRef: Room]()
 	var currentTime = Time(hours: 7, minutes: 0)
 
 	let player: Player
+
+	private var timeBasedTranformers = [WeakRef<Item>]()
 
 	init(player: Player) {
 		self.player = player
@@ -21,9 +24,8 @@ class World {
 			roomDef.placedItems
 				.filter { $0.containerId == nil }
 				.compactMap { itemDatabase[$0.id] }
-				.map { Item(definition: $0) }
 				.forEach { item in
-					_ = room.inventory.add(item: item)
+					_ = self.spawn(item: item, in: room.inventory, count: 1)
 				}
 
 			roomDef.placedItems
@@ -49,10 +51,7 @@ class World {
 						return
 					}
 
-					guard inventory.add(item: Item(definition: itemDef, quantity: placedItem.count ?? 1)) else {
-						print("Failed to add item \(placedItem.id) to a container \(container.definition.id) in room \(room.definition.id)")
-						return
-					}
+					_ = self.spawn(item: itemDef, in: inventory, count: placedItem.count ?? 1)
 				}
 			rooms[.init(id: roomDef.id, areaId: area.id)] = room
 		}
@@ -66,5 +65,85 @@ class World {
 		for room in area.rooms {
 			rooms.removeValue(forKey: .init(id: room.id, areaId: area.id))
 		}
+	}
+
+	// MARK: - Time Passing
+	func dayPass() {
+		purgeItems()
+		// TODO: unload or refresh areas
+		for item in timeBasedTranformers {
+			guard let item = item.value,
+				  let inventory = item.parent else {
+				continue
+			}
+
+			if let transform = item.definition.transformations["grow"],
+			   let targetDef = itemDatabase[transform.targetId] {
+				if item.can(transform: transform, inside: inventory.parent as? Item) {
+					if item.progress(transform: transform, by: transform.step) {
+						inventory.transform(item: item, into: targetDef, in: self)
+					}
+				}
+			}
+
+			if let transform = item.definition.transformations["wilt"],
+			   let targetDef = itemDatabase[transform.targetId] {
+				if item.can(transform: transform, inside: inventory.parent as? Item) {
+					if item.progress(transform: transform, by: transform.step) {
+						inventory.transform(item: item, into: targetDef, in: self)
+					}
+				}
+			}
+		}
+
+		for item in timeBasedTranformers {
+			guard let item = item.value,
+				  let inventory = item.parent else {
+				continue
+			}
+
+			if let transform = item.definition.transformations["overnight"],
+			   let targetDef = itemDatabase[transform.targetId] {
+				if item.can(transform: transform, inside: inventory.parent as? Item) {
+					if item.progress(transform: transform, by: transform.step) {
+						inventory.transform(item: item, into: targetDef, in: self)
+					}
+				}
+			}
+		}
+	}
+
+	// MARK: - Item Spawning
+	func spawn(item def: ItemDefinition, in inventory: Inventory, count: Int) -> Item {
+		let item = Item(definition: def, quantity: count)
+		item.parent = inventory
+		if def.transformations.contains(where: { Self.dayPassActions.contains($0.action) }) {
+			timeBasedTranformers.append(.init(item))
+		}
+		_ = inventory.add(item: item)
+		print("Spawned \(item)")
+		return item
+	}
+
+	func spawn(item def: ItemDefinition, count: Int) -> Item {
+		let item = Item(definition: def, quantity: count)
+		if def.transformations.contains(where: { Self.dayPassActions.contains($0.action) }) {
+			timeBasedTranformers.append(.init(item))
+		}
+		print("Spawned \(item)")
+		return item
+	}
+
+	// MARK: - Private Methods
+	private func purgeItems() {
+		timeBasedTranformers = timeBasedTranformers
+			.compactMap {
+				guard $0.value != nil,
+					  $0.value?.parent != nil else {
+					return nil
+				}
+
+				return $0
+			}
 	}
 }

@@ -1,6 +1,7 @@
 id = 2
 name = "Yard"
 defaultRoom = { areaId = 2, id = 1 }
+unload = "never"
 
 [[rooms]]
 id = 1
@@ -8,10 +9,7 @@ name = "In front of the house"
 description = "You're in front of your house."
 
 [[rooms.placedItems]]
-id = 2001
-
-[[rooms.placedItems]]
-id = 2002
+id = 2003
 
 [[rooms.placedItems]]
 id = 2005
@@ -19,6 +17,10 @@ id = 2005
 [[rooms.placedItems]]
 id = 6
 containerId = 2005
+
+[[rooms.placedItems]]
+id = 4001
+containerId = 2003
 
 [rooms.exits]
 north = { areaId = 1, id = 1 }

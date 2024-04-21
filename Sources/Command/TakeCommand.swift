@@ -61,7 +61,8 @@ class TakeCommand: Command {
 		let moved = inventory.move(
 			item: item,
 			quantity: itemToken.quantity,
-			to: player.inventory)
+			to: player.inventory,
+			in: world)
 
 		if moved > 0 {
 			print(
@@ -95,7 +96,8 @@ class TakeCommand: Command {
 		let moved = room.inventory.move(
 			item: item,
 			quantity: itemToken.quantity,
-			to: player.inventory)
+			to: player.inventory,
+			in: world)
 		if moved > 0 {
 			print(
 				commandFeedback: "You pick up \(moved) x \(item.definition.name).",

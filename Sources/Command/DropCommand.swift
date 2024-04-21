@@ -23,7 +23,8 @@ class DropCommand: Command {
 			let removed = player.inventory.move(
 				item: item,
 				quantity: token.quantity,
-				to: currentRoom.inventory)
+				to: currentRoom.inventory,
+				in: world)
 			if removed > 0 {
 				print(commandFeedback: "You drop \(removed) x \(item.definition.name).", padding: .none)
 			}

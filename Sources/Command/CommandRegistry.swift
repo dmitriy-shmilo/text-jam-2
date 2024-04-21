@@ -24,6 +24,8 @@ class CommandRegistry {
 		FillCommand(name: "fill"),
 		PourCommand(name: "pour"),
 		WaterCommand(name: "water"),
+
+		SleepCommand(name: "sleep"),
 		
 		QuitCommand(name: "quit")
 	]

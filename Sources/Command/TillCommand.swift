@@ -25,13 +25,13 @@ class TillCommand: Command {
 			return
 		}
 
-		guard let transformation = item.definition.transformations.first(where: { $0.action == Self.transformationAction }),
+		guard let transformation = item.definition.transformations[Self.transformationAction],
 			  let targetItemDef = itemDatabase[transformation.targetId] else {
 			print(commandFeedback: "You can't till \(item.definition.name).")
 			return
 		}
 
-		currentRoom.inventory.transform(item: item, into: targetItemDef, count: 1)
+		currentRoom.inventory.transform(item: item, into: targetItemDef, in: world)
 		print(commandFeedback: "You till \(item.definition.name).", padding: .bottom)
 	}
 }

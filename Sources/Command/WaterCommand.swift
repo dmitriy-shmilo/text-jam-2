@@ -52,14 +52,14 @@ class WaterCommand: Command {
 			return
 		}
 
-		guard let transformation = targetItem.definition.transformations.first(where: { $0.action == Self.transformationAction }),
+		guard let transformation = targetItem.definition.transformations[Self.transformationAction],
 			  let targetItemDef = itemDatabase[transformation.targetId] else {
 			print(commandFeedback: "You can't water \(targetItem.definition.name).")
 			return
 		}
 
 		_ = sourceInventory.remove(item: sourceContents, quantity: requiredQuantity)
-		currentRoom.inventory.transform(item: targetItem, into: targetItemDef, count: 1)
+		currentRoom.inventory.transform(item: targetItem, into: targetItemDef, in: world)
 		print(commandFeedback: "You water \(targetItem.definition.name).", padding: .bottom)
 
 	}

@@ -53,7 +53,7 @@ class FillCommand: Command {
 		if let targetContents = targetInventory.items.first {
 			targetContents.quantity = targetItem.definition.capacity
 		} else {
-			let targetContents = sourceContents.copy()
+			let targetContents = sourceContents.copy(in: world)
 			targetContents.quantity = targetItem.definition.capacity
 			_ = targetInventory.add(item: targetContents)
 		}

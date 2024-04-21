@@ -3,6 +3,7 @@
 import Foundation
 
 class Inventory {
+	weak var parent: ContainerEntity? = nil	
 	private (set) var items = [Item]()
 	var visibleItems: [Item] {
 		items.filter { !$0.definition.flags.contains(.noList) }
@@ -17,10 +18,11 @@ class Inventory {
 			return false
 		}
 		items.append(item)
+		item.parent = self
 		return true
 	}
 
-	func add(item: Item, quantity: Int) -> Int {
+	func add(item: Item, quantity: Int, in world: World) -> Int {
 		guard !items.contains(where: { $0 === item }) else {
 			return 0
 		}
@@ -32,8 +34,9 @@ class Inventory {
 			}
 		}
 
-		let newItem = item.copy()
+		let newItem = item.copy(in: world)
 		newItem.quantity = quantity
+		newItem.parent = self
 		items.append(newItem)
 		return quantity
 	}
@@ -61,33 +64,43 @@ class Inventory {
 		return removed
 	}
 
-	func move(item: Item, quantity: Int, to inventory: Inventory) -> Int {
+	func move(item: Item, quantity: Int, to inventory: Inventory, in world: World) -> Int {
+		// TODO: prevent unnecessary item copying
 		let removed = remove(item: item, quantity: quantity)
-		let added = inventory.add(item: item, quantity: removed)
-		if removed != added {
-			print("Something went wrong")
-		}
+		let added = inventory.add(item: item, quantity: removed, in: world)
+		assert(removed == added)
 		return removed
 	}
 
-	func copy(to inventory: Inventory) -> Int {
+	func forceMove(items: [Item], to inventory: Inventory) {
+		inventory.items.append(contentsOf: items)
+		inventory.items.forEach { $0.parent = inventory }
+	}
+
+	func copy(to inventory: Inventory, in world: World) -> Int {
 		return items
 			.reduce(into: 0) { count, item in
-				count += inventory.add(item: item, quantity: item.quantity)
+				count += inventory.add(item: item, quantity: item.quantity, in: world)
 			}
 	}
 
-	func transform(item: Item, into targetDef: ItemDefinition, count: Int) {
-		let targetItem = Item(definition: targetDef)
-		
-		_ = add(item: targetItem)
-		_ = remove(item: item, quantity: count)
+	func transform(
+		item: Item,
+		into targetDef: ItemDefinition,
+		in world: World
+	) {
+		let targetItem = world.spawn(item: targetDef, in: self, count: 1)
+		_ = remove(item: item, quantity: 1)
 
 		if let sourceInventory = item.inventory {
 			if let targetInventory = targetItem.inventory {
-				_ = sourceInventory.copy(to: targetInventory)
+				sourceInventory.forceMove(
+					items: sourceInventory.items,
+					to: targetInventory)
 			} else {
-				_ = sourceInventory.copy(to: self)
+				sourceInventory.forceMove(
+					items: sourceInventory.items,
+					to: self)
 				// TODO: report
 			}
 		}

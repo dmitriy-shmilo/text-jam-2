@@ -45,7 +45,8 @@ class PutCommand: Command {
 		let moved = player.inventory.move(
 			item: item,
 			quantity: itemToken.quantity,
-			to: inventory)
+			to: inventory,
+			in: world)
 		if moved > 0 {
 			print(
 				commandFeedback: "You put \(moved) x \(item.definition.name) in \(container.definition.name)",

@@ -25,6 +25,10 @@ tags = ["terrain"]
 targetId = 2004
 action = "till"
 
+[[items.transformations]]
+targetId = 2001
+action = "overnight"
+
 
 [[items]]
 id = 2003
@@ -34,8 +38,14 @@ flags = ["nopickup", "nohide", "container", "nointeract"]
 tags = ["terrain"]
 
 [[items.transformations]]
-targetId = 2006
+targetId = 2004
 action = "water"
+
+[[items.transformations]]
+targetId = 2001
+action = "overnight"
+step = 0.34
+contents = []
 
 
 [[items]]
@@ -44,6 +54,10 @@ name = "Wet tilled soil"
 roomDescription = "$YWet tilled soil"
 flags = ["nopickup", "nohide", "container", "nointeract"]
 tags = ["terrain"]
+
+[[items.transformations]]
+targetId = 2003
+action = "overnight"
 
 
 [[items]]

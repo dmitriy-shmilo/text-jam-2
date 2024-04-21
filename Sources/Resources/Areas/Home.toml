@@ -1,6 +1,7 @@
 id = 1
 name = "Home"
 defaultRoom = { areaId = 1, id = 1 }
+unload = "never"
 
 [[rooms]]
 id = 1

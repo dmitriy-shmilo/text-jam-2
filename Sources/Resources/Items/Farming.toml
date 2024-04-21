@@ -1,0 +1,63 @@
+[[items]]
+id = 4000
+name = "$yDe$gad $rpl$yan$gt$*"
+tags = ["plant", "junk"]
+
+
+[[items]]
+id = 4001
+name = "Potato seeds"
+tags = ["potato", "seed", "seeds"]
+
+[[items.transformations]]
+targetId = 4002
+containerId = 2004
+action = "grow"
+step = 0.5
+
+[[items.transformations]]
+targetId = 4000
+containerId = 2003
+action = "wilt"
+step = 0.25
+
+
+[[items]]
+id = 4002
+name = "Potato seedling"
+tags = ["potato", "plant"]
+
+[[items.transformations]]
+targetId = 4003
+containerId = 2004
+action = "grow"
+step = 0.34
+
+[[items.transformations]]
+targetId = 4000
+containerId = 2003
+action = "wilt"
+step = 0.25
+
+
+[[items]]
+id = 4003
+name = "Potato plant"
+tags = ["potato", "plant"]
+
+[[items.transformations]]
+targetId = 4004
+containerId = 2004
+action = "harvest"
+
+[[items.transformations]]
+targetId = 4000
+containerId = 2004
+action = "wilt"
+step = 0.2
+
+
+[[items]]
+id = 4004
+name = "Potato"
+tags = ["potato", "fruit", "produce"]
