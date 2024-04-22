@@ -20,12 +20,14 @@ class CommandRegistry {
 		PutCommand(name: "put"),
 
 		TillCommand(name: "till"),
+		WaterCommand(name: "water"),
+		PlantCommand(name: "plant"),
 		HarvestCommand(name: "harvest"),
 		UprootCommand(name: "uproot"),
 
 		FillCommand(name: "fill"),
 		PourCommand(name: "pour"),
-		WaterCommand(name: "water"),
+
 
 		SleepCommand(name: "sleep"),
 		

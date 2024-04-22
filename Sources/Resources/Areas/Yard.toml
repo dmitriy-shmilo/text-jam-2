@@ -19,8 +19,7 @@ id = 6
 containerId = 2005
 
 [[rooms.placedItems]]
-id = 4003
-containerId = 2003
+id = 4001
 
 [rooms.exits]
 north = { areaId = 1, id = 1 }
