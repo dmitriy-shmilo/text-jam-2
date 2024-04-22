@@ -22,7 +22,7 @@ class PourCommand: Command {
 		}
 
 		guard sourceItem.inventory?.removeAll() ?? 0 > 0 else {
-			print("Something went wrong")
+			log(.warn, "Failed to pour \(sourceItem)")
 			return
 		}
 

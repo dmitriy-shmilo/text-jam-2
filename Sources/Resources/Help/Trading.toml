@@ -1,0 +1,120 @@
+[[articles]]
+name = "Trading"
+terms = ["trade", "trading", "money", "coins"]
+description = """
+You have to earn and spend money to unlock certain parts of the game. \
+Your current balance can be seen in the command prompt, along with the current \
+time and other useful information.
+
+$GFarming$*, among some other activities, might net you produce, which you can \
+$Gsell$* in certain $Gshop$*s around the town. And once you have earned some extra cash, \
+you will be able to $Gbuy$* more seeds to plant and tools to use in your day-to-day work.
+"""
+references = ["buy", "sell", "shop"]
+
+
+[[articles]]
+name = "Shop"
+terms = ["shop", "list"]
+format = """
+shop
+shop [filter]"""
+description = """
+Use this command while in the shop of any kind to see the list of items, which you can buy. \
+If a [filter] parameter is supplied, available items will be filtered by name.
+
+A price and available stock for each item will be shown, along with its name and its number \
+in the list. Both the name and the number can be used to specify the item for purchase.
+
+If an item runs out of stock, it won't be shown in the shop anymore, and \
+you will have to wait for a restock. Different shops restock at different intervals, so \
+check back from time to time."""
+references = ["buy", "sell", "appraise", "peruse"]
+
+
+[[articles]]
+name = "Appraise"
+terms = ["appraise"]
+format = """
+appraise <item>"""
+example = """
+appraise apple
+app 2.seed"""
+description = """
+Use this command while in the shop to ask what price the shopkeep will pay for an item, \
+without actually selling the item. Prices might differ between sops, and different shops \
+will be interested in different items."""
+references = ["buy", "sell", "shop", "peruse"]
+
+
+[[articles]]
+name = "Peruse"
+terms = ["peruse"]
+format = """
+peruse <item>
+peruse <order>.<item>
+peruse <number>"""
+description = """
+Use this command to closely examine an item without actually paying for it. \
+Use item name or its part, or the item number shown in the $Gshop $*list. \
+You will receive the same detailed information as if you were looking at an item in \
+your inventory."""
+references = ["buy", "sell", "appraise", "shop"]
+
+
+[[articles]]
+name = "Buy"
+terms = ["buy"]
+format = """
+buy <item>
+buy <order>.<item>
+buy <number>
+
+buy <quantity>*<item>
+buy <quantity>*<order>.<item>
+buy <quantity>*<number>"""
+example = """
+buy apple
+buy 2.seed
+buy 10
+
+buy 5*apple
+buy 5*2.seed
+buy 5*10"""
+description = """
+Use this command to spend your money and buy items from the shop. To choose an item you may \
+use its name, or a part of its name, or the item number, which is displayed in the $Gshop$*. \
+
+In order to buy multiple items prepend the desired quantity, followed by a * sign.
+
+$RNo refunds!$* Be careful when specifying what exactly you wish to buy. When in doubt \
+$Gperuse$* an item first. Note that items' numbers $Rchange$* when you buy something out. \
+So double-check the shop list before buying something."""
+references = ["peruse", "sell", "appraise", "shop"]
+
+
+[[articles]]
+name = "Sell"
+terms = ["sell"]
+format = """
+sell <item>
+sell <order>.<item>
+
+sell <quantity>*<item>
+sell <quantity>*<order>.<item>"""
+example = """
+sell apple
+sell 2.seed
+
+sell 5*seed
+sell 10*2.seed"""
+description = """
+Use this command to sell items from your inventory to the shop. To choose an item you may \
+use its name, or a part of its name. Shops will only accept items, which they're interested \
+in, so make sure to visit different shops when getting rid of your produce.
+
+In order to buy multiple items prepend the desired quantity, followed by a * sign.
+
+$RNo buyback!$* Be careful when specifying what exactly you wish to sell. When in doubt \
+$Gappraise$* or $Glook$* at an item first."""
+references = ["look", "appraise", "shop"]

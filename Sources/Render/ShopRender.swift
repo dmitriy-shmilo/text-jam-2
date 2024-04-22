@@ -8,7 +8,7 @@ struct ShopRender {
 	func render(shop: Shop) {
 		let hBorder = "$g+\(String(repeating: "-", count: 3))+\(String(repeating: "-", count: 30))+\(String(repeating: "-", count: 10))+\(String(repeating: "-", count: 10))+"
 		colorPrint(hBorder)
-		colorPrint("$g|  $Y#$g|$*\("Name".padding(toLength: 30, withPad: " ", startingAt: 0))$g|     $*Price$g| $DAvailable$g|")
+		colorPrint("$g|  $Y#$g|$*\("Name".padding(toLength: 30, withPad: " ", startingAt: 0))$g|     $*Price$g|     $DStock$g|")
 		colorPrint(hBorder)
 		// TODO: render empty shop
 		for item in shop.inventory.items.enumerated() {

@@ -18,11 +18,11 @@ class MoveCommand: Command {
 		let targetRef = currentRoom.definition.exits[direction]
 
 		guard let targetRoom = world.rooms[targetRef] else {
-			colorPrint("You can't move \(direction.localizedName)!")
+			print(commandFeedback: "You can't move \(direction.localizedName)!")
 			return
 		}
 
-		colorPrint("You move \(direction.localizedName)...", filling: .darkWhite)
+		print(commandFeedback: "You move \(direction.localizedName).")
 
 		player.currentRoom = targetRef
 		let render = RoomRender()

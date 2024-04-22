@@ -9,13 +9,13 @@ struct HelpArticleRender {
 
 		if let format = article.format {
 			colorPrint("Format:", filling: .cyan)
-			colorPrint(format, filling: .yellow)
+			colorPrint(format, filling: .darkWhite)
 			print()
 		}
 
 		if let example = article.example {
 			colorPrint("Examples:", filling: .cyan)
-			colorPrint(example, filling: .yellow)
+			colorPrint(example, filling: .darkWhite)
 			print()
 		}
 
@@ -26,7 +26,7 @@ struct HelpArticleRender {
 
 		if !article.references.isEmpty {
 			print()
-			colorPrint("See also: $C\(article.references.joined(separator: ", "))$*.")
+			colorPrint("See also: $G\(article.references.joined(separator: ", "))$*.")
 		}
 		print()
 	}

@@ -8,8 +8,8 @@ It's a wooden, creaking piece of furniture. \
 The mattress is old and lumpy. Coarse sheets became almost \
 beige with age. Covered with a red, brown and \
 black plaid blanket. It's not the best bed in the world, \
-but it's always here, whether you need a quick $Ynap$* \
-or a proper $Ysleep$* after a day of hard work."""
+but it's always here, whether you need a quick $Gnap$* \
+or a proper $Gsleep$* after a day of hard work."""
 flags = ["nopickup", "nohide"]
 tags = ["bed", "furniture", "uncomfortable"]
 
@@ -18,7 +18,7 @@ id = 1002
 name = "Wardrobe"
 roomDescription = "$YA tall wardrobe stands in the corner."
 description = """
-A wardrobe. Go ahead, $Yput$* something inside."""
+A wardrobe. Go ahead, $Gput$* something inside."""
 flags = ["nopickup", "nohide", "container"]
 tags = ["furniture"]
 
@@ -26,6 +26,6 @@ tags = ["furniture"]
 id = 1003
 name = "Box"
 roomDescription = "$YA big box, capable of holding items."
-description = "A big wooden box with a lid. You can $Yput$* something in it, if you need to free up your hands. You can always $Ytake$* your items back later."
+description = "A big wooden box with a lid. You can $Gput$* something in it, if you need to free up your hands. You can always $Gtake$* your items back later."
 flags = ["nopickup", "nohide", "container"]
 tags = ["furniture"]

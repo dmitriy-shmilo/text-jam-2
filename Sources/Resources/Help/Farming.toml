@@ -6,10 +6,10 @@ As a proud owner of a half-dilapidated farm, you have an option \
 of produce growing and selling. This will be one of your best sources \
 of income.
 
-Look out for fertile soil patches, which can be $Ytill$*ed and $Ywater$*ed. \
-Once the soil is tilled, a seed can be $Yplant$*ed, which will begin the plant \
+Look out for fertile soil patches, which can be $Gtill$*ed and $Gwater$*ed. \
+Once the soil is tilled, a seed can be $Gplant$*ed, which will begin the plant \
 lifecycle. Keep your plant watered regularly, and after some time it will mature. \
-Mature plants can then be $Yharvest$*ed, and the produce sold to a vendor."""
+Mature plants can then be $Gharvest$*ed, and the produce sold to a vendor."""
 references = ["till", "watering", "plant", "uproot", "harvest", "trading"]
 
 
@@ -40,7 +40,7 @@ references = ["farming", "water", "plant"]
 name = "Watering"
 terms = ["watering"]
 format = """
-$Ywater <target> <source>$*"""
+water <target> <source>"""
 example = """
 water soil rusty
 water 2.tilled 2.can"""

@@ -116,7 +116,7 @@ func print(commandFeedback: String, padding: PrintPadding = .none) {
 	default:
 		break
 	}
-	print(ANSIColors.darkWhite.rawValue + ANSIColors.replacingColorTokens(in: commandFeedback) + ANSIColors.default.rawValue)
+	print(ANSIColors.black.rawValue + ANSIColors.replacingColorTokens(in: commandFeedback) + ANSIColors.default.rawValue)
 	switch padding {
 	case .both, .bottom:
 		print()

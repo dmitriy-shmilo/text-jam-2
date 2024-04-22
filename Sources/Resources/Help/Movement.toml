@@ -2,13 +2,13 @@
 name = "Movement"
 terms = ["movement", "north", "east", "west", "south"]
 description = """
-The world consists of connected cells (rooms).
-Any given room may have up to four $Cexits$* in one of these 
-directions: $Cnorth, east, south, west$*. Use the respective $Ynorth, 
-east, south$* or $Ywest $*commands to move around the world.
+The world consists of connected cells (rooms). \
+Any given room may have up to four $Cexits$* in one of these \
+directions: $Cnorth, east, south, west$*. Use the respective $Gnorth, \
+east, south$* or $Gwest $*commands to move around the world.
 
-Succesfully moving in one of the directions will change your position,
-and will display the description of the room, which you just moved into.
-If you attempt to move in a direction, which has no exit, nothing 
+Succesfully moving in one of the directions will change your position, \
+and will display the description of the room, which you just moved into. \
+If you attempt to move in a direction, which has no exit, nothing \
 will happen, and your character will stay in the current room."""
 references = ["look", "scan", "where"]

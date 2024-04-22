@@ -18,10 +18,10 @@ Lets you take an item or items from the ground or, optionally, a container. Take
 appear in your inventory. Some objects can not be taken, even if they appear \
 as items in the world.
 
-$Y"take apple"$* will take the first available apple from the ground.
-$Y"take 3.tool"$* will take the third tool from the ground, if available.
-$Y"take 5*apple box"$* will take up to five apples from the box.
-$Y"take 10*2.seed box"$* will take up to ten seeds from the second seed stack in the box."""
+$G"take apple"$* will take the first available apple from the ground.
+$G"take 3.tool"$* will take the third tool from the ground, if available.
+$G"take 5*apple box"$* will take up to five apples from the box.
+$G"take 10*2.seed box"$* will take up to ten seeds from the second seed stack in the box."""
 references = ["inventory", "put", "drop"]
 
 
@@ -44,12 +44,12 @@ description = """
 Lets you put an item or items inside a container. The specified item must be \
 in your inventory. The container must be capable of holding items. Liquid containers \
 can't receive items this way and must be filled from sources. To put an item on \
-the ground, use $Ydrop$*.
+the ground, use $Gdrop$*.
 
-$Y"put apple box"$* will put the first available apple into the box.
-$Y"put 3.tool box"$* will put the third tool from your inventory into the box.
-$Y"put 5*apple box"$* will put up to five apples into the box.
-$Y"put 10*2.seed box"$* will put up to ten seeds from the second seed stack in your inventory \
+$G"put apple box"$* will put the first available apple into the box.
+$G"put 3.tool box"$* will put the third tool from your inventory into the box.
+$G"put 5*apple box"$* will put up to five apples into the box.
+$G"put 10*2.seed box"$* will put up to ten seeds from the second seed stack in your inventory \
 into the box."""
 references = ["inventory", "take", "drop", "fill"]
 
@@ -72,15 +72,15 @@ drop 2*3.seed box"""
 description = """
 Lets you drop an item or items on the ground. The specified item must be \
 in your inventory. Dropped items will appear on the ground, and will be visible \
-when $Ylook$*ing around.
+when $Glook$*ing around.
 
 Be careful when dropping items outside of your house. They will $Rdisappear$* after \
 some time. Items inside your house are safe.
 
-$Y"drop apple"$* will drop the first available apple.
-$Y"drop 3.tool"$* will drop the third tool from your inventory on the ground.
-$Y"drop 5*apple"$* will drop up to five apples.
-$Y"drop 10*2.seed"$* will drop up to ten seeds from the second seed stack in your inventory."""
+$G"drop apple"$* will drop the first available apple.
+$G"drop 3.tool"$* will drop the third tool from your inventory on the ground.
+$G"drop 5*apple"$* will drop up to five apples.
+$G"drop 10*2.seed"$* will drop up to ten seeds from the second seed stack in your inventory."""
 references = ["inventory", "take", "look"]
 
 

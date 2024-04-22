@@ -2,14 +2,15 @@
 name = "Common Commands"
 terms = ["", "help"]
 description = """
-Type $Yhelp [command]$* for more details about each command.
-When entering a command, there's no need to type its full name.
+Type $Ghelp [command]$* for more details about each command.
+When entering a command, there's no need to type its full name: \
+$Glook, lo$* and $Gl$* are all valid ways of invoking the $Glook$* command.
 
-Looking around: $Ylook, scan, inventory$*.
-Movement commands: $Ynorth, east, south, west$*.
-Item interaction: $Ytake, drop, put, fill$*.
-NPC interaction: $Ygive, buy, sell$*.
-See also: $Yfarming, foraging, sleep, quit$*."""
+Looking around: $Glook, scan, inventory$*.
+Movement commands: $Gnorth, east, south, west$*.
+Item interaction: $Gtake, drop, put, fill$*.
+NPC interaction: $Ggive, buy, sell$*.
+See also: $Gfarming, foraging, trading, sleep, quit$*."""
 references = ["farming", "foraging", "trading", "sleep"]
 
 
@@ -30,13 +31,16 @@ your current location, or to inspect items on the ground and in your inventory. 
 a container or vessel will inform you about its contents. Looking at a tool will let you \
 know how damaged it is.
 
-$Y"look"$* will display the description of your current location along with the full list \
+Sometimes there are hidden items, especially in the scenery, which don't stand out very much, \
+but still can be looked at, and even sometimes interacted with.
+
+$G"look"$* will display the description of your current location along with the full list \
 of items on the ground.
-$Y"look apple"$* will show the details of the first available apple in your inventory or \
+$G"look apple"$* will show the details of the first available apple in your inventory or \
 on the ground.
-$Y"look 3.tool"$* will show the details of the third available tool in your inventory or \
+$G"look 3.tool"$* will show the details of the third available tool in your inventory or \
 on the ground."""
-references = ["inventory", "scan", "where"]
+references = ["inventory", "scan", "where", "peruse"]
 
 
 [[articles]]
@@ -49,10 +53,10 @@ inventory
 inv
 inv seed"""
 description = """
-This command shows the list of items in your inventory, which you have $Ytake$*n before. \
+This command shows the list of items in your inventory, which you have $Gtake$*n before. \
 Supplying an optional filter word optionally will result in only items, which have this \
 word in their name, showing up.
 
-$Y"inventory"$* will display all currently held items.
-$Y"inventory seed"$* will show all currently held seeds."""
+$G"inventory"$* will display all currently held items.
+$G"inventory seed"$* will show all currently held seeds."""
 references = ["take", "drop", "look"]

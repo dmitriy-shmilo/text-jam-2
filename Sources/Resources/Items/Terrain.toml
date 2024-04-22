@@ -64,5 +64,5 @@ action = "overnight"
 id = 2005
 name = "$BPond"
 roomDescription = "$YThere's a small $Bpond $Yof fresh water."
-description = "A small pond with fresh water. You can $Yfill $*something with water here."
+description = "A small pond with fresh water. You can $Gfill $*something with water here."
 flags = ["nopickup", "nohide", "nointeract", "source", "container"]
