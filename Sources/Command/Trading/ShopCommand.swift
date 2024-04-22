@@ -4,12 +4,7 @@ import Foundation
 
 class ShopCommand: Command {
 	override func execute(input: String, in world: World, by player: Player) {
-		guard let currentRoom = world.rooms[player.currentRoom] else {
-			return
-		}
-
-		guard let shop = world.shops[player.currentRoom] else {
-			print(commandFeedback: "You're not in a shop.", padding: .bottom)
+		guard let shop = ensureShop(in: player.currentRoom, in: world) else {
 			return
 		}
 

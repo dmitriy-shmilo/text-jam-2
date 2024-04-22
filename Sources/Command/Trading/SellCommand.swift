@@ -2,7 +2,7 @@
 
 import Foundation
 
-class AppraiseCommand: Command {
+class SellCommand: Command {
 	override func execute(input: String, in world: World, by player: Player) {
 		guard let shop = ensureShop(in: player.currentRoom, in: world) else {
 			return
@@ -10,7 +10,7 @@ class AppraiseCommand: Command {
 
 		let tokens = tokens(from: input)
 		guard let itemToken = tokens[checked: 1] else {
-			print(commandFeedback: "Appraise what?", padding: .bottom)
+			print(commandFeedback: "Sell what?", padding: .bottom)
 			return
 		}
 
@@ -19,8 +19,7 @@ class AppraiseCommand: Command {
 		}
 
 		let resolver = PriceResolver(buyer: player)
-		let price = resolver.salePrice(of: item)
-		// TODO: ensure a shopkeep actor
+		let price = resolver.salePrice(of: item, quantity: itemToken.quantity)
 
 		guard shop.definition.buyTags
 			.contains(where: { item.definition.tags.contains($0) }),
@@ -29,6 +28,11 @@ class AppraiseCommand: Command {
 			return
 		}
 
-		colorPrint("$wYou can sell \(item.definition.name) $wfor $W\(price)$Yc$w.")
+		colorPrint("$DYou sold \(item.definition.name) $Dfor $W\(price)$Yc$w.")
+		player.money += price
+		guard player.inventory.move(item: item, quantity: itemToken.quantity, to: shop.inventory, in: world) == itemToken.quantity else {
+			log(.warn, "Incorrect amount sold.")
+			return
+		}
 	}
 }

@@ -32,6 +32,9 @@ class CommandRegistry {
 		ShopCommand(name: "list"),
 		AppraiseCommand(name: "appraise"),
 		PeruseCommand(name: "peruse"),
+		BuyCommand(name: "buy"),
+		BuyCommand(name: "purchase"),
+		SellCommand(name: "sell"),
 
 		SleepCommand(name: "sleep"),
 		

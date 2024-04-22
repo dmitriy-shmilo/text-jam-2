@@ -55,4 +55,14 @@ class Command {
 		}
 		return item
 	}
+
+	func ensureShop(in room: RoomRef, in world: World) -> Shop? {
+		guard let shop = world.shops[room] else {
+		   print(commandFeedback: "You're not in a shop.", padding: .bottom)
+		   return nil
+		}
+
+		// TODO: ensure a shopkeep actor
+		return shop
+	}
 }

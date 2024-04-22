@@ -27,7 +27,7 @@ class Item {
 	}
 
 	func copy(in world: World) -> Item {
-		let item = world.spawn(item: definition, count: quantity)
+		let item = world.spawn(item: definition, count: 1)
 		item.transformations = transformations
 		item.parent = parent
 		return item

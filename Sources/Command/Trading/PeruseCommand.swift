@@ -4,14 +4,10 @@ import Foundation
 
 class PeruseCommand: Command {
 	override func execute(input: String, in world: World, by player: Player) {
-		guard let currentRoom = world.rooms[player.currentRoom] else {
+		guard let shop = ensureShop(in: player.currentRoom, in: world) else {
 			return
 		}
 
-		guard let shop = world.shops[player.currentRoom] else {
-			print(commandFeedback: "You're not in a shop.", padding: .bottom)
-			return
-		}
 		let tokens = tokens(from: input)
 		guard let itemToken = tokens[checked: 1] else {
 			print(commandFeedback: "Peruse what?")
