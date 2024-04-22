@@ -28,6 +28,8 @@ class CommandRegistry {
 		FillCommand(name: "fill"),
 		PourCommand(name: "pour"),
 
+		ShopCommand(name: "shop"),
+		ShopCommand(name: "list"),
 
 		SleepCommand(name: "sleep"),
 		

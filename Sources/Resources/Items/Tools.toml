@@ -4,6 +4,8 @@ name = "Hoe"
 description = "A tool used for $Ytill$*ing soil."
 tags = ["tool"]
 flags = ["nostack"]
+basePrice = 300.0
+
 
 [[items]]
 id = 3002
@@ -11,3 +13,4 @@ name = "Watering can"
 capacity = 50
 tags = ["tool"]
 flags = ["nostack", "container", "nointeract", "vessel"]
+basePrice = 300.0

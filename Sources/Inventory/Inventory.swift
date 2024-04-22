@@ -29,21 +29,32 @@ class Inventory {
 
 		if !item.definition.flags.contains(.noStack) {
 			if let existing = items.first(where: { $0.definition.id == item.definition.id })  {
-				existing.quantity += quantity
+				if existing.quantity != Item.infinite {
+					existing.quantity += quantity
+				}
 				return quantity
 			}
 		}
 
-		let newItem = item.copy(in: world)
-		newItem.quantity = quantity
-		newItem.parent = self
-		items.append(newItem)
+		guard quantity != Item.infinite else {
+			log(.warn, "Prevented attempt to add an infinite amount of nostack items.")
+			return 0
+		}
+
+		for _ in 0..<quantity {
+			let newItem = item.copy(in: world)
+			newItem.quantity = 1
+			newItem.parent = self
+			items.append(newItem)
+		}
 		return quantity
 	}
 
 	func remove(item: Item, quantity: Int) -> Int {
 		if item.quantity > quantity {
-			item.quantity -= quantity
+			if item.quantity != Item.infinite {
+				item.quantity -= quantity
+			}
 			return quantity
 		}
 

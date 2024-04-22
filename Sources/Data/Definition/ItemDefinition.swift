@@ -10,25 +10,27 @@ struct ItemDefinitions: Codable {
 struct ItemDefinition: Codable {
 	let id: Int
 	let name: String
-	private(set) var roomDescription: String
-	private(set) var description: String
-	private(set) var tags: [String]
-	private(set) var flags: ItemFlags
-	private(set) var transformations: [ItemTransformation]
-	private(set) var capacity: Int
+	let roomDescription: String
+	let description: String
+	let tags: [String]
+	let flags: ItemFlags
+	let transformations: [ItemTransformation]
+	let capacity: Int
+	let basePrice: Float
 
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
-		self.id = try container.decode(Int.self, forKey: .id)
-		self.name = try container.decode(String.self, forKey: .name)
-		self.roomDescription = try container.decodeIfPresent(String.self, forKey: .roomDescription) ?? ""
-		self.description = try container.decodeIfPresent(String.self, forKey: .description) ?? ""
-		self.tags = try container.decodeIfPresent([String].self, forKey: .tags) ?? []
-		self.flags = try container.decodeIfPresent(ItemFlags.self, forKey: .flags) ?? .none
-		self.transformations = try container.decodeIfPresent(
+		id = try container.decode(Int.self, forKey: .id)
+		name = try container.decode(String.self, forKey: .name)
+		roomDescription = try container.decodeIfPresent(String.self, forKey: .roomDescription) ?? ""
+		description = try container.decodeIfPresent(String.self, forKey: .description) ?? ""
+		tags = try container.decodeIfPresent([String].self, forKey: .tags) ?? []
+		flags = try container.decodeIfPresent(ItemFlags.self, forKey: .flags) ?? .none
+		transformations = try container.decodeIfPresent(
 			[ItemTransformation].self,
 			forKey: .transformations) ?? []
-		self.capacity = try container.decodeIfPresent(Int.self, forKey: .capacity) ?? 1
+		capacity = try container.decodeIfPresent(Int.self, forKey: .capacity) ?? 1
+		basePrice = try container.decodeIfPresent(Float.self, forKey: .basePrice) ?? 0.0
 	}
 }
 

@@ -1,0 +1,40 @@
+id = 3
+name = "Town"
+defaultRoom = { areaId = 3, id = 1 }
+unload = "never"
+
+[[rooms]]
+id = 1
+name = "Town square"
+description = "Central square. Shops to the north."
+
+[rooms.exits]
+north = { areaId = 3, id = 2 }
+west = { areaId = 2, id = 1 }
+
+
+[[rooms]]
+id = 2
+name = "Shop"
+description = "A shop. They sell farm tools and seeds."
+
+[rooms.exits]
+south = { areaId = 3, id = 1 }
+
+[[shops]]
+id = 1
+room = { areaId = 3, id = 2 }
+requiredCharacters = [1001]
+buyTags = ["seed", "produce", "food"]
+
+[[shops.items]]
+id = 4001
+count = -1
+
+[[shops.items]]
+id = 3001
+count = 1
+
+[[shops.items]]
+id = 3002
+count = 1

@@ -64,7 +64,7 @@ struct ItemRender {
 			return ""
 		}
 
-		if topItem.quantity == 1 {
+		if topItem.quantity == 1 || topItem.quantity == Item.infinite {
 			return "$w(\(topItem.definition.name)$w)"
 		}
 

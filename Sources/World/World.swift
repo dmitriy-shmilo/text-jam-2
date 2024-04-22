@@ -7,6 +7,7 @@ class World {
 	var shouldQuit = false
 	var areas = [Int: AreaDefinition]()
 	var rooms = [RoomRef: Room]()
+	var shops = [RoomRef: Shop]()
 	var currentTime = Time(hours: 7, minutes: 0)
 
 	let player: Player
@@ -52,9 +53,23 @@ class World {
 						return
 					}
 
-					_ = self.spawn(item: itemDef, in: inventory, count: placedItem.count ?? 1)
+					_ = self.spawn(item: itemDef, in: inventory, count: placedItem.count)
 				}
 			rooms[.init(id: roomDef.id, areaId: area.id)] = room
+		}
+
+		for shopDef in area.shops {
+			let shop = Shop(definition: shopDef)
+			shops[shopDef.room] = shop
+			for placedItem in shopDef.items {
+				guard let itemDef = itemDatabase[placedItem.id] else {
+					log(.warn, "Can't add item (\(placedItem)) to the \(shop): no such item in the database.")
+					continue
+				}
+
+				let item = spawn(item: itemDef, count: placedItem.count)
+				_ = shop.inventory.add(item: item)
+			}
 		}
 	}
 

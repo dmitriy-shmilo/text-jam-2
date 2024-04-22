@@ -3,6 +3,8 @@
 import Foundation
 
 class Item {
+	static let infinite = Int.max
+
 	weak var parent: Inventory?
 	let inventory: Inventory?
 	let definition: ItemDefinition
