@@ -22,7 +22,7 @@ class World {
 		log(.info, "load \(area)")
 		areas[area.id] = area
 		for roomDef in area.rooms {
-			let room = Room(definition: roomDef)
+			let room = Room(areaId: area.id, definition: roomDef)
 			roomDef.placedItems
 				.filter { $0.containerId == nil }
 				.compactMap { itemDatabase[$0.id] }

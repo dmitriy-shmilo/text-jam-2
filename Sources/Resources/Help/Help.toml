@@ -44,6 +44,27 @@ references = ["inventory", "scan", "where", "peruse"]
 
 
 [[articles]]
+name = "Scan"
+terms = ["scan"]
+format = """
+scan"""
+description = """
+Scanning around shows the names of every adjacent location, and anyone inside them."""
+references = ["look", "where"]
+
+
+[[articles]]
+name = "Where"
+terms = ["where"]
+format = """
+where"""
+description = """
+The world is split into separate areas, like your home, or town. This command tells you \
+which area you're currently in."""
+references = ["look", "where"]
+
+
+[[articles]]
 name = "Inventory"
 terms = ["inventory"]
 format = """

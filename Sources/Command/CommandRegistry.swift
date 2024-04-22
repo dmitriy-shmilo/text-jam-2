@@ -13,6 +13,8 @@ class CommandRegistry {
 		MoveCommand(name: "south", direction: .south),
 		MoveCommand(name: "west", direction: .west),
 		LookCommand(name: "look"),
+		ScanCommand(name: "scan"),
+		WhereCommand(name: "where"),
 
 		InventoryCommand(name: "inventory"),
 		DropCommand(name: "drop"),
