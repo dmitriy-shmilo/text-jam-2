@@ -18,6 +18,7 @@ struct ItemRender {
 		renderRoomLine(item: item)
 	}
 
+	// MARK: - Private Methods
 	private func renderFullDescription(item: Item) {
 		if !item.definition.description.isEmpty {
 			colorPrint("\(item.definition.description) \(inventoryContents(item: item))")
@@ -41,7 +42,7 @@ struct ItemRender {
 	}
 
 	private func renderOneLine(item: Item) {
-		if item.quantity == 1 {
+		if item.quantity == 1 || item.quantity == Item.infinite {
 			colorPrint("\(prefix)\(item.definition.name)\(suffix)")
 			return
 		}

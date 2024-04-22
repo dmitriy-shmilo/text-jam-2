@@ -61,6 +61,28 @@ class Item {
 	}
 }
 
+extension Item {
+	func matches(filter: String) -> Bool {
+		let term = filter.lowercased()
+		guard !term.isEmpty else {
+			return true
+		}
+		
+		if definition.name
+			.lowercased()
+			.hasPrefix(term) {
+			return true
+		}
+
+		if definition.tags
+			.contains(where: { $0.lowercased().hasPrefix(term) }) {
+			return true
+		}
+
+		return false
+	}
+}
+
 // MARK: - ContainerEntity
 extension Item: ContainerEntity {
 

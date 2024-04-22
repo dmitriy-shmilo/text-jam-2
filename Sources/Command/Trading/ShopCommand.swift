@@ -13,9 +13,12 @@ class ShopCommand: Command {
 			return
 		}
 
+		let tokens = tokens(from: input)
+
+		let filter = tokens[checked: 1]?.term ?? ""
 		let resolver = PriceResolver(buyer: player)
 		let shopRender = ShopRender(priceResolver: resolver)
 
-		shopRender.render(shop: shop)
+		shopRender.render(shop: shop, filter: filter)
 	}
 }

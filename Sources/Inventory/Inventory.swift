@@ -126,14 +126,14 @@ class Inventory {
 	func find(term: String) -> [Item] {
 		return items
 			.filter { item in
-				Self.item(item, matches: term)
+				item.matches(filter: term)
 			}
 	}
 
 	func find(term: String, order: Int) -> Item? {
 		return items
 			.filter { item in
-				Self.item(item, matches: term)
+				item.matches(filter: term)
 			}
 			.dropFirst(order)
 			.first
@@ -142,25 +142,8 @@ class Inventory {
 	func findFirst(term: String) -> Item? {
 		return items
 			.first { item in
-				Self.item(item, matches: term)
+				item.matches(filter: term)
 			}
-	}
-
-	// MARK: - Private Methods
-	private static func item(_ item: Item, matches term: String) -> Bool {
-		let term = term.lowercased()
-		if item.definition.name
-			.lowercased()
-			.hasPrefix(term) {
-			return true
-		}
-
-		if item.definition.tags
-			.contains(where: { $0.lowercased().hasPrefix(term) }) {
-			return true
-		}
-		
-		return false
 	}
 }
 
