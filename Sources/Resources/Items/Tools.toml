@@ -1,7 +1,7 @@
 [[items]]
 id = 3001
 name = "Hoe"
-description = "A tool used for $Ytill$*ing soil."
+description = "A tool used for $Gtill$*ing soil."
 tags = ["tool"]
 flags = ["nostack"]
 basePrice = 300.0

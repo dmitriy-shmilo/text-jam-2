@@ -76,13 +76,7 @@ class TakeCommand: Command {
 		from room: Room,
 		by player: Player
 	) {
-		guard let item = room.inventory
-			.find(
-				term: itemToken.term,
-				order: itemToken.order) else {
-			print(
-				commandFeedback: "There's no '\(itemToken.term)' around.",
-				padding: .bottom)
+		guard let item = ensure(itemToken, in: room) else {
 			return
 		}
 

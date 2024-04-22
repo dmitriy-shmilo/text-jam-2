@@ -11,14 +11,12 @@ class PlantCommand: Command {
 		}
 
 		let tokens = tokens(from: input)
-		guard tokens.count > 1 else {
+		guard let seedToken = tokens[checked: 1] else {
 			print(commandFeedback: "Plant what?", padding: .bottom)
 			return
 		}
 
-		let seedToken = tokens[1]
-		guard let seed = player.inventory.find(token: seedToken) else {
-			print(commandFeedback: "You don't have \(seedToken.term)'.")
+		guard let seed = ensure(seedToken, in: player) else {
 			return
 		}
 
@@ -29,14 +27,12 @@ class PlantCommand: Command {
 			return
 		}
 
-		guard tokens.count > 2 else {
+		guard let soilToken = tokens[checked: 2] else {
 			print(commandFeedback: "Plant \(seed.definition.name) where?")
 			return
 		}
 
-		let soilToken = tokens[2]
-		guard let soil = currentRoom.inventory.find(token: soilToken) else {
-			print(commandFeedback: "There's no \(soilToken.term)' here.")
+		guard let soil = ensure(soilToken, in: currentRoom) else {
 			return
 		}
 

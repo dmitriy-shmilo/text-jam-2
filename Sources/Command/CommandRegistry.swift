@@ -30,6 +30,7 @@ class CommandRegistry {
 
 		ShopCommand(name: "shop"),
 		ShopCommand(name: "list"),
+		AppraiseCommand(name: "appraise"),
 
 		SleepCommand(name: "sleep"),
 		

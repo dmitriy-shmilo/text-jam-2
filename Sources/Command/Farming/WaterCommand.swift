@@ -11,29 +11,23 @@ class WaterCommand: Command {
 		}
 
 		let tokens = tokens(from: input)
-		guard tokens.count > 1 else {
+		guard let targetToken = tokens[checked: 1] else {
 			print(commandFeedback: "Water what and with what?", padding: .bottom)
 			return
 		}
 
-		let targetToken = tokens[1]
-		guard let targetItem = currentRoom.inventory.find(term: targetToken.term, order: targetToken.order) else {
-			print(commandFeedback: "There's no '\(targetToken.term)' here.", padding: .bottom)
+		guard let targetItem = ensure(targetToken, in: currentRoom) else {
 			return
 		}
 
-		guard tokens.count > 2 else {
+		guard let sourceToken = tokens[checked: 2] else {
 			print(
 				commandFeedback: "Water \(targetItem.definition.name) with what?",
 				padding: .bottom)
 			return
 		}
 
-		let sourceToken = tokens[2]
-		guard let sourceItem = player.inventory.find(term: sourceToken.term, order: sourceToken.order) else {
-			print(
-				commandFeedback: "You don't have '\(sourceToken.term)'.",
-				padding: .bottom)
+		guard let sourceItem = ensure(sourceToken, in: player) else {
 			return
 		}
 

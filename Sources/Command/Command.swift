@@ -2,12 +2,6 @@
 
 import Foundation
 
-struct CommandToken {
-	var term: String
-	var quantity: Int
-	var order: Int
-}
-
 class Command {
 	let name: String
 
@@ -44,5 +38,21 @@ class Command {
 
 				return CommandToken(term: str, quantity: 1, order: 0)
 			}
+	}
+
+	func ensure(_ token: CommandToken, in player: Player) -> Item? {
+		guard let item = player.inventory.find(token: token) else {
+			print(commandFeedback: "You don't have '\(token.term)'.", padding: .bottom)
+			return nil
+		}
+		return item
+	}
+
+	func ensure(_ token: CommandToken, in room: Room) -> Item? {
+		guard let item = room.inventory.find(token: token) else {
+			print(commandFeedback: "There's no '\(token.term)' here.", padding: .bottom)
+			return nil
+		}
+		return item
 	}
 }

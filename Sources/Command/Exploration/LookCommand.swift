@@ -9,13 +9,12 @@ class LookCommand: Command {
 		}
 
 		let tokens = tokens(from: input)
-		if tokens.count == 1 {
+		guard let token = tokens[checked: 1] else {
 			print(commandFeedback: "You look around.", padding: .none)
 			RoomRender().render(room: currentRoom, limitItems: false)
 			return
 		}
 
-		let token = tokens[1]
 		// TODO: search among combined inventories
 		if let item = currentRoom.inventory.find(term: token.term, order: token.order) {
 			print(commandFeedback: "You look at \(item.definition.name).")

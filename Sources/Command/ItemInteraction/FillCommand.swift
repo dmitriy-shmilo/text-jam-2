@@ -19,13 +19,11 @@ class FillCommand: Command {
 			return
 		}
 
-		guard let targetItem = player.inventory.find(token: tokens[1]) else {
-			print(commandFeedback: "You don't have '\(tokens[1].term)'", padding: .bottom)
+		guard let targetItem = ensure(tokens[1], in: player) else {
 			return
 		}
 
-		guard let sourceItem = currentRoom.inventory.find(token: tokens[2]) else {
-			print(commandFeedback: "There's no '\(tokens[2].term)' here.", padding: .bottom)
+		guard let sourceItem = ensure(tokens[2], in: currentRoom) else {
 			return
 		}
 

@@ -3,6 +3,8 @@
 import Foundation
 
 struct ShopRender {
+	let priceResolver: PriceResolver
+
 	func render(shop: Shop) {
 		let hBorder = "$g+\(String(repeating: "-", count: 3))+\(String(repeating: "-", count: 30))+\(String(repeating: "-", count: 10))+\(String(repeating: "-", count: 10))+"
 		colorPrint(hBorder)
@@ -18,7 +20,7 @@ struct ShopRender {
 	func renderRow(index: Int, item: Item) {
 		let index = String(index)
 		let count = item.quantity != Item.infinite ? String(item.quantity) : "Unlimited"
-		let price = String(Int(item.definition.basePrice))
+		let price = String(priceResolver.purchasePrice(of: item))
 
 		let formattedIndex = index.paddingLeft(toLenth: 3)
 		let formattedName = item.definition.name.paddingRight(toLenth: 30)

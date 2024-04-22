@@ -9,29 +9,23 @@ class PutCommand: Command {
 		}
 
 		let tokens = tokens(from: input)
-		guard tokens.count > 1 else {
+		guard let itemToken = tokens[checked: 1] else {
 			print(commandFeedback: "Put what and where?", padding: .bottom)
 			return
 		}
 
-		let itemToken = tokens[1]
-		guard let item = player.inventory.find(term: itemToken.term, order: itemToken.order) else {
-			print(commandFeedback: "You don't have '\(itemToken.term)'.", padding: .bottom)
+		guard let item = ensure(itemToken, in: player) else {
 			return
 		}
 
-		guard tokens.count > 2 else {
+		guard let containerToken = tokens[checked: 2] else {
 			print(
 				commandFeedback: "Put \(item.definition.name) where?",
 				padding: .bottom)
 			return
 		}
 
-		let containerToken = tokens[2]
-		guard let container = currentRoom.inventory.find(term: containerToken.term, order: containerToken.order) else {
-			print(
-				commandFeedback: "There's no '\(containerToken.term)' around.",
-				padding: .bottom)
+		guard let container = ensure(containerToken, in: currentRoom) else {
 			return
 		}
 

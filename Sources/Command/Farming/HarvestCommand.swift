@@ -11,17 +11,14 @@ class HarvestCommand: Command {
 		}
 
 		let tokens = tokens(from: input)
-		guard tokens.count > 1 else {
+		guard let targetToken = tokens[checked: 1] else {
 			print(commandFeedback: "Harvest what?", padding: .bottom)
 			return
 		}
 
-		let targetToken = tokens[1]
 		guard let targetItem = currentRoom
 			.inventory
-			.find(
-				term: targetToken.term,
-				order: targetToken.order) ?? currentRoom
+			.find(token: targetToken) ?? currentRoom
 			.inventory
 			.items
 			.dropFirst(targetToken.order)

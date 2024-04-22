@@ -3,8 +3,6 @@
 import Foundation
 
 class ShopCommand: Command {
-	private let render = ShopRender()
-
 	override func execute(input: String, in world: World, by player: Player) {
 		guard let currentRoom = world.rooms[player.currentRoom] else {
 			return
@@ -15,6 +13,9 @@ class ShopCommand: Command {
 			return
 		}
 
-		render.render(shop: shop)
+		let resolver = PriceResolver(buyer: player)
+		let shopRender = ShopRender(priceResolver: resolver)
+
+		shopRender.render(shop: shop)
 	}
 }

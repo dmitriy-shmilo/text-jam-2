@@ -15,9 +15,8 @@ class DropCommand: Command {
 		}
 
 		for token in tokens.dropFirst(1) {
-			guard let item = player.inventory.find(term: token.term, order: token.order) else {
-				print(commandFeedback: "You don't have '\(token.term)'.")
-				continue
+			guard let item = ensure(token, in: player) else {
+				return
 			}
 
 			let removed = player.inventory.move(

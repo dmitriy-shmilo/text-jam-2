@@ -11,8 +11,7 @@ class PourCommand: Command {
 			return
 		}
 
-		guard let sourceItem = player.inventory.find(token: tokens[1]) else {
-			print(commandFeedback: "You don't have '\(tokens[1].term)'", padding: .bottom)
+		guard let sourceItem = ensure(tokens[1], in: player) else {
 			return
 		}
 

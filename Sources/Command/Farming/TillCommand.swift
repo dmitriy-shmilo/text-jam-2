@@ -14,14 +14,12 @@ class TillCommand: Command {
 		// TODO: time and energy cost
 
 		let tokens = tokens(from: input)
-		guard tokens.count > 1 else {
+		guard let token = tokens[checked: 1] else {
 			print(commandFeedback: "Till what?", padding: .bottom)
 			return
 		}
 
-		let token = tokens[1]
-		guard let item = currentRoom.inventory.find(token: token) else {
-			print(commandFeedback: "There's no '\(token.term)' here.")
+		guard let item = ensure(token, in: currentRoom) else {
 			return
 		}
 

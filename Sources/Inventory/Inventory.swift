@@ -151,12 +151,12 @@ class Inventory {
 		let term = term.lowercased()
 		if item.definition.name
 			.lowercased()
-			.contains(term) {
+			.hasPrefix(term) {
 			return true
 		}
 
 		if item.definition.tags
-			.contains(where: { $0.lowercased().contains(term) }) {
+			.contains(where: { $0.lowercased().hasPrefix(term) }) {
 			return true
 		}
 		

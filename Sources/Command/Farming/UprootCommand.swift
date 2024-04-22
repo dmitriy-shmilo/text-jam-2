@@ -11,12 +11,11 @@ class UprootCommand: Command {
 		}
 
 		let tokens = tokens(from: input)
-		guard tokens.count > 1 else {
+		guard let targetToken = tokens[checked: 1] else {
 			print(commandFeedback: "Uproot what?", padding: .bottom)
 			return
 		}
 
-		let targetToken = tokens[1]
 		guard let targetItem = currentRoom
 			.inventory
 			.find(
