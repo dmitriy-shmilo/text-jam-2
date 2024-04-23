@@ -7,7 +7,7 @@ struct AreaDefinition {
 	let name: String
 	let rooms: [RoomDefinition]
 	let shops: [ShopDefinition]
-	let defaultRoom: RoomRef
+	let defaultRoom: RoomRef?
 }
 
 extension AreaDefinition: Codable {
@@ -15,7 +15,7 @@ extension AreaDefinition: Codable {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		id = try container.decode(Int.self, forKey: .id)
 		name = try container.decode(String.self, forKey: .name)
-		defaultRoom = try container.decode(RoomRef.self, forKey: .defaultRoom)
+		defaultRoom = try container.decodeIfPresent(RoomRef.self, forKey: .defaultRoom) ?? .invalid
 		rooms = try container.decodeIfPresent([RoomDefinition].self, forKey: .rooms) ?? []
 		shops = try container.decodeIfPresent([ShopDefinition].self, forKey: .shops) ?? []
 	}

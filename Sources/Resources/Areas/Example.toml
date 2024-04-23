@@ -1,0 +1,52 @@
+id = 999 # area ID, has to be unique among all areas
+name = "Example area" # player-facing area name
+defaultRoom = { areaId = 1, id = 1 } # a failsafe, room reference to place the player at if something goes wrong
+unload = "leave" # when to unload the area, valid values are "never", "leave" and "overnight"
+
+
+# Each room should be defined within the "rooms" array.
+# [[rooms]] is a way to define an entry into such array.
+[[rooms]]
+id = 1 # each room must have an ID. It must be unique across all rooms within the same area only
+name = "A room title" # player-facing room title, preferably a short single line of text
+description = "This is one of the example rooms." # player-facing room description. Preferably one or two paragraphs of text.
+
+[rooms.exits] # each room may define up to four exits (north, east, south, west), note the single square brackets usage
+north = { areaId = 999, id = 1 } # a room can have an exit into itself, if desired
+south = { areaId = 999, id = 2 } # each exit entry is a room reference, and it must have "areaId" and "id" (room ID)
+east = { areaId = 1000, id = 3 } # specifying a different areaId is the way to connect different areas between themselves
+west = { areaId = -1, id = 123 } # invalid exits won't break the game, and will not let the player move in that direction
+
+
+# The convention is to put two line breaks between different [[rooms]] entries, and only one line break between room's property groups
+[[rooms]]
+id = 2
+name = "Another room"
+description = "The following text is red: $RHello World$*." # Room descriptions can have ANSI color placeholders in them. The token consists of a $ symbol followed by a specifier. $* resets the color to the default one, $$ prints a single $ symbol, $r begins dark-red output, $R begins bright-red output. For the full list see ANSIColors.swift.
+
+# A room can have some items placed on the ground.
+[[rooms.placedItems]]
+id = 1002 # item ID to create a copy of, items are loaded from the Resources/Items folder
+
+[[rooms.placedItems]]
+id = 4001
+containerId = 1002 # this will place an item into a container with the given id instead of the room floor
+
+[rooms.exits]
+north = { areaId = 999, id = 3 } # a player enters into this room from the north, but it doesn't mean that the north exit must lead back, it may lead somewhere else
+south = { areaId = 999, id = 1 }
+
+
+[[rooms]]
+id = 3
+name = "Third room"
+description = """
+This is a multiline description. If a row is very-very long, but a line break is undesirable, use a backslash like so \
+If there's no backslash, then the line break will be rendered. For example, here:
+
+Note how tripple quote is specified right after the text ends. \
+This prevents an extra line break from being rendered."""
+
+
+[rooms.exits]
+south = { areaId = 999, id = 1 }

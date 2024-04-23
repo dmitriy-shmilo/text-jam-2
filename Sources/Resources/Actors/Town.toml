@@ -10,3 +10,16 @@ id = 1002
 name = "Shopkeep's spouse"
 nouns = ["keep", "spouse"]
 roomDescription = "Shopkeep's spouse is helping around the shop."
+
+
+[[actors]]
+id = 1003
+name = "Fisherman"
+roomDescription = "Fisherman is packaging dead bugs into jars."
+
+
+[[actors]]
+id = 1004
+name = "Shopkeep"
+nouns = ["keep"]
+roomDescription = "Shopkeep is selling tools and accessories."

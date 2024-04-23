@@ -1,0 +1,55 @@
+id = 4
+name = "Trail"
+unload = "overnight"
+
+[[rooms]]
+id = 1
+name = "Trail"
+description = "Trail."
+
+[rooms.exits]
+west = { areaId = 1, id = 8 }
+east = { areaId = 4, id = 2 }
+
+
+[[rooms]]
+id = 2
+name = "Trail"
+description = "Trail."
+
+[rooms.exits]
+west = { areaId = 4, id = 1 }
+east = { areaId = 4, id = 3 }
+
+
+[[rooms]]
+id = 3
+name = "Fork in the road"
+description = "A fork in the road. You hear faint sounds of running water."
+
+[rooms.exits]
+west = { areaId = 4, id = 2 }
+east = { areaId = 4, id = 4 }
+north = { areaId = 5, id = 3 }
+
+
+[[rooms]]
+id = 4
+name = "Trail"
+description = "Trail."
+
+[rooms.exits]
+west = { areaId = 4, id = 3 }
+east = { areaId = 4, id = 5 }
+
+
+[[rooms]]
+id = 5
+name = "Town road"
+description = "Town road."
+
+[rooms.exits]
+west = { areaId = 4, id = 4 }
+east = { areaId = 6, id = 1 }
+
+

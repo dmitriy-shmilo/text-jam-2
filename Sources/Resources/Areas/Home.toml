@@ -10,24 +10,8 @@ description = "Your home entrance. A $gflower pot$* is standing on the windowsil
 
 [rooms.exits]
 north = { areaId = 1, id = 2 }
-south = { areaId = 2, id = 1 }
-
-[[rooms.placedItems]]
-id = 3
-
-[[rooms.placedItems]]
-id = 1003
-
-[[rooms.placedItems]]
-id = 1
-count = 10
-containerId = 1003
-
-[[rooms.placedItems]]
-id = 3001
-
-[[rooms.placedItems]]
-id = 3002
+south = { areaId = 2, id = 3 }
+east = { areaId = 1, id = 3 }
 
 
 [[rooms]]
@@ -43,3 +27,21 @@ id = 1002
 
 [rooms.exits]
 south = { areaId = 1, id = 1 }
+
+
+[[rooms]]
+id = 3
+name = "Kitchen"
+description = "The kitchen."
+
+[rooms.exits]
+west = { areaId = 1, id = 1 }
+
+
+[[rooms]]
+id = 4
+name = "Outhouse"
+description = "A smelly place."
+
+[rooms.exits]
+south = { areaId = 2, id = 1 }

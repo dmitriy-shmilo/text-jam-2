@@ -1,0 +1,123 @@
+id = 2
+name = "Farm"
+defaultRoom = { areaId = 2, id = 1 }
+unload = "never"
+
+[[rooms]]
+id = 1
+name = "Behind the house"
+description = "Behind your house."
+
+[rooms.exits]
+north = { areaId = 1, id = 4 }
+south = { areaId = 2, id = 2 }
+
+
+[[rooms]]
+id = 2
+name = "North-western corner"
+description = "Your yard."
+
+[rooms.exits]
+north = { areaId = 2, id = 1 }
+south = { areaId = 2, id = 5 }
+east = {areaId = 2, id = 3 }
+
+
+[[rooms]]
+id = 3
+name = "In front of the house"
+description = "In front of your house."
+
+[rooms.exits]
+north = { areaId = 1, id = 1 }
+south = { areaId = 2, id = 6 }
+east = { areaId = 2, id = 4 }
+west = { areaId = 2, id = 2 }
+
+
+[[rooms]]
+id = 4
+name = "North-Eastern Corner"
+description = "North-Eastern Corner."
+
+[rooms.exits]
+west = { areaId = 2, id = 3 }
+south = { areaId = 2, id = 7 }
+
+
+[[rooms]]
+id = 5
+name = "Western fence"
+description = "Western fence."
+
+[rooms.exits]
+north = { areaId = 2, id = 2 }
+south = { areaId = 2, id = 9 }
+east = { areaId = 2, id = 6 }
+
+
+[[rooms]]
+id = 6
+name = "Path Between Patches"
+description = "Path Between Patches."
+
+[rooms.exits]
+north = { areaId = 2, id = 3 }
+south = { areaId = 2, id = 10 }
+east = { areaId = 2, id = 7 }
+west = { areaId = 2, id = 5 }
+
+
+[[rooms]]
+id = 7
+name = "Gate"
+description = "Gate."
+
+[rooms.exits]
+north = { areaId = 2, id = 4 }
+south = { areaId = 2, id = 11 }
+east = { areaId = 2, id = 8 }
+west = { areaId = 2, id = 6 }
+
+
+[[rooms]]
+id = 8
+name = "Outside the Gate"
+description = "Outside the gate."
+
+[rooms.exits]
+east = { areaId = 4, id = 1 }
+west = { areaId = 2, id = 6 }
+
+
+[[rooms]]
+id = 9
+name = "South-Western Corner"
+description = "South-Western Corner."
+
+[rooms.exits]
+north = { areaId = 2, id = 5 }
+east = { areaId = 2, id = 10 }
+
+
+[[rooms]]
+id = 10
+name = "Southern fence"
+description = "Southern fence."
+
+[rooms.exits]
+north = { areaId = 2, id = 6 }
+east = { areaId = 2, id = 11 }
+west = { areaId = 2, id = 9 }
+
+
+[[rooms]]
+id = 11
+name = "Well"
+description = "A $Bwell$* is here."
+
+[rooms.exits]
+north = { areaId = 2, id = 7 }
+west = { areaId = 2, id = 10 }
+

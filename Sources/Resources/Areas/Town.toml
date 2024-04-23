@@ -1,25 +1,117 @@
-id = 3
+id = 6
 name = "Town"
-defaultRoom = { areaId = 3, id = 1 }
-unload = "never"
+unload = "overnight"
 
 [[rooms]]
 id = 1
-name = "Town square"
-description = "Central square. Shops to the north."
+name = "Town Gate"
+description = "A gate into the town."
 
 [rooms.exits]
-north = { areaId = 3, id = 2 }
-west = { areaId = 2, id = 1 }
+west = { areaId = 4, id = 5 }
+east = { areaId = 6, id = 2 }
 
 
 [[rooms]]
 id = 2
-name = "Shop"
-description = "They sell farm tools and seeds here."
+name = "Central Street"
+description = "Central street near the gate."
 
 [rooms.exits]
-south = { areaId = 3, id = 1 }
+west = { areaId = 6, id = 1 }
+east = { areaId = 6, id = 3 }
+north = { areaId = 6, id = 14 }
+
+
+[[rooms]]
+id = 3
+name = "Central Street"
+description = "Central street."
+
+[rooms.exits]
+west = { areaId = 6, id = 2 }
+east = { areaId = 6, id = 4 }
+
+
+[[rooms]]
+id = 4
+name = "Town Square"
+description = "Town Square"
+
+[rooms.exits]
+west = { areaId = 6, id = 3 }
+north = { areaId = 6, id = 9 }
+east = { areaId = 6, id = 5 }
+south = { areaId = 6, id = 10 }
+
+
+[[rooms]]
+id = 5
+name = "Central Street"
+description = "Central street."
+
+[rooms.exits]
+west = { areaId = 6, id = 4 }
+east = { areaId = 6, id = 6 }
+
+
+[[rooms]]
+id = 6
+name = "Train Station"
+description = "Train station."
+
+[rooms.exits]
+west = { areaId = 6, id = 5 }
+
+
+[[rooms]]
+id = 7
+name = "Overlooking the River"
+description = "Overlooking the river."
+
+[rooms.exits]
+south = { areaId = 6, id = 8 }
+
+
+[[rooms]]
+id = 8
+name = "Trader's Street"
+description = "A wider part of Trader's street."
+
+[rooms.exits]
+west = { areaId = 6, id = 11 }
+north = { areaId = 6, id = 7 }
+east = { areaId = 6, id = 12 }
+south = { areaId = 6, id = 9 }
+
+
+[[rooms]]
+id = 9
+name = "Trader's Street"
+description = "Trader's street."
+
+[rooms.exits]
+west = { areaId = 6, id = 13 }
+north = { areaId = 6, id = 8 }
+south = { areaId = 6, id = 4 }
+
+
+[[rooms]]
+id = 10
+name = "Town Hall"
+description = "Town hall's courtyard."
+
+[rooms.exits]
+north = { areaId = 6, id = 4 }
+
+
+[[rooms]]
+id = 11
+name = "Seed Seller's Tent"
+description = "A seed shop. You can buy all kinds of seeds here."
+
+[rooms.exits]
+east = { areaId = 6, id = 8 }
 
 [[rooms.placedActors]]
 id = 1001
@@ -28,15 +120,65 @@ id = 1001
 id = 1002
 
 
+[[rooms]]
+id = 12
+name = "Fisherman's Tent"
+description = "Fisherman's tent."
+
+[rooms.exits]
+west = { areaId = 6, id = 8 }
+
+[[rooms.placedActors]]
+id = 1003
+
+
+[[rooms]]
+id = 13
+name = "Toolshop"
+description = "Toolshop."
+
+[rooms.exits]
+east = { areaId = 6, id = 9 }
+
+[[rooms.placedActors]]
+id = 1004
+
+
+[[rooms]]
+id = 14
+name = "Houses"
+description = "Houses."
+
+[rooms.exits]
+south = { areaId = 6, id = 2 }
+
+[[rooms.placedActors]]
+id = 1004
+
+
 [[shops]]
 id = 1
-room = { areaId = 3, id = 2 }
+room = { areaId = 6, id = 11 }
 shopkeeps = [1001, 1002]
-buyTags = ["seed", "produce", "food"]
+buyTags = ["seed", "produce"]
 
 [[shops.items]]
 id = 4001
 count = -1
+
+
+[[shops]]
+id = 2
+room = { areaId = 6, id = 12 }
+shopkeeps = [1003]
+buyTags = ["fish", "bait"]
+
+
+[[shops]]
+id = 3
+room = { areaId = 6, id = 13 }
+shopkeeps = [1004]
+buyTags = ["tool", "material"]
 
 [[shops.items]]
 id = 3001
