@@ -16,15 +16,22 @@ west = { areaId = 2, id = 1 }
 [[rooms]]
 id = 2
 name = "Shop"
-description = "A shop. They sell farm tools and seeds."
+description = "They sell farm tools and seeds here."
 
 [rooms.exits]
 south = { areaId = 3, id = 1 }
 
+[[rooms.placedActors]]
+id = 1001
+
+[[rooms.placedActors]]
+id = 1002
+
+
 [[shops]]
 id = 1
 room = { areaId = 3, id = 2 }
-requiredCharacters = [1001]
+shopkeeps = [1001, 1002]
 buyTags = ["seed", "produce", "food"]
 
 [[shops.items]]

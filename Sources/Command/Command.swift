@@ -57,12 +57,20 @@ class Command {
 	}
 
 	func ensureShop(in room: RoomRef, in world: World) -> Shop? {
-		guard let shop = world.shops[room] else {
+		guard let shop = world.shops[room],
+			  let room = world.rooms[room] else {
 		   print(commandFeedback: "You're not in a shop.", padding: .bottom)
 		   return nil
 		}
 
-		// TODO: ensure a shopkeep actor
+		guard shop.definition.shopkeeps
+			.contains(where: { shopkeep in
+				room.actors.contains(where: { $0.definition.id == shopkeep })
+			}) else {
+			print(commandFeedback: "Nobody is tending this shop at the moment.", padding: .bottom)
+			return nil
+		}
+
 		return shop
 	}
 }

@@ -6,10 +6,17 @@ struct RoomRender {
 	static let shortItemCount = 5
 
 	func render(room: Room, limitItems: Bool) {
-		print()
 		colorPrint(room.definition.name, filling: .cyan)
 		colorPrint(room.definition.description)
 		print()
+
+		renderExits(in: room)
+		renderActors(in: room)
+		renderItems(in: room, limitItems: limitItems)
+	}
+
+	// MARK: - Private Methods
+	private func renderExits(in room: Room) {
 		var exitsLabel = "Exits: ["
 		if room.definition.exits[.north] != .invalid {
 			exitsLabel += "n, "
@@ -27,33 +34,42 @@ struct RoomRender {
 		exitsLabel += "]"
 		colorPrint(exitsLabel, filling: .cyan)
 		print()
+	}
 
-		// TODO: sorting items makes order token confusing
-		// show all items in the original order instead
-		let items = room.inventory.visibleItems
-			.sorted {
-				let leftPriority = $0.definition.flags.contains(.noHide) ? 0 : 1
-				let rightPriority = $1.definition.flags.contains(.noHide) ? 0 : 1
-
-				return (leftPriority, $0.definition.name) < (rightPriority, $1.definition.name)
-			}
-
-		if items.count > Self.shortItemCount && limitItems {
-			for item in items.prefix(upTo: Self.shortItemCount) {
-				ItemRender.roomLineRender.render(item: item)
-			}
-			colorPrint("and \(items.count - Self.shortItemCount) more...", filling: .darkWhite)
-			print()
+	private func renderItems(in room: Room, limitItems: Bool) {
+		var hiddenCount = 0
+		let visibleItems = room.inventory.visibleItems
+		guard !visibleItems.isEmpty else {
 			return
 		}
 
-		if !items.isEmpty {
-			for item in items {
-				ItemRender.roomLineRender.render(item: item)
+		for i in 0..<visibleItems.count {
+			let item = visibleItems[i]
+			guard item.definition.flags.contains(.noHide)
+					|| i < Self.shortItemCount
+					|| !limitItems else {
+				hiddenCount += 1
+				continue
 			}
-			print()
+			ItemRender.roomLineRender.render(item: item)
+		}
+		if hiddenCount > 0 {
+			colorPrint(
+				"and \(items.count - Self.shortItemCount) more...",
+				filling: .black)
+		}
+		print()
+	}
+
+	private func renderActors(in room: Room) {
+		guard !room.actors.isEmpty else {
 			return
 		}
+
+		for actor in room.actors {
+			ActorRender.roomLineRender.render(actor: actor)
+		}
+		print()
 	}
 }
 

@@ -33,9 +33,20 @@ let items = Loader<ItemDefinitions>()
 		$0.items
 	}
 
+let actors = Loader<ActorDefinitions>()
+	.load(from: "Resources/Actors")
+	.flatMap {
+		$0.actors
+	}
+
 let itemDatabase = items
 	.reduce(into: [Int: ItemDefinition]()) { map, item in
 		map[item.id] = item
+	}
+
+let actorDatabase  = actors
+	.reduce(into: [Int: ActorDefinition]()) { map, actor in
+		map[actor.id] = actor
 	}
 
 Loader<AreaDefinition>()

@@ -16,15 +16,21 @@ class LookCommand: Command {
 		}
 
 		// TODO: search among combined inventories
-		if let item = currentRoom.inventory.find(term: token.term, order: token.order) {
+		let items = currentRoom.inventory
+			.find(term: token.term)
+		+ player.inventory
+			.find(term: token.term)
+
+		if items.count > token.order {
+			let item = items[token.order]
 			print(commandFeedback: "You look at \(item.definition.name).")
 			ItemRender.detailsRender.render(item: item)
 			return
 		}
 
-		if let item = player.inventory.find(term: token.term, order: token.order) {
-			print(commandFeedback: "You look at \(item.definition.name).")
-			ItemRender.detailsRender.render(item: item)
+		if let actor = currentRoom.findActor(term: token.term, order: token.order - items.count) {
+			print(commandFeedback: "You look at \(actor.definition.name).")
+			ActorRender.detailsRender.render(actor: actor)
 			return
 		}
 

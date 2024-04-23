@@ -1,7 +1,7 @@
 [[items]]
 id = 1001
 name = "Bed"
-roomDescription = "$YAn old bed is standing here."
+roomDescription = "An old bed is standing here."
 description = """
 An old bed, passed on by the previous owners of this place. \
 It's a wooden, creaking piece of furniture. \
@@ -16,7 +16,7 @@ tags = ["bed", "furniture", "uncomfortable"]
 [[items]]
 id = 1002
 name = "Wardrobe"
-roomDescription = "$YA tall wardrobe stands in the corner."
+roomDescription = "A tall wardrobe stands in the corner."
 description = """
 A wardrobe. Go ahead, $Gput$* something inside."""
 flags = ["nopickup", "nohide", "container"]
@@ -25,7 +25,7 @@ tags = ["furniture"]
 [[items]]
 id = 1003
 name = "Box"
-roomDescription = "$YA big box, capable of holding items."
+roomDescription = "A big box, capable of holding items."
 description = "A big wooden box with a lid. You can $Gput$* something in it, if you need to free up your hands. You can always $Gtake$* your items back later."
 flags = ["nopickup", "nohide", "container"]
 tags = ["furniture"]

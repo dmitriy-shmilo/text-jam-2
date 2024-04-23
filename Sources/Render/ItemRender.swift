@@ -20,25 +20,27 @@ struct ItemRender {
 
 	// MARK: - Private Methods
 	private func renderFullDescription(item: Item) {
-		if !item.definition.description.isEmpty {
-			colorPrint("\(item.definition.description) \(inventoryContents(item: item))")
-		} else {
+		guard let description = item.definition.description else {
 			renderRoomLine(item: item)
+			print()
+			return
 		}
+
+		colorPrint("\(description) \(inventoryContents(item: item))")
 		print()
 
 		if let inventory = item.inventory {
-			colorPrint("Contents:", filling: .darkWhite)
+			colorPrint("Contents:", filling: .black)
 			InventoryRender().render(inventory: inventory)
 		}
 	}
 
 	private func renderRoomLine(item: Item) {
-		if preferRoomDescription && !item.definition.roomDescription.isEmpty {
-			colorPrint("\(item.definition.roomDescription) \(inventoryContents(item: item))")
-		} else {
+		guard let description = item.definition.roomDescription else {
 			renderOneLine(item: item)
+			return
 		}
+		colorPrint("\(prefix)\(description) \(inventoryContents(item: item))")
 	}
 
 	private func renderOneLine(item: Item) {
@@ -48,7 +50,7 @@ struct ItemRender {
 		}
 
 		if item.quantity > 1 {
-			colorPrint("\(prefix)\(item.definition.name)\(suffix) $w(\(item.quantity))")
+			colorPrint("\(prefix)\(item.definition.name)\(suffix) $D(\(item.quantity))")
 			return
 		}
 
@@ -66,10 +68,10 @@ struct ItemRender {
 		}
 
 		if topItem.quantity == 1 || topItem.quantity == Item.infinite {
-			return "$w(\(topItem.definition.name)$w)"
+			return "$D(\(topItem.definition.name)$D)"
 		}
 
-		return "$w(\(topItem.quantity) x \(topItem.definition.name)$w)"
+		return "$D(\(topItem.quantity) x \(topItem.definition.name)$D)"
 	}
 }
 
@@ -77,6 +79,6 @@ extension ItemRender {
 	static let inventoryLineRender = ItemRender(
 		oneLine: true, preferRoomDescription: false, previewContents: true, prefix: " $y-$* ", suffix: "")
 	static let roomLineRender = ItemRender(
-		oneLine: true, preferRoomDescription: true, previewContents: true, prefix: "$Y", suffix: " $Yis on the ground.")
+		oneLine: true, preferRoomDescription: true, previewContents: true, prefix: "$w", suffix: " $wis on the ground.")
 	static let detailsRender = ItemRender(oneLine: false, preferRoomDescription: true, previewContents: false, prefix: "", suffix: "")
 }

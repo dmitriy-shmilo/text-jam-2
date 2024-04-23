@@ -8,10 +8,12 @@ class World {
 	var areas = [Int: AreaDefinition]()
 	var rooms = [RoomRef: Room]()
 	var shops = [RoomRef: Shop]()
+	var actors = [Int: Actor]()
 	var currentTime = Time(hours: 7, minutes: 0)
 
 	let player: Player
 
+	private var lastId = 0
 	private var timeBasedTranformers = [WeakRef<Item>]()
 
 	init(player: Player) {
@@ -54,6 +56,15 @@ class World {
 					}
 
 					_ = self.spawn(item: itemDef, in: inventory, count: placedItem.count)
+				}
+
+			roomDef.placedActors
+				.forEach { actor in
+					guard let actorDef = actorDatabase[actor.id] else {
+						return
+					}
+					let actor = self.spawn(actor: actorDef, in: room)
+					self.actors[actor.id] = actor
 				}
 			rooms[.init(id: roomDef.id, areaId: area.id)] = room
 		}
@@ -130,7 +141,13 @@ class World {
 		}
 	}
 
-	// MARK: - Item Spawning
+	// MARK: - Entity Spawning
+	func spawn(actor def: ActorDefinition, in room: Room) -> Actor {
+		let actor = Actor(id: nextId(), definition: def)
+		room.add(actor: actor)
+		return actor
+	}
+
 	func spawn(item def: ItemDefinition, in inventory: Inventory, count: Int) -> Item {
 		let item = Item(definition: def, quantity: count)
 		item.parent = inventory
@@ -167,5 +184,10 @@ class World {
 
 				return $0
 			}
+	}
+
+	private func nextId() -> Int {
+		lastId += 1
+		return lastId
 	}
 }

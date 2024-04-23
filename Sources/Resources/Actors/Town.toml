@@ -1,0 +1,12 @@
+[[actors]]
+id = 1001
+name = "Shopkeep"
+nouns = ["keep"]
+roomDescription = "Shopkeep is tending their shop here."
+
+
+[[actors]]
+id = 1002
+name = "Shopkeep's spouse"
+nouns = ["keep", "spouse"]
+roomDescription = "Shopkeep's spouse is helping around the shop."

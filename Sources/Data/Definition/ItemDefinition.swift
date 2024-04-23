@@ -10,8 +10,8 @@ struct ItemDefinitions: Codable {
 struct ItemDefinition: Codable {
 	let id: Int
 	let name: String
-	let roomDescription: String
-	let description: String
+	let roomDescription: String?
+	let description: String?
 	let tags: [String]
 	let flags: ItemFlags
 	let transformations: [ItemTransformation]
@@ -22,8 +22,8 @@ struct ItemDefinition: Codable {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		id = try container.decode(Int.self, forKey: .id)
 		name = try container.decode(String.self, forKey: .name)
-		roomDescription = try container.decodeIfPresent(String.self, forKey: .roomDescription) ?? ""
-		description = try container.decodeIfPresent(String.self, forKey: .description) ?? ""
+		roomDescription = try container.decodeIfPresent(String.self, forKey: .roomDescription)
+		description = try container.decodeIfPresent(String.self, forKey: .description)
 		tags = try container.decodeIfPresent([String].self, forKey: .tags) ?? []
 		flags = try container.decodeIfPresent(ItemFlags.self, forKey: .flags) ?? .none
 		transformations = try container.decodeIfPresent(
