@@ -2,12 +2,16 @@
 
 import Foundation
 
+// TODO: break this class apart
 class World {
+	enum CodingKeys: String, CodingKey {
+		case areas, rooms, player, lastId
+	}
+
 	private static let dayPassActions = ["overnight", "grow", "wilt"]
 	private static let startHour = 7
 	private static let lateHour = 23
 
-	var shouldQuit = false
 	var areas = [Int: AreaDefinition]()
 	var rooms = [RoomRef: Room]()
 	var shops = [RoomRef: Shop]()
@@ -21,6 +25,21 @@ class World {
 
 	init(player: Player) {
 		self.player = player
+	}
+
+	required init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+
+		areas = try container.decode([Int: AreaDefinition].self, forKey: .areas)
+		rooms = try container.decode([RoomRef: Room].self, forKey: .rooms)
+		for item in rooms.values.flatMap({ $0.inventory.items }) {
+			if item.definition.transformations.contains(where: { Self.dayPassActions.contains($0.action) }) {
+				timeBasedTranformers.append(.init(item))
+			}
+		}
+		player = try container.decode(Player.self, forKey: .player)
+		lastId = try container.decode(Int.self, forKey: .lastId)
+		currentTime = .init(hours: Self.startHour, minutes: 0)
 	}
 
 	func load(area: AreaDefinition) {
@@ -207,5 +226,15 @@ class World {
 	private func nextId() -> Int {
 		lastId += 1
 		return lastId
+	}
+}
+
+extension World: Codable {
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(areas, forKey: .areas)
+		try container.encode(rooms, forKey: .rooms)
+		try container.encode(player, forKey: .player)
+		try container.encode(lastId, forKey: .lastId)
 	}
 }

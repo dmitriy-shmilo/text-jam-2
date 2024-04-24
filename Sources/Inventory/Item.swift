@@ -3,6 +3,9 @@
 import Foundation
 
 class Item {
+	enum CodingKeys: String, CodingKey {
+		case inventory, definition, transformations, quantity
+	}
 	static let infinite = Int.max
 
 	weak var parent: Inventory?
@@ -11,6 +14,17 @@ class Item {
 	var transformations = [ItemTransformation: TransformationProgress]()
 	var quantity: Int = 1
 
+	required init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		definition = try container.decode(ItemDefinition.self, forKey: .definition)
+		inventory = try container.decodeIfPresent(Inventory.self, forKey: .inventory)
+		inventory?.parent = self
+		quantity = try container.decode(Int.self, forKey: .quantity)
+		transformations = try container.decodeIfPresent(
+			[ItemTransformation: TransformationProgress].self,
+			forKey: .transformations) ?? [:]
+	}
+	
 	init(definition: ItemDefinition) {
 		self.definition = definition
 		if definition.flags.contains(.container) {
@@ -99,5 +113,16 @@ extension Item: CustomDebugStringConvertible {
 		get {
 			return "\(quantity) x \(definition.name)(\(definition.id))"
 		}
+	}
+}
+
+// MARK: - Codable
+extension Item: Codable {
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(inventory, forKey: .inventory)
+		try container.encode(quantity, forKey: .quantity)
+		try container.encode(transformations, forKey: .transformations)
+		try container.encode(definition, forKey: .definition)
 	}
 }

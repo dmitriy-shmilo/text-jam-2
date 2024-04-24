@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct TransformationProgress {
+struct TransformationProgress: Codable {
 	let progress: Float
 
 	func progress(byAddingStep step: Float) -> TransformationProgress {

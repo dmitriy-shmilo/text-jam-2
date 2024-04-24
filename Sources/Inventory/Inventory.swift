@@ -3,6 +3,10 @@
 import Foundation
 
 class Inventory {
+	enum CodingKeys: String, CodingKey {
+		case items
+	}
+
 	weak var parent: ContainerEntity? = nil	
 	private (set) var items = [Item]()
 	var visibleItems: [Item] {
@@ -10,6 +14,18 @@ class Inventory {
 	}
 	var isEmpty: Bool {
 		return items.isEmpty
+	}
+
+	init() {
+
+	}
+
+	required init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		items = try container.decode([Item].self, forKey: .items)
+		items.forEach { item in
+			item.parent = self
+		}
 	}
 
 	// MARK: - Moving Items
@@ -157,5 +173,13 @@ extension Inventory {
 extension Inventory: CustomDebugStringConvertible {
 	var debugDescription: String {
 		return "\(parent?.debugDescription ?? "") inventory"
+	}
+}
+
+// MARK: - Codable
+extension Inventory: Codable {
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(items, forKey: .items)
 	}
 }

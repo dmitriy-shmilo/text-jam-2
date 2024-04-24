@@ -51,4 +51,15 @@ extension ItemFlags: Codable {
 
 		rawValue = result.rawValue
 	}
+
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.unkeyedContainer()
+		let flags = ["noPickup", "noList", "noHide", "container", "noStack", "noInteract", "vessel", "source", "liquid"]
+
+		for i in flags.enumerated() {
+			if contains(ItemFlags(rawValue: 1 << i.offset)) {
+				try container.encode(i.element)
+			}
+		}
+	}
 }

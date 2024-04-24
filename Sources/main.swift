@@ -19,9 +19,9 @@ $gW$GW$gWWWWWWWWW$GW$gWW$GW$gWWWWWWWW$GW$gWW$GW$gWWWWWWWWW$GW$gWWWWWWWW$*
 
 colorPrint(splash)
 
-let player = Player()
-let world = World(player: player)
-let roomRender = RoomRender()
+var player = Player()
+var world = World(player: player)
+
 
 let help = Loader<HelpArticles>()
 	.load(from: "Resources/Help")
@@ -57,13 +57,17 @@ Loader<AreaDefinition>()
 		world.load(area: $0)
 	}
 
+let saveManager = SaveManager()
+if let savedWorld = saveManager.load() {
+	world = savedWorld
+	player = savedWorld.player
+} else {
+	player.currentRoom = world.areas[1]?.defaultRoom ?? .invalid
+	player.money += 500
+	world.dayPass()
+}
 
-
-player.currentRoom = world.areas[1]?.defaultRoom ?? .invalid
-roomRender.render(room: world.rooms[player.currentRoom], limitItems: true)
-player.money += 500
-world.dayPass()
-
+RoomRender().render(room: world.rooms[player.currentRoom], limitItems: true)
 
 let prompt = PromptRender()
 while true {
