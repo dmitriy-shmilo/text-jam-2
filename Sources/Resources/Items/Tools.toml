@@ -1,16 +1,101 @@
 [[items]]
 id = 3001
-name = "Hoe"
-description = "A tool used for $Gtill$*ing soil."
+name = "$yRusty $whoe"
+nouns = ["hoe"]
+description = """A tool used for $Gtill$*ing soil. It's very old, covered \
+in rust, and is eager to fall apart any time."""
 tags = ["tool"]
 flags = ["nostack"]
-basePrice = 300.0
+basePrice = 1.0
 
 
 [[items]]
 id = 3002
-name = "Watering can"
-capacity = 50
+name = "$yRusty $wwatering can"
+roomDescription = "$yRusty $wwatering can, leaks water through its holes."
+description = """A tool used for $Gwatering$*ing soil. It's covered in holes \
+and barely holds any water inside."""
+nouns = ["watering", "can"]
+capacity = 6
 tags = ["tool"]
 flags = ["nostack", "container", "nointeract", "vessel"]
-basePrice = 300.0
+basePrice = 1.0
+
+
+[[items]]
+id = 3003
+name = "Iron hoe"
+nouns = ["hoe"]
+description = """One of those mass produced tools for amateur gardeners. \
+It will serve you for a while before it breaks."""
+tags = ["tool"]
+flags = ["nostack"]
+basePrice = 100.0
+
+
+[[items]]
+id = 3004
+name = "Iron watering can"
+nouns = ["watering", "can"]
+description = """Iron and water don't play together well. But at least this can \
+doesn't have any unnecessary holes in it, and will serve you for some time."""
+tags = ["tool"]
+flags = ["nostack"]
+capacity = 16
+basePrice = 150.0
+
+
+[[items]]
+id = 3005
+name = "Steel hoe"
+nouns = ["hoe"]
+description = """High quality, high durability hoe. While the tool itself is \
+noticably heavier than its peers, using it feels easier."""
+tags = ["tool"]
+flags = ["nostack"]
+basePrice = 700.0
+
+
+[[items]]
+id = 3006
+name = "Stainless steel watering can"
+nouns = ["steel", "watering", "can"]
+description = """A well made, durable watering can, capable of holding a lot of \
+water. A bit heavy, though."""
+tags = ["tool"]
+flags = ["nostack"]
+capacity = 30
+basePrice = 1000.0
+
+
+[[items]]
+id = 3007
+name = "$yRusty $wshovel"
+roomDescription = "$yRusty $wshovel is lying on the ground, covered in earth clumps."
+nouns = ["shover"]
+description = """A rusty shovel, which barely looks like a shovel anymore, \
+accounting for all the holes in its head, and the half-rotten handle."""
+tags = ["tool"]
+flags = ["nostack"]
+basePrice = 1.0
+
+
+[[items]]
+id = 3008
+name = "Iron shovel"
+nouns = ["shovel"]
+description = """A simple iron tool. Good for digging holes and uprooting plants."""
+tags = ["tool"]
+flags = ["nostack"]
+basePrice = 100.0
+
+
+[[items]]
+id = 3009
+name = "Steel shovel"
+nouns = ["shovel"]
+description = """Sturdy, heavy, a pleasure to use. Steel shovel lets you dig things up \
+quickly and efficiently."""
+tags = ["tool"]
+flags = ["nostack"]
+basePrice = 500.0

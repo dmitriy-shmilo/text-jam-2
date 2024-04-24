@@ -13,6 +13,7 @@ struct ItemDefinition: Codable {
 	let roomDescription: String?
 	let description: String?
 	let tags: [String]
+	let nouns: [String]
 	let flags: ItemFlags
 	let transformations: [ItemTransformation]
 	let capacity: Int
@@ -25,6 +26,7 @@ struct ItemDefinition: Codable {
 		roomDescription = try container.decodeIfPresent(String.self, forKey: .roomDescription)
 		description = try container.decodeIfPresent(String.self, forKey: .description)
 		tags = try container.decodeIfPresent([String].self, forKey: .tags) ?? []
+		nouns = try container.decodeIfPresent([String].self, forKey: .nouns) ?? []
 		flags = try container.decodeIfPresent(ItemFlags.self, forKey: .flags) ?? .none
 		transformations = try container.decodeIfPresent(
 			[ItemTransformation].self,

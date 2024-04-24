@@ -1,6 +1,7 @@
 [[articles]]
 name = "Movement"
 terms = ["movement", "north", "east", "west", "south"]
+properties = ["Duration", "5 seconds"]
 description = """
 The world consists of connected cells (rooms). \
 Any given room may have up to four $Cexits$* in one of these \

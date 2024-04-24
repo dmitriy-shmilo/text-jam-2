@@ -47,6 +47,6 @@ extension Actor {
 // MARK: - ContainerEntity
 extension Actor: ContainerEntity {
 	var debugDescription: String {
-		return "actor \(name)"
+		return "actor \(definition.name)(\(id))"
 	}
 }

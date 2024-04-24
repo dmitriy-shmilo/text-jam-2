@@ -152,9 +152,6 @@ description = "Houses."
 [rooms.exits]
 south = { areaId = 6, id = 2 }
 
-[[rooms.placedActors]]
-id = 1004
-
 
 [[shops]]
 id = 1
@@ -164,6 +161,10 @@ buyTags = ["seed", "produce"]
 
 [[shops.items]]
 id = 4001
+count = -1
+
+[[shops.items]]
+id = 4005
 count = -1
 
 
@@ -181,9 +182,25 @@ shopkeeps = [1004]
 buyTags = ["tool", "material"]
 
 [[shops.items]]
-id = 3001
+id = 3003
 count = 1
 
 [[shops.items]]
-id = 3002
+id = 3004
+count = 1
+
+[[shops.items]]
+id = 3005
+count = 1
+
+[[shops.items]]
+id = 3006
+count = 1
+
+[[shops.items]]
+id = 3008
+count = 1
+
+[[shops.items]]
+id = 3009
 count = 1

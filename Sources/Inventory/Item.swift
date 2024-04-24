@@ -74,6 +74,11 @@ extension Item {
 			return true
 		}
 
+		if definition.nouns
+			.contains(where: { $0.lowercased().hasPrefix(term) }) {
+			return true
+		}
+		
 		if definition.tags
 			.contains(where: { $0.lowercased().hasPrefix(term) }) {
 			return true

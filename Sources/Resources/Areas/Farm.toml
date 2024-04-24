@@ -23,6 +23,9 @@ north = { areaId = 2, id = 1 }
 south = { areaId = 2, id = 5 }
 east = {areaId = 2, id = 3 }
 
+[[rooms.placedItems]]
+id = 2001
+
 
 [[rooms]]
 id = 3
@@ -45,6 +48,9 @@ description = "North-Eastern Corner."
 west = { areaId = 2, id = 3 }
 south = { areaId = 2, id = 7 }
 
+[[rooms.placedItems]]
+id = 2001
+
 
 [[rooms]]
 id = 5
@@ -55,6 +61,12 @@ description = "Western fence."
 north = { areaId = 2, id = 2 }
 south = { areaId = 2, id = 9 }
 east = { areaId = 2, id = 6 }
+
+[[rooms.placedItems]]
+id = 2001
+
+[[rooms.placedItems]]
+id = 2001
 
 
 [[rooms]]
@@ -68,6 +80,17 @@ south = { areaId = 2, id = 10 }
 east = { areaId = 2, id = 7 }
 west = { areaId = 2, id = 5 }
 
+[[rooms.placedItems]]
+id = 2001
+
+[[rooms.placedItems]]
+id = 2001
+
+[[rooms.placedItems]]
+id = 2001
+
+[[rooms.placedItems]]
+id = 2001
 
 [[rooms]]
 id = 7
@@ -100,6 +123,9 @@ description = "South-Western Corner."
 north = { areaId = 2, id = 5 }
 east = { areaId = 2, id = 10 }
 
+[[rooms.placedItems]]
+id = 2001
+
 
 [[rooms]]
 id = 10
@@ -111,6 +137,12 @@ north = { areaId = 2, id = 6 }
 east = { areaId = 2, id = 11 }
 west = { areaId = 2, id = 9 }
 
+[[rooms.placedItems]]
+id = 2001
+
+[[rooms.placedItems]]
+id = 2001
+
 
 [[rooms]]
 id = 11
@@ -121,3 +153,9 @@ description = "A $Bwell$* is here."
 north = { areaId = 2, id = 7 }
 west = { areaId = 2, id = 10 }
 
+[[rooms.placedItems]]
+id = 1003
+
+[[rooms.placedItems]]
+id = 6
+containerId = 1003

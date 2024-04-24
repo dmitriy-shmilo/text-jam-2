@@ -29,3 +29,11 @@ roomDescription = "A big box, capable of holding items."
 description = "A big wooden box with a lid. You can $Gput$* something in it, if you need to free up your hands. You can always $Gtake$* your items back later."
 flags = ["nopickup", "nohide", "container"]
 tags = ["furniture"]
+
+
+[[items]]
+id = 1003
+name = "Well"
+roomDescription = "A water well was dug up here."
+description = "A small freshwater well. You can $Gfill $*something with water here."
+flags = ["nopickup", "nohide", "nointeract", "source", "container"]

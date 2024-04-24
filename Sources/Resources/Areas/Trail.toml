@@ -8,7 +8,7 @@ name = "Trail"
 description = "Trail."
 
 [rooms.exits]
-west = { areaId = 1, id = 8 }
+west = { areaId = 2, id = 8 }
 east = { areaId = 4, id = 2 }
 
 

@@ -5,7 +5,7 @@ unload = "never"
 
 [[rooms]]
 id = 1
-name = "Entrance"
+name = "Corridor"
 description = "Your home entrance. A $gflower pot$* is standing on the windowsill."
 
 [rooms.exits]
@@ -13,11 +13,21 @@ north = { areaId = 1, id = 2 }
 south = { areaId = 2, id = 3 }
 east = { areaId = 1, id = 3 }
 
+[[rooms.placedItems]]
+id = 3001
+
+[[rooms.placedItems]]
+id = 3002
+
 
 [[rooms]]
 id = 2
 name = "Bedroom"
-description = "Your bedroom."
+description = """This is your bedroom, cozy and bright, the smell of old wood and freshly \
+laundered sheets stays in the air. Some of your belongings are still packed in the boxes, \
+tucked in a corner behind the door. There are two windows in this room, letting the daylight \
+in. Western window is looking out onto your yard and the outhouse. Through the northern window you can see a sandy river shore with small weed patches sticking out \
+here and there. The only door is leading south into the corridor."""
 
 [[rooms.placedItems]]
 id = 1001

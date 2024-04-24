@@ -1,7 +1,8 @@
 [[items]]
 id = 2001
-name = "Dry soil"
-roomDescription = "$yDry soil"
+name = "Dry soil "
+nouns = ["soil", "patch"]
+roomDescription = "$yA patch of dry soil waiting to be tilled and watered."
 flags = ["nopickup", "nohide"]
 tags = ["terrain"]
 
@@ -17,7 +18,8 @@ action = "water"
 [[items]]
 id = 2002
 name = "Wet soil"
-roomDescription = "$yWet soil"
+nouns = ["soil", "patch"]
+roomDescription = "$yA patch of wet soil."
 flags = ["nopickup", "nohide"]
 tags = ["terrain"]
 
@@ -33,7 +35,8 @@ action = "overnight"
 [[items]]
 id = 2003
 name = "Dry tilled soil"
-roomDescription = "$yDry tilled soil"
+nouns = ["soil", "patch", "tilled"]
+roomDescription = "$yDry tilled soil patch."
 flags = ["nopickup", "nohide", "container", "nointeract"]
 tags = ["terrain"]
 
@@ -51,18 +54,11 @@ contents = []
 [[items]]
 id = 2004
 name = "Wet tilled soil"
-roomDescription = "$yWet tilled soil"
+nouns = ["soil", "patch", "tilled"]
+roomDescription = "$yA patch of wet tilled soil, perfect for plant growth."
 flags = ["nopickup", "nohide", "container", "nointeract"]
 tags = ["terrain"]
 
 [[items.transformations]]
 targetId = 2003
 action = "overnight"
-
-
-[[items]]
-id = 2005
-name = "$BPond"
-roomDescription = "$wThere's a small $Bpond $wof fresh water."
-description = "A small pond with fresh water. You can $Gfill $*something with water here."
-flags = ["nopickup", "nohide", "nointeract", "source", "container"]

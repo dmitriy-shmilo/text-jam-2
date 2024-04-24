@@ -2,6 +2,7 @@
 id = 4000
 name = "$yDe$gad $rpl$yan$gt$*"
 tags = ["plant", "junk"]
+basePrice = 0.0
 
 [[items.transformations]]
 targetId = 4000
@@ -34,7 +35,8 @@ action = "uproot"
 [[items]]
 id = 4002
 name = "Potato seedling"
-tags = ["potato", "plant"]
+nouns = ["seedling"]
+tags = ["plant", "fodder"]
 
 [[items.transformations]]
 targetId = 4003
@@ -72,5 +74,74 @@ step = 0.2
 [[items]]
 id = 4004
 name = "Potato"
-tags = ["potato", "fruit", "produce", "food"]
-basePrice = 9.0
+tags = ["fruit", "produce", "food"]
+basePrice = 15.0
+
+
+[[items]]
+id = 4005
+name = "Beetroot seeds"
+tags = ["seed"]
+basePrice = 4.0
+
+[[items.transformations]]
+targetId = 4006
+containerId = 2004
+action = "grow"
+step = 0.5
+
+[[items.transformations]]
+targetId = 4000
+containerId = 2003
+action = "wilt"
+step = 0.25
+
+[[items.transformations]]
+targetId = 4005
+action = "uproot"
+
+
+[[items]]
+id = 4006
+name = "Beetroot seedling"
+nouns = ["seedling"]
+tags = ["plant", "fodder"]
+
+[[items.transformations]]
+targetId = 4007
+containerId = 2004
+action = "grow"
+step = 0.25
+
+[[items.transformations]]
+targetId = 4000
+containerId = 2003
+action = "wilt"
+step = 0.25
+
+[[items.transformations]]
+targetId = 4000
+action = "uproot"
+
+
+[[items]]
+id = 4007
+name = "Beetroot plant"
+tags = ["plant"]
+
+[[items.transformations]]
+targetId = 4008
+action = "harvest"
+
+[[items.transformations]]
+targetId = 4000
+containerId = 2004
+action = "wilt"
+step = 0.2
+
+
+[[items]]
+id = 4008
+name = "Beetroot"
+tags = ["fruit", "produce", "food"]
+basePrice = 20.0

@@ -21,6 +21,7 @@ till <target>"""
 example="""
 till soil
 till 3.wet"""
+properties = ["Duration", "30 minutes"]
 description = """
 Any untilled soil patch can be tilled if you have a hoe. Seeds can be planted only in \
 tilled soil. If not occupied by a plant, tilled soil will revert to its \
@@ -44,6 +45,7 @@ water <target> <source>"""
 example = """
 water soil rusty
 water 2.tilled 2.can"""
+properties = ["Duration", "10 minutes"]
 description = """
 Any dry soil patch can be watered if you have a container with fresh water, for example \
 a watering can. Plants will only grow if watered regularly. The soil will dry up the next \
@@ -56,3 +58,55 @@ can hold more water and might improve watering efficiency.
 Watering will take some time and energy. Increase your skill to reduce the energy consumption \
 and watering time."""
 references = ["till", "fill"]
+
+
+[[articles]]
+name = "Harvesting"
+terms = ["harvest"]
+format = """
+harvest <target>"""
+example = """
+harvest potato
+harvest 2.soil"""
+properties = ["Duration", "15 minutes"]
+description = """
+Once the planted crop has matured, it can be harvested. Harvest command can target \
+either a soil patch with a plant, or the plant itself."""
+references = ["plant", "uproot"]
+
+
+[[articles]]
+name = "Planting"
+terms = ["plant"]
+format = """
+plant <seed> <target>"""
+example = """
+plant potato soil
+plant 2.seed tilled"""
+properties = ["Duration", "15 minutes"]
+description = """
+To grow crops, a seed must be planted into tilled soil. If kept watered regularly, \
+the seed will sprout, the plant will go through several stages, and eventually will \
+be mature enough to be harvested.
+
+Only one seed is required per plant. Only tilled soil can be planted into. If not \
+watered, the plant will die and will have to be uprooted."""
+references = ["till", "water", "harvest", "uproot"]
+
+
+[[articles]]
+name = "Uprooting"
+terms = ["uproot"]
+format = """
+uproot <target>"""
+example = """
+uproot potato
+uproot 2.soil"""
+properties = ["Duration", "20 minutes"]
+description = """
+Use uproot command if you planted a plant by mistake and wish to free up the soil \
+patch, or the plant have died. Uproot command can target a soil patch or the plant \
+directly.
+
+Uprooting will usually yield a dead plant, so be careful when performing this command."""
+references = ["plant", "harvest"]
