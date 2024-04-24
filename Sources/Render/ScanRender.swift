@@ -31,6 +31,10 @@ struct ScanRender {
 		let areaMarker = marked ? "$D(\(areaName))" : ""
 		colorPrint("\(direction.localizedName):", filling: .darkCyan)
 		colorPrint("$*\(room.definition.name) \(areaMarker)")
+		room.actors
+			.forEach {
+				colorPrint("$y- $Y\($0.definition.name)")
+			}
 		print()
 	}
 }

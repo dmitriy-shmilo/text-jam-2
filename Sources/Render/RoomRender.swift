@@ -19,16 +19,16 @@ struct RoomRender {
 	private func renderExits(in room: Room) {
 		var exitsLabel = "Exits: ["
 		if room.definition.exits[.north] != .invalid {
-			exitsLabel += "n, "
+			exitsLabel += "north, "
 		}
 		if room.definition.exits[.east] != .invalid {
-			exitsLabel += "e, "
+			exitsLabel += "east, "
 		}
 		if room.definition.exits[.south] != .invalid {
-			exitsLabel += "s, "
+			exitsLabel += "south, "
 		}
 		if room.definition.exits[.west] != .invalid {
-			exitsLabel += "w, "
+			exitsLabel += "west, "
 		}
 		exitsLabel.removeLast(2)
 		exitsLabel += "]"

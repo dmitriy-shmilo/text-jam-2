@@ -13,7 +13,28 @@ struct PromptRender {
 	func render(for player: Player, in world: World) {
 		let energy = Self.percentFormatter.string(from: player.energy as NSNumber) ?? "0%"
 		let energyColor = energyColor(player.energy).rawValue
-		colorPrint("$c<$W\(world.currentTime.timeString())$c, $W\(player.money)$Yc$c, \(energyColor)\(energy)$c>", breakLine: false)
+		guard let room = world.rooms[player.currentRoom] else {
+			return
+		}
+		colorPrint("$C<$W\(world.currentTime.timeString())$C, $W\(player.money)$Yc$C, \(energyColor)\(energy)$C, \(exits(in: room))$C>", breakLine: false)
+	}
+
+	// MARK: - Private Methods
+	private func exits(in room: Room) -> String{
+		var exitsLabel = "$c"
+		if room.definition.exits[.north] != .invalid {
+			exitsLabel += "n"
+		}
+		if room.definition.exits[.east] != .invalid {
+			exitsLabel += "e"
+		}
+		if room.definition.exits[.south] != .invalid {
+			exitsLabel += "s"
+		}
+		if room.definition.exits[.west] != .invalid {
+			exitsLabel += "w"
+		}
+		return exitsLabel
 	}
 
 	private func energyColor(_ energy: Float) -> ANSIColors {
