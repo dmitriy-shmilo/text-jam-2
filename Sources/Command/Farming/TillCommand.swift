@@ -4,6 +4,7 @@ import Foundation
 
 class TillCommand: Command {
 	private static let transformationAction = "till"
+	private static let baseDuration = 30.0 * 60.0
 
 	override func execute(input: String, in world: World, by player: Player) {
 		guard let currentRoom = world.rooms[player.currentRoom] else {
@@ -29,6 +30,14 @@ class TillCommand: Command {
 			return
 		}
 
+		guard ensureEnough(
+			time: Self.baseDuration,
+			and: 0.0,
+			for: player,
+			in: world) else {
+			return
+		}
+		
 		currentRoom.inventory.transform(item: item, into: targetItemDef, in: world)
 		print(commandFeedback: "You till \(item.definition.name).", padding: .bottom)
 	}

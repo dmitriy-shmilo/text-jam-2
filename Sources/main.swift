@@ -59,7 +59,8 @@ Loader<AreaDefinition>()
 
 player.currentRoom = world.areas[1]?.defaultRoom ?? .invalid
 roomRender.render(room: world.rooms[player.currentRoom], limitItems: true)
-player.money += 123
+player.money += 500
+world.dayPass()
 
 
 let prompt = PromptRender()

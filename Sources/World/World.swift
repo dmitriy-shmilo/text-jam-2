@@ -4,12 +4,15 @@ import Foundation
 
 class World {
 	private static let dayPassActions = ["overnight", "grow", "wilt"]
+	private static let startHour = 7
+	private static let lateHour = 23
+
 	var shouldQuit = false
 	var areas = [Int: AreaDefinition]()
 	var rooms = [RoomRef: Room]()
 	var shops = [RoomRef: Shop]()
 	var actors = [Int: Actor]()
-	var currentTime = Time(hours: 7, minutes: 0)
+	var currentTime = DateTime(hours: 0, minutes: 0)
 
 	let player: Player
 
@@ -95,8 +98,23 @@ class World {
 	}
 
 	// MARK: - Time Passing
+	func advanceTime(by seconds: TimeInterval) -> Bool {
+		let time = currentTime + seconds
+		guard time.hours < Self.lateHour else {
+			return false
+		}
+		currentTime = time
+		return true
+	}
+
+	func resetTime() {
+		currentTime = .init(hours: Self.startHour, minutes: 0)
+		log(.debug, "resetTime")
+	}
+
 	func dayPass() {
 		log(.debug, "dayPass")
+		resetTime()
 		purgeItems()
 		// TODO: unload or refresh areas
 		for item in timeBasedTranformers {

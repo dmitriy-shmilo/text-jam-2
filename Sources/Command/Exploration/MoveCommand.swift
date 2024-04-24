@@ -22,6 +22,7 @@ class MoveCommand: Command {
 			return
 		}
 
+		_ = world.advanceTime(by: 5.0)
 		print(commandFeedback: "You move \(direction.localizedName).")
 
 		player.currentRoom = targetRef

@@ -4,6 +4,7 @@ import Foundation
 
 class HarvestCommand: Command {
 	private static let transformationAction = "harvest"
+	private static let baseDuration = 15.0 * 60.0
 
 	override func execute(input: String, in world: World, by player: Player) {
 		guard let currentRoom = world.rooms[player.currentRoom] else {
@@ -39,6 +40,14 @@ class HarvestCommand: Command {
 			print(
 				commandFeedback: "There's nothing to harvest in \(targetItem.definition.name).",
 				padding: .bottom)
+			return
+		}
+
+		guard ensureEnough(
+			time: Self.baseDuration,
+			and: 0.0,
+			for: player,
+			in: world) else {
 			return
 		}
 

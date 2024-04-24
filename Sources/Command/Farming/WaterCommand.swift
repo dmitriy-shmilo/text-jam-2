@@ -4,7 +4,8 @@ import Foundation
 
 class WaterCommand: Command {
 	private static let transformationAction = "water"
-
+	private static let baseDuration = 10.0 * 60.0
+	
 	override func execute(input: String, in world: World, by player: Player) {
 		guard let currentRoom = world.rooms[player.currentRoom] else {
 			return
@@ -41,7 +42,7 @@ class WaterCommand: Command {
 
 		let requiredQuantity = 2 // TODO: skill
 
-		guard sourceContents.quantity > requiredQuantity else {
+		guard sourceContents.quantity >= requiredQuantity else {
 			print(commandFeedback: "Threre's not enough \(sourceContents.definition.name) in \(sourceItem.definition.name)", padding: .bottom)
 			return
 		}
@@ -49,6 +50,14 @@ class WaterCommand: Command {
 		guard let transformation = targetItem.definition.transformations[Self.transformationAction],
 			  let targetItemDef = itemDatabase[transformation.targetId] else {
 			print(commandFeedback: "You can't water \(targetItem.definition.name).")
+			return
+		}
+
+		guard ensureEnough(
+			time: Self.baseDuration,
+			and: 0.0,
+			for: player,
+			in: world) else {
 			return
 		}
 

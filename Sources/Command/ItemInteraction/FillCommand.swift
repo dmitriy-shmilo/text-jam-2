@@ -3,6 +3,8 @@
 import Foundation
 
 class FillCommand: Command {
+	private static let baseDuration = 1.0 * 60.0
+	
 	override func execute(input: String, in world: World, by player: Player) {
 		guard let currentRoom = world.rooms[player.currentRoom] else {
 			return
@@ -48,6 +50,13 @@ class FillCommand: Command {
 			return
 		}
 
+		guard ensureEnough(
+			time: Self.baseDuration,
+			and: 0.0,
+			for: player,
+			in: world) else {
+			return
+		}
 		if let targetContents = targetInventory.items.first {
 			targetContents.quantity = targetItem.definition.capacity
 		} else {

@@ -4,6 +4,7 @@ import Foundation
 
 class UprootCommand: Command {
 	private static let transformationAction = "uproot"
+	private static let baseDuration = 20.0 * 60.0
 
 	override func execute(input: String, in world: World, by player: Player) {
 		guard let currentRoom = world.rooms[player.currentRoom] else {
@@ -44,6 +45,14 @@ class UprootCommand: Command {
 			return
 		}
 
+		guard ensureEnough(
+			time: Self.baseDuration,
+			and: 0.0,
+			for: player,
+			in: world) else {
+			return
+		}
+		
 		if transformatbleItem.progress(transform: transform, by: transform.step) {
 			targetInventory.transform(
 				item: transformatbleItem,

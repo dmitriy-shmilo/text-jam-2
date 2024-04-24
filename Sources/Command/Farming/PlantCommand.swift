@@ -4,6 +4,7 @@ import Foundation
 
 class PlantCommand: Command {
 	private static let growAction = "grow"
+	private static let baseDuration = 15.0 * 60.0
 
 	override func execute(input: String, in world: World, by player: Player) {
 		guard let currentRoom = world.rooms[player.currentRoom] else {
@@ -47,6 +48,14 @@ class PlantCommand: Command {
 			return
 		}
 
+		guard ensureEnough(
+			time: Self.baseDuration,
+			and: 0.0,
+			for: player,
+			in: world) else {
+			return
+		}
+		
 		let moved = player.inventory.move(item: seed, quantity: 1, to: inventory, in: world)
 		if moved != 1 {
 			log(.warn, "Expected planting to move 1 seed into \(soil), but moved \(moved).")

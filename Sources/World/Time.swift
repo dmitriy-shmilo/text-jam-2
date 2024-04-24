@@ -2,30 +2,38 @@
 
 import Foundation
 
-struct Time {
-	static let tickMinutes = 5
-
-	let totalMinutes: Int
+struct DateTime {
+	let secondsSinceMidnight: TimeInterval
 
 	var minutes: Int {
-		totalMinutes % 60
+		Int(secondsSinceMidnight / 60.0) % 60
 	}
 
 	var hours: Int {
-		totalMinutes / 60
+		Int(secondsSinceMidnight / 3600.0)
 	}
 }
 
-extension Time {
+extension DateTime {
 	init(hours: Int, minutes: Int) {
-		self.init(totalMinutes: hours * 60 + minutes)
-	}
-	
-	func time(byAddingTicks ticks: Int) -> Time {
-		return Time(totalMinutes: totalMinutes + ticks * Self.tickMinutes)
+		self.init(secondsSinceMidnight: Double(hours * 3600) + Double(minutes * 60))
 	}
 	
 	func timeString() -> String {
 		return String(format: "%02d:%02d", hours, minutes)
+	}
+
+	static func +(lhs: DateTime, rhs: TimeInterval) -> DateTime {
+		let time = lhs.secondsSinceMidnight + rhs
+		let days = Int(time / 24.0 / 3600.0)
+		if days > 0 {
+			// TODO: track days
+			log(.info, "\(days) days rollover")
+		}
+		return .init(secondsSinceMidnight: time)
+	}
+
+	static func +=(lhs: inout DateTime, rhs: TimeInterval) {
+		lhs = lhs + rhs
 	}
 }

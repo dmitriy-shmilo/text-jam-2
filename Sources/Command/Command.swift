@@ -73,4 +73,22 @@ class Command {
 
 		return shop
 	}
+
+	func ensureEnough(
+		time: TimeInterval,
+		and energy: Float = 0.0,
+		for player: Player,
+		in world: World
+	) -> Bool {
+		guard player.energy >= energy else {
+			print(commandFeedback: "You're too tired to do that.", padding: .bottom)
+			return false
+		}
+		guard world.advanceTime(by: time) else {
+			print(commandFeedback: "It's getting late, you don't have enough time to do that.", padding: .bottom)
+			return false
+		}
+		player.energy -= energy
+		return true
+	}
 }
