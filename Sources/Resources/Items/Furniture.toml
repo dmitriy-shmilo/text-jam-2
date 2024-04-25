@@ -8,19 +8,23 @@ It's a wooden, creaking piece of furniture. \
 The mattress is old and lumpy. Coarse sheets became almost \
 beige with age. Covered with a red, brown and \
 black plaid blanket. It's not the best bed in the world, \
-but it's always here, whether you need a quick $Gnap$* \
+but it's always here, whether you need a quick nap \
 or a proper $Gsleep$* after a day of hard work."""
 flags = ["nopickup", "nohide"]
 tags = ["bed", "furniture", "uncomfortable"]
 
+
 [[items]]
 id = 1002
 name = "Wardrobe"
-roomDescription = "A tall wardrobe stands in the corner."
+roomDescription = "A tall and wide wardrobe takes an entire wall."
 description = """
-A wardrobe. Go ahead, $Gput$* something inside."""
+A wardrobe with lots of shelves and compartments. Unlike the rest of the old furniture, \
+this wardrobe looks actually antique.  You can $Gput$* something \
+inside or $Gtake$* something out of it."""
 flags = ["nopickup", "nohide", "container"]
 tags = ["furniture"]
+
 
 [[items]]
 id = 1003
@@ -34,6 +38,7 @@ tags = ["furniture"]
 [[items]]
 id = 1004
 name = "Well"
-roomDescription = "A water well was dug up here."
-description = "A small freshwater well. You can $Gfill $*something with water here."
+roomDescription = "A $Bwater well$* was dug up here."
+description = """
+A narrow but deep freshwater well. You can $Gfill $*something with water here."""
 flags = ["nopickup", "nohide", "nointeract", "source", "container"]

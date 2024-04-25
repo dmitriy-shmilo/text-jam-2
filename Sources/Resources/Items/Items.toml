@@ -40,3 +40,11 @@ description = """This used to be some critter's DIY home, now it's an empty but 
 preserved doodad. You might be able to sell it to someone."""
 basePrice = 4.0
 tags = ["misc"]
+
+
+[[items]]
+id = 9
+name = "Mushroom"
+description = """A small mushroom with round white stem, and a bulbous brown hat. It's \
+definitely edible."""
+tags = ["food", "forageable"]

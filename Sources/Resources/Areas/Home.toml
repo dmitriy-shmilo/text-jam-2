@@ -6,7 +6,14 @@ unload = "never"
 [[rooms]]
 id = 1
 name = "Corridor"
-description = "Your home entrance. A $gflower pot$* is standing on the windowsill."
+description = """
+Your home entryway. You can get to your bedroom or the kitchen from here. \
+Wooden floor is covered with rugs of varying \
+sizes and colors. A small window is looking south, uncovering the view of your \
+yard with stone pathways wiggling between dirt patches and a well further to the south. \
+An empty $gflower pot$* is standing on the dusty windowsill. There's a cobweb in the corner \
+under the ceiling. A fat spider sits there motionless. Spiders are cool, so you let \
+her stay here rent free in exchange for the mosquito population control."""
 
 [rooms.exits]
 north = { areaId = 1, id = 2 }
@@ -23,10 +30,11 @@ id = 3002
 [[rooms]]
 id = 2
 name = "Bedroom"
-description = """This is your bedroom, cozy and bright, the smell of old wood and freshly \
+description = """This is your bedroom. It's cozy and bright, the smell of old wood and freshly \
 laundered sheets stays in the air. Some of your belongings are still packed in the boxes, \
 tucked in a corner behind the door. There are two windows in this room, letting the daylight \
-in. Western window is looking out onto your yard and the outhouse. Through the northern window you can see a sandy river shore with small weed patches sticking out \
+in. Western window is looking out onto your yard and the outhouse. Through the northern \
+window you can see a sandy river shore with several weed patches sticking out \
 here and there. The only door is leading south into the corridor."""
 
 [[rooms.placedItems]]
@@ -42,7 +50,12 @@ south = { areaId = 1, id = 1 }
 [[rooms]]
 id = 3
 name = "Kitchen"
-description = "The kitchen."
+description = """
+Your kitchen. Two creaking cupboards, some rusty pans, a kettle incapable of holding water, \
+a shelf with some more old utensils. A one-person table and a stool, both made out of coarse wood, stand \
+near the window at the eastern side of the room. The window is covered with white \
+half-transparent curtains. You can see a field of wild flowers and weeds through it. The \
+only exit leads west, into the corridor."""
 
 [rooms.exits]
 west = { areaId = 1, id = 1 }
@@ -51,7 +64,10 @@ west = { areaId = 1, id = 1 }
 [[rooms]]
 id = 4
 name = "Outhouse"
-description = "A smelly place."
+description = """
+A smelly place, which you want to leave as soon as possible. But also have to \
+visit on a regular basis. Such a cruel joke. Flies are everywhere. Why did the only \
+spider on this whole farm decided to settle in your corridor? She would have a feast here."""
 
 [rooms.exits]
 south = { areaId = 2, id = 1 }

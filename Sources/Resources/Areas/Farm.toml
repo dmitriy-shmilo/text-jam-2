@@ -12,6 +12,12 @@ description = "Behind your house."
 north = { areaId = 1, id = 4 }
 south = { areaId = 2, id = 2 }
 
+[[rooms.placedItems]]
+id = 3001
+
+[[rooms.placedItems]]
+id = 3002
+
 
 [[rooms]]
 id = 2

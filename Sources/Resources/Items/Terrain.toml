@@ -67,5 +67,5 @@ action = "overnight"
 [[items]]
 id = 2005
 name = "River"
-description = """Why is all this water just lying on the ground?"""
+description = """Why is all this water just lying on the ground? - Trevor"""
 flags = ["nopickup", "nolist", "container", "source", "nointeract"]
