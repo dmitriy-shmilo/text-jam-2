@@ -50,6 +50,12 @@ class Inventory {
 				}
 				return quantity
 			}
+			
+			let newItem = item.copy(in: world)
+			newItem.quantity = quantity
+			newItem.parent = self
+			items.append(newItem)
+			return quantity
 		}
 
 		guard quantity != Item.infinite else {

@@ -20,12 +20,6 @@ north = { areaId = 1, id = 2 }
 south = { areaId = 2, id = 3 }
 east = { areaId = 1, id = 3 }
 
-[[rooms.placedItems]]
-id = 3001
-
-[[rooms.placedItems]]
-id = 3002
-
 
 [[rooms]]
 id = 2
@@ -51,14 +45,23 @@ south = { areaId = 1, id = 1 }
 id = 3
 name = "Kitchen"
 description = """
-Your kitchen. Two creaking cupboards, some rusty pans, a kettle incapable of holding water, \
-a shelf with some more old utensils. A one-person table and a stool, both made out of coarse wood, stand \
+Your kitchen. The space is wasted on the two creaking cupboards, some rusty pans, \
+a kettle incapable of holding water, a shelf with some more old utensils. A one-person \
+table and a stool, both made out of coarse wood, stand \
 near the window at the eastern side of the room. The window is covered with white \
 half-transparent curtains. You can see a field of wild flowers and weeds through it. The \
 only exit leads west, into the corridor."""
 
 [rooms.exits]
 west = { areaId = 1, id = 1 }
+
+[[rooms.placedItems]]
+id = 4001
+count = 3
+
+[[rooms.placedItems]]
+id = 4005
+count = 1
 
 
 [[rooms]]

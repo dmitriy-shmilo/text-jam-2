@@ -82,7 +82,8 @@ extension Item {
 			return true
 		}
 		
-		if definition.name
+		if ANSIColors
+			.removingColorTokens(in: definition.name)
 			.lowercased()
 			.hasPrefix(term) {
 			return true

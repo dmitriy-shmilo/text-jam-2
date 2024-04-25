@@ -5,6 +5,7 @@ import Foundation
 class PlantCommand: Command {
 	private static let growAction = "grow"
 	private static let baseDuration = 15.0 * 60.0
+	private static let baseEnergy = 0.08
 
 	override func execute(input: String, in world: World, by player: Player) {
 		guard let currentRoom = world.rooms[player.currentRoom] else {
@@ -50,7 +51,7 @@ class PlantCommand: Command {
 
 		guard ensureEnough(
 			time: Self.baseDuration,
-			and: 0.0,
+			and: Self.baseEnergy,
 			for: player,
 			in: world) else {
 			return

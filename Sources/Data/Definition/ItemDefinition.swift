@@ -14,6 +14,7 @@ struct ItemDefinition: Codable {
 	let description: String?
 	let tags: [String]
 	let nouns: [String]
+	let actions: [ActionDefinition]
 	let flags: ItemFlags
 	let transformations: [ItemTransformation]
 	let capacity: Int
@@ -33,6 +34,7 @@ struct ItemDefinition: Codable {
 			forKey: .transformations) ?? []
 		capacity = try container.decodeIfPresent(Int.self, forKey: .capacity) ?? 1
 		basePrice = try container.decodeIfPresent(Float.self, forKey: .basePrice) ?? 0.0
+		actions = try container.decodeIfPresent([ActionDefinition].self, forKey: .actions) ?? []
 	}
 }
 

@@ -8,6 +8,11 @@ tags = ["tool"]
 flags = ["nostack"]
 basePrice = 1.0
 
+[[items.actions]]
+name = "till"
+timeMultiplier = 1.5
+energyMultiplier = 1.5
+
 
 [[items]]
 id = 3002
@@ -21,6 +26,11 @@ tags = ["tool"]
 flags = ["nostack", "container", "nointeract", "vessel"]
 basePrice = 1.0
 
+[[items.actions]]
+name = "water"
+timeMultiplier = 1.5
+energyMultiplier = 1.5
+
 
 [[items]]
 id = 3003
@@ -31,6 +41,11 @@ It will serve you for a while before it breaks."""
 tags = ["tool"]
 flags = ["nostack"]
 basePrice = 100.0
+
+[[items.actions]]
+name = "till"
+timeMultiplier = 1.0
+energyMultiplier = 1.0
 
 
 [[items]]
@@ -44,6 +59,11 @@ flags = ["nostack"]
 capacity = 16
 basePrice = 150.0
 
+[[items.actions]]
+name = "water"
+timeMultiplier = 1.0
+energyMultiplier = 1.0
+
 
 [[items]]
 id = 3005
@@ -54,6 +74,11 @@ noticably heavier than its peers, using it feels easier."""
 tags = ["tool"]
 flags = ["nostack"]
 basePrice = 700.0
+
+[[items.actions]]
+name = "till"
+timeMultiplier = 0.75
+energyMultiplier = 1.0
 
 
 [[items]]
@@ -67,6 +92,11 @@ flags = ["nostack"]
 capacity = 30
 basePrice = 1000.0
 
+[[items.actions]]
+name = "water"
+timeMultiplier = 1.0
+energyMultiplier = 1.0
+
 
 [[items]]
 id = 3007
@@ -79,6 +109,11 @@ tags = ["tool"]
 flags = ["nostack"]
 basePrice = 1.0
 
+[[items.actions]]
+name = "uproot"
+timeMultiplier = 2.0
+energyMultiplier = 2.0
+
 
 [[items]]
 id = 3008
@@ -88,6 +123,11 @@ description = """A simple iron tool. Good for digging holes and uprooting plants
 tags = ["tool"]
 flags = ["nostack"]
 basePrice = 100.0
+
+[[items.actions]]
+name = "uproot"
+timeMultiplier = 1.0
+energyMultiplier = 1.0
 
 
 [[items]]
@@ -99,3 +139,8 @@ quickly and efficiently."""
 tags = ["tool"]
 flags = ["nostack"]
 basePrice = 500.0
+
+[[items.actions]]
+name = "uproot"
+timeMultiplier = 0.8
+energyMultiplier = 0.9

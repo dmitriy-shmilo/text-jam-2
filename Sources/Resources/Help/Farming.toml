@@ -17,10 +17,10 @@ references = ["till", "watering", "plant", "uproot", "harvest", "trading"]
 name = "Till"
 terms = ["till"]
 format = """
-till <target>"""
+till <target> <tool>"""
 example="""
-till soil
-till 3.wet"""
+till soil hoe
+till 3.wet rusty"""
 properties = ["Duration", "30 minutes"]
 description = """
 Any untilled soil patch can be tilled if you have a hoe. Seeds can be planted only in \
@@ -98,15 +98,17 @@ references = ["till", "water", "harvest", "uproot"]
 name = "Uprooting"
 terms = ["uproot"]
 format = """
-uproot <target>"""
+uproot <target> <tool>"""
 example = """
-uproot potato
-uproot 2.soil"""
+uproot potato shovel
+uproot 2.soil rusty"""
 properties = ["Duration", "20 minutes"]
 description = """
 Use uproot command if you planted a plant by mistake and wish to free up the soil \
 patch, or the plant have died. Uproot command can target a soil patch or the plant \
 directly.
+
+Uprooting requires a shovel, and a considerable amount of time.
 
 Uprooting will usually yield a dead plant, so be careful when performing this command."""
 references = ["plant", "harvest"]

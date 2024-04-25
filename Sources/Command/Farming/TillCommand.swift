@@ -5,14 +5,12 @@ import Foundation
 class TillCommand: Command {
 	private static let transformationAction = "till"
 	private static let baseDuration = 30.0 * 60.0
+	private static let baseEnergy = 0.13
 
 	override func execute(input: String, in world: World, by player: Player) {
 		guard let currentRoom = world.rooms[player.currentRoom] else {
 			return
 		}
-
-		// TODO: check for the correct tool
-		// TODO: time and energy cost
 
 		let tokens = tokens(from: input)
 		guard let token = tokens[checked: 1] else {
@@ -30,9 +28,23 @@ class TillCommand: Command {
 			return
 		}
 
+		guard let toolToken = tokens[checked: 2] else {
+			print(commandFeedback: "Till with what?", padding: .bottom)
+			return
+		}
+
+		guard let tool = ensure(toolToken, in: player) else {
+			return
+		}
+
+		guard let action = tool.definition.actions["till"] else {
+			print(commandFeedback: "You can't till with \(tool.definition.name).")
+			return
+		}
+
 		guard ensureEnough(
-			time: Self.baseDuration,
-			and: 0.0,
+			time: Self.baseDuration * action.energyMultiplierOrDefault,
+			and: Self.baseEnergy * action.energyMultiplierOrDefault,
 			for: player,
 			in: world) else {
 			return

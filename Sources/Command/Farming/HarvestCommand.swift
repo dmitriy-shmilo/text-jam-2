@@ -5,6 +5,7 @@ import Foundation
 class HarvestCommand: Command {
 	private static let transformationAction = "harvest"
 	private static let baseDuration = 15.0 * 60.0
+	private static let baseEnergy = 0.02
 
 	override func execute(input: String, in world: World, by player: Player) {
 		guard let currentRoom = world.rooms[player.currentRoom] else {

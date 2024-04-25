@@ -8,7 +8,7 @@ class Player: Entity {
 	}
 
 	var money = 0
-	var energy: Float = 1.0
+	var energy: Double = 1.0
 	let inventory: Inventory
 
 	override init() {
@@ -20,7 +20,7 @@ class Player: Entity {
 	required init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		money = try container.decodeIfPresent(Int.self, forKey: .money) ?? 0
-		energy = try container.decodeIfPresent(Float.self, forKey: .energy) ?? 0.0
+		energy = try container.decodeIfPresent(Double.self, forKey: .energy) ?? 0.0
 		inventory = try container.decodeIfPresent(Inventory.self, forKey: .inventory) ?? .init()
 		super.init()
 		inventory.parent = self

@@ -13,6 +13,9 @@ or a proper $Gsleep$* after a day of hard work."""
 flags = ["nopickup", "nohide"]
 tags = ["bed", "furniture", "uncomfortable"]
 
+[[items.actions]]
+name = "sleep"
+
 
 [[items]]
 id = 1002
@@ -38,6 +41,7 @@ tags = ["furniture"]
 [[items]]
 id = 1004
 name = "Well"
+nounts = ["water", "well"]
 roomDescription = "A $Bwater well$* was dug up here."
 description = """
 A narrow but deep freshwater well. You can $Gfill $*something with water here."""

@@ -36,7 +36,7 @@ struct ItemRender {
 	}
 
 	private func renderRoomLine(item: Item) {
-		guard let description = item.definition.roomDescription else {
+		guard let description = item.definition.roomDescription, preferRoomDescription else {
 			renderOneLine(item: item)
 			return
 		}

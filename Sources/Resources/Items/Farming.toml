@@ -75,7 +75,7 @@ step = 0.2
 id = 4004
 name = "Potato"
 tags = ["fruit", "produce", "food"]
-basePrice = 15.0
+basePrice = 25.0
 
 
 [[items]]
@@ -144,4 +144,4 @@ step = 0.2
 id = 4008
 name = "Beetroot"
 tags = ["fruit", "produce", "food"]
-basePrice = 20.0
+basePrice = 43.0

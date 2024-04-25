@@ -15,10 +15,6 @@ south = { areaId = 2, id = 2 }
 [[rooms.placedItems]]
 id = 3001
 
-[[rooms.placedItems]]
-id = 3002
-
-
 [[rooms]]
 id = 2
 name = "North-western corner"
@@ -43,6 +39,9 @@ north = { areaId = 1, id = 1 }
 south = { areaId = 2, id = 6 }
 east = { areaId = 2, id = 4 }
 west = { areaId = 2, id = 2 }
+
+[[rooms.placedItems]]
+id = 3002
 
 
 [[rooms]]
@@ -165,3 +164,6 @@ id = 1004
 [[rooms.placedItems]]
 id = 6
 containerId = 1004
+
+[[rooms.placedItems]]
+id = 3007

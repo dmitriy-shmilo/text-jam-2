@@ -5,6 +5,7 @@ import Foundation
 class WaterCommand: Command {
 	private static let transformationAction = "water"
 	private static let baseDuration = 10.0 * 60.0
+	private static let baseEnergy = 0.05
 	
 	override func execute(input: String, in world: World, by player: Player) {
 		guard let currentRoom = world.rooms[player.currentRoom] else {
@@ -53,9 +54,14 @@ class WaterCommand: Command {
 			return
 		}
 
+		guard let action = sourceItem.definition.actions["water"] else {
+			print(commandFeedback: "You can't water with \(sourceItem.definition.name).")
+			return
+		}
+
 		guard ensureEnough(
-			time: Self.baseDuration,
-			and: 0.0,
+			time: Self.baseDuration * action.timeMultiplierOrDefault,
+			and: Self.baseEnergy * action.energyMultiplierOrDefault,
 			for: player,
 			in: world) else {
 			return

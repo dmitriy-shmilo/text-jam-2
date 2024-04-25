@@ -37,7 +37,7 @@ struct PromptRender {
 		return exitsLabel
 	}
 
-	private func energyColor(_ energy: Float) -> ANSIColors {
+	private func energyColor(_ energy: Double) -> ANSIColors {
 		switch player.energy {
 		case 0.9...1.0:
 			return .darkGreen

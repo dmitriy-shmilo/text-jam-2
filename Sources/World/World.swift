@@ -141,6 +141,7 @@ class World {
 	func advanceTime(by seconds: TimeInterval) -> Bool {
 		let time = currentTime + seconds
 		guard time.hours < Self.lateHour else {
+			currentTime = .init(hours: Self.lateHour, minutes: 0)
 			return false
 		}
 		currentTime = time

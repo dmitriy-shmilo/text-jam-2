@@ -76,7 +76,7 @@ class Command {
 
 	func ensureEnough(
 		time: TimeInterval,
-		and energy: Float = 0.0,
+		and energy: Double = 0.0,
 		for player: Player,
 		in world: World
 	) -> Bool {
