@@ -1,0 +1,87 @@
+id = 5
+name = "River"
+unload = "overnight"
+
+
+[[rooms]]
+id = 1
+name = "River near you home"
+description = """You can see your home to the south west from here. It sits atop of a \
+cliff. The river makes a turn here, the shore becomes narrow, and if you try to go \
+further, you risk falling into the cold water."""
+
+[rooms.exits]
+east = { areaId = 5, id = 2 }
+
+[[rooms.placedItems]]
+id = 2005
+
+[[rooms.placedItems]]
+id = 6
+containerId = 2005
+
+[[rooms.placedItems]]
+id = 7
+
+
+[[rooms]]
+id = 2
+name = "Along the river"
+description = """The river flows east, soft round rocks are sticking out, reflecting the \
+sun, looking like grey bald heads. Was that a fish that caused a splash nearby? If \
+only you could find a fishing rod somewhere, you'd spend days just chilling here, \
+catching fish and eating sandwiches."""
+
+[rooms.exits]
+west = { areaId = 5, id = 1 }
+east = { areaId = 5, id = 3 }
+
+[[rooms.placedItems]]
+id = 2005
+
+[[rooms.placedItems]]
+id = 6
+containerId = 2005
+
+
+[[rooms]]
+id = 3
+name = "Trail to the river."
+description = """You walk down the trail, approaching the river. The trail is covered in \
+sand and tiny pebbles, making it a bit slippery. Big bushy weeds grow on each side of the \
+trail, providing shelter for tiny grey lizards."""
+
+[rooms.exits]
+west = { areaId = 5, id = 2 }
+east = { areaId = 5, id = 4 }
+south = { areaId = 4, id = 3 }
+
+[[rooms.placedItems]]
+id = 2005
+
+[[rooms.placedItems]]
+id = 6
+containerId = 2005
+
+
+[[rooms]]
+id = 4
+name = "Along the river"
+description = """You walk along the river towards the town. The river makes a sharp turn \
+to the north, going around the quay. The shore becomes narrow and the river itself \
+- unusually deep. You notice that the water here is also muddier, and a couple pieces \
+of trash are floating around. You should probably turn back."""
+
+[rooms.exits]
+west = { areaId = 5, id = 3 }
+
+[[rooms.placedItems]]
+id = 2005
+
+[[rooms.placedItems]]
+id = 6
+containerId = 2005
+
+[[rooms.placedItems]]
+id = 8
+

@@ -32,7 +32,7 @@ tags = ["furniture"]
 
 
 [[items]]
-id = 1003
+id = 1004
 name = "Well"
 roomDescription = "A water well was dug up here."
 description = "A small freshwater well. You can $Gfill $*something with water here."

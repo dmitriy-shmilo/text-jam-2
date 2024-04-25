@@ -172,7 +172,7 @@ count = -1
 id = 2
 room = { areaId = 6, id = 12 }
 shopkeeps = [1003]
-buyTags = ["fish", "bait"]
+buyTags = ["fish", "bait", "misc"]
 
 
 [[shops]]

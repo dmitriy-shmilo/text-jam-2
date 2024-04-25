@@ -62,3 +62,10 @@ tags = ["terrain"]
 [[items.transformations]]
 targetId = 2003
 action = "overnight"
+
+
+[[items]]
+id = 2005
+name = "River"
+description = """Why is all this water just lying on the ground?"""
+flags = ["nopickup", "nolist", "container", "source", "nointeract"]

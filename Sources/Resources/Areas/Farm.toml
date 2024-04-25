@@ -154,8 +154,8 @@ north = { areaId = 2, id = 7 }
 west = { areaId = 2, id = 10 }
 
 [[rooms.placedItems]]
-id = 1003
+id = 1004
 
 [[rooms.placedItems]]
 id = 6
-containerId = 1003
+containerId = 1004

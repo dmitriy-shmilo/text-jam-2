@@ -28,9 +28,10 @@ struct ShopRender {
 		let index = String(index + 1)
 		let count = item.quantity != Item.infinite ? String(item.quantity) : "Unlimited"
 		let price = String(priceResolver.purchasePrice(of: item))
+		let name = ANSIColors.removingColorTokens(in: item.definition.name)
 
 		let formattedIndex = index.paddingLeft(toLength: 3)
-		let formattedName = item.definition.name.paddingRight(toLength: 30)
+		let formattedName = name.paddingRight(toLength: 30)
 		let formattedPrice = price.paddingLeft(toLength: 9)
 		let formattedCount = count.paddingLeft(toLength: 10)
 		colorPrint("$g|$Y\(formattedIndex)$g|$*\(formattedName)$g|$*\(formattedPrice)$Yc$g|$D\(formattedCount)$g|")

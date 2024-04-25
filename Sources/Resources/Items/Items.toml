@@ -3,17 +3,40 @@
 id = 1
 name = "Pebble"
 
+
 [[items]]
 id = 2
 name = "Apple"
 tags = ["fruit", "produce", "food"]
+
 
 [[items]]
 id = 3
 name = "$gFlowerpot"
 flags = ["nopickup", "nolist"]
 
+
 [[items]]
 id = 6
 name = "Water"
 flags = ["nopickup", "liquid"]
+
+
+[[items]]
+id = 7
+name = "$YYel$wlow$yish$* shell"
+nouns = ["shell"]
+description = """This used to be some critter's DIY home, now it's an empty but well \
+preserved doodad. You might be able to sell it to someone."""
+basePrice = 2.0
+tags = ["misc"]
+
+
+[[items]]
+id = 8
+name = "$RRed$rdi$wsh$* shell"
+nouns = ["shell"]
+description = """This used to be some critter's DIY home, now it's an empty but well \
+preserved doodad. You might be able to sell it to someone."""
+basePrice = 4.0
+tags = ["misc"]
