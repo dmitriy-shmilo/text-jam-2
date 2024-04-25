@@ -24,7 +24,7 @@ extension ItemFlags: Codable {
 		var result = ItemFlags.none
 
 		while !container.isAtEnd {
-			let string = try container.decode(String.self)
+			let string = try container.decode(String.self).lowercased()
 			switch string {
 			case "nopickup":
 				result.formUnion(.noPickup)

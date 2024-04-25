@@ -106,14 +106,35 @@ class World {
 		}
 	}
 
-	func unload(areaId: Int) {
-		guard let area = areas[areaId] else {
-			return
-		}
-
+	func unload(area: AreaDefinition) {
+		log(.debug, "unload area: \(area)")
 		for room in area.rooms {
 			rooms.removeValue(forKey: .init(id: room.id, areaId: area.id))
 		}
+
+		for shop in area.shops {
+			shops.removeValue(forKey: shop.room)
+		}
+	}
+
+	func areaObscured(id: Int) {
+		log(.debug, "areaObscured \(id)")
+		guard let area = areas[id] else {
+			return
+		}
+
+		if area.unload == .leave {
+			unload(area: area)
+		}
+	}
+
+	func areaDiscovered(id: Int) {
+		log(.debug, "areaDiscovered \(id)")
+		guard let area = areaDatabase[id], areas[id] == nil else {
+			return
+		}
+
+		load(area: area)
 	}
 
 	// MARK: - Time Passing
@@ -135,7 +156,14 @@ class World {
 		log(.debug, "dayPass")
 		resetTime()
 		purgeItems()
-		// TODO: unload or refresh areas
+
+		for area in areas.values {
+			guard area.unload != .never else {
+				continue
+			}
+			unload(area: area)
+		}
+
 		for item in timeBasedTranformers {
 			guard let item = item.value,
 				  let inventory = item.parent else {

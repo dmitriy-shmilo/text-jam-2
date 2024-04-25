@@ -3,11 +3,15 @@
 import Foundation
 
 struct AreaDefinition {
+	enum UnloadCondition: String, Codable {
+		case never, leave, overnight
+	}
 	let id: Int
 	let name: String
 	let rooms: [RoomDefinition]
 	let shops: [ShopDefinition]
 	let defaultRoom: RoomRef?
+	let unload: UnloadCondition
 }
 
 extension AreaDefinition: Codable {
@@ -18,6 +22,7 @@ extension AreaDefinition: Codable {
 		defaultRoom = try container.decodeIfPresent(RoomRef.self, forKey: .defaultRoom) ?? .invalid
 		rooms = try container.decodeIfPresent([RoomDefinition].self, forKey: .rooms) ?? []
 		shops = try container.decodeIfPresent([ShopDefinition].self, forKey: .shops) ?? []
+		unload = try container.decodeIfPresent(UnloadCondition.self, forKey: .unload) ?? .overnight
 	}
 }
 // MARK: - CustomDebugStringConvertible

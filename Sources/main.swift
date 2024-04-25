@@ -51,17 +51,23 @@ let actorDatabase  = actors
 		map[actor.id] = actor
 	}
 
-Loader<AreaDefinition>()
+let areaDatabase = Loader<AreaDefinition>()
 	.load(from: "Resources/Areas")
-	.forEach {
-		world.load(area: $0)
+	.reduce(into: [Int: AreaDefinition]()) { map, area in
+		map[area.id] = area
 	}
 
 let saveManager = SaveManager()
 if let savedWorld = saveManager.load() {
 	world = savedWorld
 	player = savedWorld.player
+	world.areas.values
+		.forEach {
+			world.load(area: $0)
+		}
 } else {
+	world.load(area: areaDatabase[1]!)
+	world.load(area: areaDatabase[2]!)
 	player.currentRoom = world.areas[1]?.defaultRoom ?? .invalid
 	player.money += 500
 	world.dayPass()

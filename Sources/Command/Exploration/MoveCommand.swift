@@ -22,11 +22,30 @@ class MoveCommand: Command {
 			return
 		}
 
+		let oldAreas = Set(currentRoom.definition.exits.all.compactMap { $0?.areaId })
+			.union([ currentRoom.areaId ])
+		let newAreas = Set(targetRoom.definition.exits.all.compactMap { $0?.areaId })
+			.union([ targetRoom.areaId ])
+
+		let obscuredAreas = oldAreas.subtracting(newAreas)
+		let discoveredAreas = newAreas.subtracting(oldAreas)
+
+
+		discoveredAreas
+			.forEach {
+				world.areaDiscovered(id: $0)
+			}
+
 		_ = world.advanceTime(by: 5.0)
 		print(commandFeedback: "You move \(direction.localizedName).")
 
 		player.currentRoom = targetRef
 		let render = RoomRender()
 		render.render(room: targetRoom, limitItems: true)
+
+		obscuredAreas
+			.forEach {
+				world.areaObscured(id: $0)
+			}
 	}
 }
