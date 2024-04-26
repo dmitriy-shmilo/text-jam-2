@@ -1,6 +1,8 @@
 [[items]]
 id = 4000
 name = "$yDe$gad $rpl$yan$gt$*"
+description = """It used to be a healthy, growing plant. But whether thirst or cruel \
+shoveling ended its life prematurely."""
 tags = ["plant", "junk"]
 basePrice = 0.0
 
@@ -12,7 +14,9 @@ action = "uproot"
 [[items]]
 id = 4001
 name = "Potato seeds"
-tags = ["potato", "seed", "seeds"]
+description = """A packet of $ypo$wta$Yto$* seeds. Plant these into a tilled soil and grow \
+yourself some tasty 'taters."""
+tags = ["seed", "seeds"]
 basePrice = 2.0
 
 [[items.transformations]]
@@ -42,7 +46,7 @@ tags = ["plant", "fodder"]
 targetId = 4003
 containerId = 2004
 action = "grow"
-step = 0.34
+step = 0.5
 
 [[items.transformations]]
 targetId = 4000
@@ -74,6 +78,8 @@ step = 0.2
 [[items]]
 id = 4004
 name = "Potato"
+description = """A round-ish root of a potato plant. Func fact: potatoes contain, like, \
+80% of nutrients, required by a human being."""
 tags = ["fruit", "produce", "food"]
 basePrice = 25.0
 
@@ -81,6 +87,7 @@ basePrice = 25.0
 [[items]]
 id = 4005
 name = "Beetroot seeds"
+description = """A packet of light-brown weirdly shaped seeds. You can grow beetroot from these."""
 tags = ["seed"]
 basePrice = 4.0
 
@@ -88,7 +95,7 @@ basePrice = 4.0
 targetId = 4006
 containerId = 2004
 action = "grow"
-step = 0.5
+step = 0.34
 
 [[items.transformations]]
 targetId = 4000
@@ -111,7 +118,7 @@ tags = ["plant", "fodder"]
 targetId = 4007
 containerId = 2004
 action = "grow"
-step = 0.25
+step = 0.5
 
 [[items.transformations]]
 targetId = 4000
@@ -137,11 +144,173 @@ action = "harvest"
 targetId = 4000
 containerId = 2004
 action = "wilt"
-step = 0.2
+step = 0.34
 
 
 [[items]]
 id = 4008
 name = "Beetroot"
+description = """A mature beetroot, dirty-brown on the outside, dark-violet inside. \
+A major source of iodine and a raw material for sugar."""
 tags = ["fruit", "produce", "food"]
 basePrice = 43.0
+
+
+[[items]]
+id = 4009
+name = "Cabbage seeds"
+description = """A mix of red-ish brown and dark-grey round seeds. Juicy fresh cabbages \
+will grow out of these."""
+tags = ["seed", "seeds"]
+basePrice = 7.0
+
+[[items.transformations]]
+targetId = 4010
+containerId = 2004
+action = "grow"
+step = 0.34
+
+[[items.transformations]]
+targetId = 4000
+containerId = 2003
+action = "wilt"
+step = 0.25
+
+[[items.transformations]]
+targetId = 4009
+action = "uproot"
+
+
+[[items]]
+id = 4010
+name = "Cabbage seedling"
+nouns = ["seedling"]
+tags = ["plant", "fodder"]
+
+[[items.transformations]]
+targetId = 4011
+containerId = 2004
+action = "grow"
+step = 0.25
+
+[[items.transformations]]
+targetId = 4000
+containerId = 2003
+action = "wilt"
+step = 0.25
+
+[[items.transformations]]
+targetId = 4000
+action = "uproot"
+
+
+[[items]]
+id = 4011
+name = "Mature cabbage"
+tags = ["cabbage", "plant"]
+
+[[items.transformations]]
+targetId = 4012
+action = "harvest"
+
+[[items.transformations]]
+targetId = 4000
+containerId = 2004
+action = "wilt"
+step = 0.2
+
+
+[[items]]
+id = 4012
+name = "Cabbage"
+description = """A big, juicy and $ggr$Ce$Gen$* head of cabbage. Can be cooked into \
+a salad, a sauerkraut, or many other dishes."""
+tags = ["fruit", "produce", "food"]
+basePrice = 110.0
+
+
+[[items]]
+id = 4013
+name = "Carrot seeds"
+description = """A packet of slightly elongated grey-ish brown seeds. Carrots, no doubt."""
+tags = ["seed", "seeds"]
+basePrice = 5.0
+
+[[items.transformations]]
+targetId = 4014
+containerId = 2004
+action = "grow"
+step = 0.2
+
+[[items.transformations]]
+targetId = 4000
+containerId = 2003
+action = "wilt"
+step = 0.2
+
+[[items.transformations]]
+targetId = 4012
+action = "uproot"
+
+
+[[items]]
+id = 4014
+name = "Young carrots"
+nouns = ["carrots"]
+tags = ["plant", "fodder"]
+
+[[items.transformations]]
+targetId = 4015
+containerId = 2004
+action = "grow"
+step = 0.5
+
+[[items.transformations]]
+targetId = 4000
+containerId = 2003
+action = "wilt"
+step = 0.25
+
+[[items.transformations]]
+targetId = 4000
+action = "uproot"
+
+[[items.transformations]]
+targetId = 4017
+action = "harvest"
+
+
+[[items]]
+id = 4015
+name = "Mature carrots"
+tags = ["carrots", "plant"]
+
+[[items.transformations]]
+targetId = 4016
+action = "harvest"
+
+[[items.transformations]]
+targetId = 4000
+containerId = 2004
+action = "wilt"
+step = 0.2
+
+
+[[items]]
+id = 4016
+name = "Carrots"
+nouns = ["carrots"]
+description = """Mature, juicy carrots. Rich in vitamins and fiber, they go great \
+when grated with some apples and doused with a bit of wine or oil."""
+tags = ["fruit", "produce", "food"]
+basePrice = 85.0
+
+
+[[items]]
+id = 4017
+name = "Young carrots"
+nouns = ["carrots"]
+description = """Carrots, harvested before they reached full maturity. Crunchier than \
+their older siblings, they would serve as a healthful snack."""
+tags = ["fruit", "produce", "food"]
+basePrice = 65.0

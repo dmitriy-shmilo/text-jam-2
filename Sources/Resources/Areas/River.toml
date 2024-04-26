@@ -5,7 +5,7 @@ unload = "overnight"
 
 [[rooms]]
 id = 1
-name = "River near you home"
+name = "River near your home"
 description = """You can see your home to the south west from here. It sits atop of a \
 cliff. The river makes a turn here, the shore becomes narrow, and if you try to go \
 further, you risk falling into the cold water."""

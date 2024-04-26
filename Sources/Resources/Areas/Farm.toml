@@ -6,7 +6,13 @@ unload = "never"
 [[rooms]]
 id = 1
 name = "Behind the house"
-description = "Behind your house."
+description = """
+The fence makes a corner here, connecting to the back wall of the house.
+An outhouse is tucked away in that corner. Over the fence to the north you can see how \
+the weed field turns into a small cliff. You can see a river going further north.
+To the east there's the house wall with a window. Thin grass and several dandelions \
+grow under the wall. Crude stone path leads to the outhouse. or back south to the rest \
+of the yard."""
 
 [rooms.exits]
 north = { areaId = 1, id = 4 }
@@ -18,7 +24,12 @@ id = 3001
 [[rooms]]
 id = 2
 name = "North-western corner"
-description = "Your yard."
+description = """
+You're in the north-western corner of your yard. There's a fence here, going to the south \
+and to the north. Behind the fence you can see a field full of weeds and field flowers. \
+A lonely tree is visible in the distance. The stone path leads to the porch in the east, \
+and turns south along the fence. Several stones are placed in the northern direction, \
+towards the outhouse."""
 
 [rooms.exits]
 north = { areaId = 2, id = 1 }
@@ -32,7 +43,12 @@ id = 2001
 [[rooms]]
 id = 3
 name = "In front of the house"
-description = "In front of your house."
+description = """
+You're walking along your house wooden porch. A couple of bent wooden steps connect it \
+with the ground, where a path made of large flat stones forks in three directions. \
+To the east you can see how the house connects with the fence. The fence then goes \
+to the south, makes a round-ish rectangle-ish shaped perimeter around your domain, \
+going north, and hides to the north-west behind the house."""
 
 [rooms.exits]
 north = { areaId = 1, id = 1 }
@@ -47,7 +63,12 @@ id = 3002
 [[rooms]]
 id = 4
 name = "North-Eastern Corner"
-description = "North-Eastern Corner."
+description = """
+Here your house connects with the fence, forming a corner around your \
+yard. Directly to the south, the fence is broken by a wooden gate. Towards the center \
+of the yard, you see soil patches carefully circled with large pebbles and pieces \
+of wood. Stone path is laid between the patches letting you navigate without making \
+your feet too dirty."""
 
 [rooms.exits]
 west = { areaId = 2, id = 3 }
@@ -60,7 +81,11 @@ id = 2001
 [[rooms]]
 id = 5
 name = "Western fence"
-description = "Western fence."
+description = """A fence line goes from the south to the north here. If you can call this \
+architectural piece a 'line'. A curve perhaps? A fence curve goes from the south to the north \
+here, separating your more or less clean yard from a field full of weeds and pale, barely \
+visible field flowers. A stone path is laid along the fence, with a fork, leading \
+into the center of the yard."""
 
 [rooms.exits]
 north = { areaId = 2, id = 2 }
@@ -77,7 +102,10 @@ id = 2001
 [[rooms]]
 id = 6
 name = "Path Between Patches"
-description = "Path Between Patches."
+description = """
+The stone path makes an X shaped intersection here, allowing safe and mostly \
+dirt-free passage to every side of your yard. Some stones are strategically placed here \
+and there, letting you access most of the soil patches on the farm."""
 
 [rooms.exits]
 north = { areaId = 2, id = 3 }
@@ -100,7 +128,11 @@ id = 2001
 [[rooms]]
 id = 7
 name = "Gate"
-description = "Gate."
+description = """
+Here's a creaking wooden gate in your fence, the only legal way of entering and leaving \
+the premises. The stone path leads outside, where it quickly thins into a simple dirt trail. \
+You can see a water well to the south, and the town silhouette in the distance to the east."""
+
 
 [rooms.exits]
 north = { areaId = 2, id = 4 }
@@ -112,17 +144,25 @@ west = { areaId = 2, id = 6 }
 [[rooms]]
 id = 8
 name = "Outside the Gate"
-description = "Outside the gate."
+description = """
+A couple more stones, and the nice path peters off, turning into a dusty \
+dirt trail. The long trail leads eastward through the field, towards the town. \
+To the north you can see how the ground suddenly disappears, and a bit of the river \
+is poking out from further away."""
 
 [rooms.exits]
 east = { areaId = 4, id = 1 }
-west = { areaId = 2, id = 6 }
+west = { areaId = 2, id = 7 }
 
 
 [[rooms]]
 id = 9
 name = "South-Western Corner"
-description = "South-Western Corner."
+description = """
+The path cuts a corner here, allowing you to go north or east along the fence. \
+You can see the well across the yard to the east. Behind the fence there's \
+more of the field, weeds and flowers. You notice a fence post in an especially \
+bad shape. Gotta replace it some day."""
 
 [rooms.exits]
 north = { areaId = 2, id = 5 }
@@ -135,7 +175,12 @@ id = 2001
 [[rooms]]
 id = 10
 name = "Southern fence"
-description = "Southern fence."
+description = """
+An endless sea of grass spreads to the south, and only your trusty fence keeps it \
+at bay, not letting the weeds engulf your tiny house in green. To be fair, the fence isn't \
+THAT trusty, considering the amount of rodents and other fauna it lets in and out on the \
+daily basis. The well is directly to the east. Follow north and you'll end up in the middle \
+of your yard."""
 
 [rooms.exits]
 north = { areaId = 2, id = 6 }
@@ -152,7 +197,11 @@ id = 2001
 [[rooms]]
 id = 11
 name = "Well"
-description = "A $Bwell$* is here."
+description = """
+A $Bwell$* is built here. The fence circles around the well to the south-east. \
+A stone path makes a turn, from the north to the west, following the fence. A \
+couple extra rocks are placed next to the well to make sure you can reach it without \
+stepping in the mud."""
 
 [rooms.exits]
 north = { areaId = 2, id = 7 }

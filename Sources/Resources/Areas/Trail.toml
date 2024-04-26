@@ -36,8 +36,8 @@ id = 3
 name = "Fork in the road"
 description = """
 The trail turns northward, to the river. You hear faint sounds of \
-running water that way. Further east the trail transforms into a stone road, leading \
-towards the town."""
+running water that way. Further east the trail connects with a couple more dirt paths, and \
+transforms into a stone road, leading towards the town."""
 
 [rooms.exits]
 west = { areaId = 4, id = 2 }
@@ -49,7 +49,8 @@ north = { areaId = 5, id = 3 }
 id = 4
 name = "Road"
 description = """One stone, two stone... five hundreds seventy three stone. Walking down this \
-road is boring. Laying all these stones might've been even more boring. But thanks yo whomever \
+road is boring. You entertain yourself counting big bulky stones, which make up the road. \
+Laying all these stones might've been even more boring. But thanks to whomever \
 spent their time and energy doing this, you can cover much bigger distance faster. Dang, \
 which stone was it, five hundreds seventy forth?"""
 
@@ -63,7 +64,7 @@ id = 5
 name = "Town road"
 description = """
 Stone road outside of town. Far to the west, hidden among weeds and bushes, you can \
-see you cottage. A road, turning into a dirt trail leads to it. Right here to the east \
+see your cottage. A road, turning into a dirt trail leads to it. Right here to the east \
 is the town."""
 
 [rooms.exits]

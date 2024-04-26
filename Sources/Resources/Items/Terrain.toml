@@ -1,6 +1,6 @@
 [[items]]
 id = 2001
-name = "Dry soil "
+name = "Dry soil"
 nouns = ["soil", "patch"]
 roomDescription = "$yA patch of dry soil waiting to be tilled and watered."
 flags = ["nopickup", "nohide"]
@@ -60,7 +60,7 @@ flags = ["nopickup", "nohide", "container", "nointeract"]
 tags = ["terrain"]
 
 [[items.transformations]]
-targetId = 2003
+targetId = 2004
 action = "overnight"
 
 

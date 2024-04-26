@@ -20,6 +20,9 @@ north = { areaId = 1, id = 2 }
 south = { areaId = 2, id = 3 }
 east = { areaId = 1, id = 3 }
 
+[[rooms.placedItems]]
+id = 3
+
 
 [[rooms]]
 id = 2

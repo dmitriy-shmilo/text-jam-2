@@ -167,6 +167,14 @@ count = -1
 id = 4005
 count = -1
 
+[[shops.items]]
+id = 4009
+count = -1
+
+[[shops.items]]
+id = 4013
+count = -1
+
 
 [[shops]]
 id = 2
