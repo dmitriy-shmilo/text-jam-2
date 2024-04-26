@@ -41,8 +41,40 @@ tags = ["furniture"]
 [[items]]
 id = 1004
 name = "Well"
-nounts = ["water", "well"]
+nouns = ["water", "well"]
 roomDescription = "A $Bwater well$* was dug up here."
 description = """
 A narrow but deep freshwater well. You can $Gfill $*something with water here."""
 flags = ["nopickup", "nohide", "nointeract", "source", "container"]
+
+
+[[items]]
+id = 1005
+name = "Paper notice"
+nouns = ["paper", "notice", "advert", "note"]
+roomDescription = "A paper notice waits for somebody to look at it."
+description = """
+                 $g-=[$WSam's Seeds$g]=-$*
+
+Welcome to Sam's Seeds. You can $Gbuy$* all sorts of seeds here.
+Feel free to check out the full $Glist$* of my wares and
+don't hesitate to $Gperuse$* anything that catches your eye.
+
+I also buy produce from farmers. Please $Gsell$* your excess
+vegies and fruits to me.
+"""
+flags = ["nopickup", "nohide", "nointeract"]
+
+
+[[items]]
+id = 1006
+name = "Paper notice"
+nouns = ["paper", "notice", "advert", "note", "wooden", "board"]
+roomDescription = "A wooden board with a note attached hangs on the wall."
+description = """
+           $R]$W|$R[$WCool Tools$R]$W|$R[$*
+
+Cool Tools! I've got a full $Glist$* of  tools for your every need! 
+$Gperuse$* my hoes! $Gbuy$* my shovels and watering cans!
+"""
+flags = ["nopickup", "nohide", "nointeract"]

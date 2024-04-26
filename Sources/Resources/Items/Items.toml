@@ -13,7 +13,7 @@ tags = ["fruit", "produce", "food"]
 [[items]]
 id = 3
 name = "$gFlowerpot$*"
-nounts = ["pot"]
+nouns = ["pot"]
 description = """
 A flowerpot, filled with a clump of dark wet soil. You planted some \
 assorted mystery seeds, which you found the other day, in it. Let's see what will grow."""

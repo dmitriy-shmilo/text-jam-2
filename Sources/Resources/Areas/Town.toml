@@ -5,7 +5,12 @@ unload = "overnight"
 [[rooms]]
 id = 1
 name = "Town Gate"
-description = "A gate into the town."
+description = """
+This town used to have walls, and then it kinda... grew out of them? Most of the \
+walls don't exist anymore, but the stone arch over the main road is still here. \
+Going under the arch you hear the echo of your feet connecting with the stone road. \
+There's a small curious doorway inside the arch, but you don't dare to enter. What if \
+somebody works or lives there?"""
 
 [rooms.exits]
 west = { areaId = 4, id = 5 }
@@ -14,8 +19,12 @@ east = { areaId = 6, id = 2 }
 
 [[rooms]]
 id = 2
-name = "Central Street"
-description = "Central street near the gate."
+name = "Central Street Near the Gate"
+description = """
+The road exits from underneath the gate, and follows further east. This is the main \
+street of the town. To the north you can see bunches of cute town houses snuggling towards \
+one another. Somebody's fancy mansion is to the south, blocked by a gate and a black iron \
+fence."""
 
 [rooms.exits]
 west = { areaId = 6, id = 1 }
@@ -26,29 +35,54 @@ north = { areaId = 6, id = 14 }
 [[rooms]]
 id = 3
 name = "Central Street"
-description = "Central street."
+description = """
+You're following the central street, leading further into the heart of the town to the east. \
+You can see the town arch to the west, allowing you to leave at any time. Rows of two-story \
+buildings line the street on both sides. On occasion, you can spot somebody leaving or entering \
+their home. Life is quite slow here."""
 
 [rooms.exits]
 west = { areaId = 6, id = 2 }
 east = { areaId = 6, id = 4 }
 
+[[rooms.placedActors]]
+id = 1007
+
 
 [[rooms]]
 id = 4
 name = "Town Square"
-description = "Town Square"
+description = """
+The central street opens up into a wide town square. You can see $Yco$Clo$Yrf$Cul$* banners \
+hanging on ropes between several tall posts. A round flowerbed is placed in the middle of the square. \
+A bunch of benches stand around the flowerbed, facing inwards. Some townsfolk relax on the benches, \
+a couple of kids are running around, probably playing tag. There's a cafe on the northern \
+corner, the only one in town. The central street follows further east. \
+Another, narrower, street goes north. A townhall is to the south."""
 
 [rooms.exits]
 west = { areaId = 6, id = 3 }
 north = { areaId = 6, id = 9 }
 east = { areaId = 6, id = 5 }
-south = { areaId = 6, id = 10 }
+
+[[rooms.placedActors]]
+id = 1006
+
+[[rooms.placedActors]]
+id = 1006
+
+[[rooms.placedActors]]
+id = 1008
 
 
 [[rooms]]
 id = 5
-name = "Central Street"
-description = "Central street."
+name = "Central Street Near Train Station"
+description = """
+The main street follows from west to east, towards the train station. More buildings \
+are bunched together on each side. Most of these are homes. You can see tastefully populated \
+flowerpots in every other window. Some buildings have their doors open wide, but you won't \
+dare to disturb their dwellers. So you continue minding your own business, and follow the road."""
 
 [rooms.exits]
 west = { areaId = 6, id = 4 }
@@ -58,16 +92,29 @@ east = { areaId = 6, id = 6 }
 [[rooms]]
 id = 6
 name = "Train Station"
-description = "Train station."
+description = """
+You arrived to this town by train. This station was the first building you got \
+acquainted with. It is old, small, but carefully maintained. Townsfolk come and \
+go evey day. The train takes them to the nearby city, either for work or entertainment. \
+Sometimes somebody new arrives, usually a small pack of hikers, or a family looking for \
+a peaceful way to spend their vacation. An occasional cargo makes a stop to offload \
+supplies and take some of the local produce to the city."""
 
 [rooms.exits]
 west = { areaId = 6, id = 5 }
+
+[[rooms.placedActors]]
+id = 1007
 
 
 [[rooms]]
 id = 7
 name = "Overlooking the River"
-description = "Overlooking the river."
+description = """
+You're standing on the quay overlooking the river to the north. The river flows east, \
+taking some of the town's waste along. If you don't mind that the river becomes noticeably \
+dirtier in this area, it's still a good relaxation spot. There are a couple of benches \
+placed specifically for that. The road leads south, to the commerce part of the town."""
 
 [rooms.exits]
 south = { areaId = 6, id = 8 }
@@ -76,7 +123,11 @@ south = { areaId = 6, id = 8 }
 [[rooms]]
 id = 8
 name = "Trader's Street"
-description = "A wider part of Trader's street."
+description = """
+This part of the Trader's Street is noticeably wider, allowing for \
+some additional tents to be set up on the sides. Some people lazily walk among \
+the tents, browsing the goods. Some walk further north towards the river. \
+There's a particularly bright tent to the west."""
 
 [rooms.exits]
 west = { areaId = 6, id = 11 }
@@ -84,31 +135,43 @@ north = { areaId = 6, id = 7 }
 east = { areaId = 6, id = 12 }
 south = { areaId = 6, id = 9 }
 
+[[rooms.placedActors]]
+id = 1005
+
+[[rooms.placedActors]]
+id = 1008
+
 
 [[rooms]]
 id = 9
 name = "Trader's Street"
-description = "Trader's street."
+description = """
+Trader's Street starts at the town square and goes north towards the river. \
+This is where most of the goods and services can be acquired. There's a "Cool Tools" \
+on the western side of the street, a barbershop and a journal stand on the eastern one."""
 
 [rooms.exits]
 west = { areaId = 6, id = 13 }
 north = { areaId = 6, id = 8 }
 south = { areaId = 6, id = 4 }
 
+[[rooms.placedActors]]
+id = 1007
 
-[[rooms]]
-id = 10
-name = "Town Hall"
-description = "Town hall's courtyard."
-
-[rooms.exits]
-north = { areaId = 6, id = 4 }
+[[rooms.placedActors]]
+id = 1008
 
 
 [[rooms]]
 id = 11
 name = "Seed Seller's Tent"
-description = "A seed shop. You can buy all kinds of seeds here."
+description = """
+A $Yyellow$* and $Wwhite$* striped tent sits on a sidewalk, next to a bakery. Lots of small \
+boxes are neatly organized in a grid pattern on a wide counter. Boxes contain stacked papeer \
+seed packets. Each container has a paper tag sticking out, with a price, name and a \
+crayon rendering of the expected crop. Deeper in the tent there are bigger \
+sealed boxed, probably full of merchandise. A piece of paper is attached next to the \
+entrance. You might want to take a $Glook$* at it, if it's your first time visiting."""
 
 [rooms.exits]
 east = { areaId = 6, id = 8 }
@@ -119,11 +182,18 @@ id = 1001
 [[rooms.placedActors]]
 id = 1002
 
+[[rooms.placedItems]]
+id = 1005
+
 
 [[rooms]]
 id = 12
 name = "Fisherman's Tent"
-description = "Fisherman's tent."
+description = """
+A modest tent without any kind of decoration. A couple of big wooden boxes in the middle serve as tables. \
+While the fisherman sells his fish wholesale to be delivered to the city, various seashells, weird stones \
+and other marine knick-knacks he will trade here. Nothing interests you at the moment, \
+but maybe you'll be able to persuade the fisherman to add some of your own findings to his collection."""
 
 [rooms.exits]
 west = { areaId = 6, id = 8 }
@@ -135,7 +205,12 @@ id = 1003
 [[rooms]]
 id = 13
 name = "Toolshop"
-description = "Toolshop."
+description = """
+Cool Tools! reads the sign in the window. You step into a small shop, light from the \
+outside has really hard time getting in. Naked brick walls are \
+giving off an underground vibe. Wooden shelves along one of the walls \
+are packed with various gardening and building tools. \
+Various nuts and bolts are laid out on the counter, which splits the room in two."""
 
 [rooms.exits]
 east = { areaId = 6, id = 9 }
@@ -143,11 +218,17 @@ east = { areaId = 6, id = 9 }
 [[rooms.placedActors]]
 id = 1004
 
+[[rooms.placedItems]]
+id = 1006
 
 [[rooms]]
 id = 14
 name = "Houses"
-description = "Houses."
+description = """
+You come to a weird Y-shaped intersection. A couple of smaller streets stretch \
+further north and north-west. Both lined with small two-story brick buildings. Most \
+of them are either dwellings, or empty. Some people walk down the streets, minding \
+their own business. You decide there's nothing interesting this way."""
 
 [rooms.exits]
 south = { areaId = 6, id = 2 }

@@ -3,7 +3,9 @@ id = 1001
 name = "Shopkeep"
 nouns = ["keep"]
 roomDescription = "Shopkeep is tending their shop here."
-
+description = """
+Shopkeep is busy writing something in the ledger, and checking it with their notes, \
+and then checking, and then tripple-checking again."""
 
 [[actors]]
 id = 1002
@@ -16,6 +18,9 @@ roomDescription = "Shopkeep's spouse is helping around the shop."
 id = 1003
 name = "Fisherman"
 roomDescription = "Fisherman is packaging dead bugs into jars."
+description = """
+An old man in a plaid shirt, jeans and no shoes. Surprisingly energetic \
+for his age, he can passionately talk about fishing and seashell collecting for hours."""
 
 
 [[actors]]
@@ -23,3 +28,44 @@ id = 1004
 name = "Shopkeep"
 nouns = ["keep"]
 roomDescription = "Shopkeep is selling tools and accessories."
+description = """
+A burly looking person, just finished unloading and sorting another heavy box of tools, bits \
+and bobs. When you approach, they shake off a couple droplets of sweat with their palm, and smile \
+tiredly."""
+
+
+[[actors]]
+id = 1005
+name = "Dog"
+nouns = ["dog", "stray"]
+roomDescription = "A stray dog is roaming the streets begging for food."
+description = """
+Despite being stray, it's a very well fed mutt. It's healthy black fur reflects the light. \
+It's not aggressive, and doesn't seem to be afraid of strangers. The dog sniffs you curiously."""
+
+
+[[actors]]
+id = 1006
+name = "Child"
+nouns = ["child"]
+roomDescription = "A small child is playing here."
+description = """
+You should probably stop looking at children. There's more important things to do."""
+
+
+[[actors]]
+id = 1007
+name = "Townsman"
+nouns = ["man"]
+roomDescription = "A townsman is walking down the street."
+description = """
+Somebody you haven't met yet. They seem too preoccupied right now, so you decide not to bother them. Not today."""
+
+
+[[actors]]
+id = 1008
+name = "Townswoman"
+nouns = ["woman"]
+roomDescription = "A townswoman is walking down the street."
+description = """
+Somebody you haven't met yet. They seem too preoccupied right now, so you decide not to bother them. Not today."""
