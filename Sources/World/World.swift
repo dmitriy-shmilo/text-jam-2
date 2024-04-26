@@ -115,6 +115,8 @@ class World {
 		for shop in area.shops {
 			shops.removeValue(forKey: shop.room)
 		}
+
+		areas[area.id] = nil
 	}
 
 	func areaObscured(id: Int) {

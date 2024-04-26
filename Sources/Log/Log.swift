@@ -3,6 +3,9 @@
 import Foundation
 
 func log(_ level: LogLevel, _ message: String, context: String = "", stripColorMarkers: Bool = false) {
+	guard level == .error || level == .warn else {
+		return
+	}
 	#if DEBUG
 	let message = stripColorMarkers
 	? ANSIColors.removingColorTokens(in: message) : message
